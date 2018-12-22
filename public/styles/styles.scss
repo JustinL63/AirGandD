@@ -1,0 +1,38 @@
+$music-color: #98E7B4;
+$film-color: #F3D250;
+$book-color: #9998E7;
+$body-color: #F3D250;
+$navbar-color: #475DFF;
+$navbar-text:white;
+
+body {
+    background-color: $body-color;
+}
+
+.navbar {
+    background-color: $navbar-color;
+    height: 80px;
+        
+    .navbar-brand {
+        font-size: 40px;
+        margin-left: 5%;
+        color: $navbar-text
+    }
+
+    .navbar-nav {
+        margin-left: 5%;
+    }
+
+    .nav-link {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+        color: $navbar-text;
+    }
+}
+
+.container {
+    width: 700px;
+}
+
+

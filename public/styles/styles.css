@@ -1,3 +1,28 @@
-.list-group-item {
-  line-height: 2.5;
+body {
+  background-color: #F3D250;
 }
+
+.navbar {
+  background-color: #475DFF;
+  height: 80px;
+}
+.navbar .navbar-brand {
+  font-size: 40px;
+  margin-left: 5%;
+  color: white;
+}
+.navbar .navbar-nav {
+  margin-left: 5%;
+}
+.navbar .nav-link {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: white;
+}
+
+.container {
+  width: 700px;
+}
+
+/*# sourceMappingURL=styles.css.map */

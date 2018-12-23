@@ -1,9 +1,5 @@
-body {
-  background-color: #F3D250;
-}
-
 .navbar {
-  background-color: #475DFF;
+  background-color: #153E5C;
   height: 80px;
 }
 .navbar .navbar-brand {
@@ -21,8 +17,51 @@ body {
   color: white;
 }
 
+#index-pg {
+  background-color: #F3D250;
+}
+
+.btn {
+  background-color: #153E5c;
+}
+
+.btn:hover {
+  background-color: #87AEB4;
+}
+
 .container {
   width: 700px;
+}
+
+p {
+  font-size: 17px;
+}
+
+#dash-pg {
+  background-color: white;
+}
+
+.btn-sm {
+  color: white;
+  background-color: #153E5C;
+}
+
+#dash-container {
+  width: 1200px;
+}
+
+#music-col {
+  background-color: #F2BE54;
+  border-right: 10px solid white;
+}
+
+#films-col {
+  background-color: #CDD4CA;
+  border-right: 10px solid white;
+}
+
+#books-col {
+  background-color: #87AEB4;
 }
 
 /*# sourceMappingURL=styles.css.map */

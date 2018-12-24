@@ -11,10 +11,19 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/dashboard", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("dashboard", {
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
+  app.get("/music", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
+      res.render("music", {
         example: dbExample
       });
     });

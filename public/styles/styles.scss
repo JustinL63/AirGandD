@@ -1,0 +1,113 @@
+$music-color: #F2BE54;
+$film-color: #CDD4CA;
+$book-color: #87AEB4;
+$body-color-index: #F3D250;
+$navbar-color: #153E5C;
+$navbar-text:white;
+$body-color-dash: white;
+$button-color: #153E5c;
+$button-hover: #87AEB4;
+$container-width: 1200px;
+
+// NAVBAR
+.navbar {
+    background-color: $navbar-color;
+    height: 80px;
+        
+    .navbar-brand {
+        font-size: 40px;
+        margin-left: 5%;
+        color: $navbar-text
+    }
+
+    .navbar-nav {
+        margin-left: 5%;
+    }
+
+    .nav-link {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+        color: $navbar-text;
+    }
+}
+
+// GLOBAL STYLES
+a {
+    color: $navbar-color;
+}
+
+.btn {
+    background-color: $button-color;
+}
+
+.btn:hover {
+    background-color: $button-hover;
+}
+
+.btn-sm {
+    color: white;
+    background-color: $navbar-color;
+}
+
+.btn-lg {
+    color: white;
+    background-color: $navbar-color;
+}
+
+.container-fluid {
+    width: $container-width;
+}
+
+#bar {
+    background-color: $navbar-color;
+    color: $navbar-text;
+}
+
+#sidebar {
+    background-color: $film-color;
+}
+
+// INDEX PAGE
+#index-pg {
+    background-color: $body-color-index;
+}
+
+// DASHBOARD PAGE
+p {
+    font-size: 17px;
+}
+
+#dash-pg {
+    background-color: $body-color-dash
+}
+
+
+#dash-container {
+    width: $container-width;
+}
+
+#music-col {
+    background-color: $music-color;
+    border-right: 10px solid white;
+}
+
+#films-col {
+    background-color: $film-color;
+    border-right: 10px solid white;
+}
+
+#books-col {
+    background-color: $book-color;
+}
+
+// MUSIC PAGE
+
+#music-container {
+    background-color: $music-color;
+}
+
+#database {
+    background-color: white;
+}
+

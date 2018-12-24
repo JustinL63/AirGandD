@@ -1,3 +1,93 @@
-.list-group-item {
-  line-height: 2.5;
+.navbar {
+  background-color: #153E5C;
+  height: 80px;
 }
+.navbar .navbar-brand {
+  font-size: 40px;
+  margin-left: 5%;
+  color: white;
+}
+.navbar .navbar-nav {
+  margin-left: 5%;
+}
+.navbar .nav-link {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  color: white;
+}
+
+a {
+  color: #153E5C;
+}
+
+.btn {
+  background-color: #153E5c;
+}
+
+.btn:hover {
+  background-color: #87AEB4;
+}
+
+.btn-sm {
+  color: white;
+  background-color: #153E5C;
+}
+
+.btn-lg {
+  color: white;
+  background-color: #153E5C;
+}
+
+.container-fluid {
+  width: 1200px;
+}
+
+#bar {
+  background-color: #153E5C;
+  color: white;
+}
+
+#sidebar {
+  background-color: #CDD4CA;
+}
+
+#index-pg {
+  background-color: #F3D250;
+}
+
+p {
+  font-size: 17px;
+}
+
+#dash-pg {
+  background-color: white;
+}
+
+#dash-container {
+  width: 1200px;
+}
+
+#music-col {
+  background-color: #F2BE54;
+  border-right: 10px solid white;
+}
+
+#films-col {
+  background-color: #CDD4CA;
+  border-right: 10px solid white;
+}
+
+#books-col {
+  background-color: #87AEB4;
+}
+
+#music-container {
+  background-color: #F2BE54;
+}
+
+#database {
+  background-color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */

@@ -73,8 +73,21 @@ a {
     background-color: $body-color-index;
 }
 
+#create {
+    display: inline;
+}
+
+#create-btn {
+    width: 200px;
+}
+
+// LOGIN PAGE
+#login-container {
+    background-color: $music-color;
+}
+
 // DASHBOARD PAGE
-p {
+p#subline {
     font-size: 17px;
 }
 

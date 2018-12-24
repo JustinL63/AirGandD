@@ -56,7 +56,19 @@ a {
   background-color: #F3D250;
 }
 
-p {
+#create {
+  display: inline;
+}
+
+#create-btn {
+  width: 200px;
+}
+
+#login-container {
+  background-color: #F2BE54;
+}
+
+p#subline {
   font-size: 17px;
 }
 

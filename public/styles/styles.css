@@ -17,8 +17,8 @@
   color: white;
 }
 
-#index-pg {
-  background-color: #F3D250;
+a {
+  color: #153E5C;
 }
 
 .btn {
@@ -29,8 +29,31 @@
   background-color: #87AEB4;
 }
 
-.container {
-  width: 700px;
+.btn-sm {
+  color: white;
+  background-color: #153E5C;
+}
+
+.btn-lg {
+  color: white;
+  background-color: #153E5C;
+}
+
+.container-fluid {
+  width: 1200px;
+}
+
+#bar {
+  background-color: #153E5C;
+  color: white;
+}
+
+#sidebar {
+  background-color: #CDD4CA;
+}
+
+#index-pg {
+  background-color: #F3D250;
 }
 
 p {
@@ -39,11 +62,6 @@ p {
 
 #dash-pg {
   background-color: white;
-}
-
-.btn-sm {
-  color: white;
-  background-color: #153E5C;
 }
 
 #dash-container {
@@ -62,6 +80,14 @@ p {
 
 #books-col {
   background-color: #87AEB4;
+}
+
+#music-container {
+  background-color: #F2BE54;
+}
+
+#database {
+  background-color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */

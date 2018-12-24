@@ -1,0 +1,128 @@
+{{!-- Three vertical sections --}}
+
+<body id="music-pg">
+    <div class="container-fluid">
+        <div class="row mb-5">
+            {{!-- Explanation text for how to select a database --}}
+            <div class="col-md-9">
+                <div class="mt-5 p-3" id="music-container">
+                    <div class="collapse show multi-collapse" id="db-explanation">
+                        <h4>List options</h4>
+                        <p>NextUp starts with a list of 3000 top albums compiled by Acclaimed Music and based on
+                            thousands
+                            of critics' lists. Choose from one of the options below:</p>
+                        <ol>
+                            <ul><strong>View All:</strong> Albums in the database that you haven't marked yet. You'll
+                                see
+                                20 albums at a time.</ul>
+                            <ul><strong>NextUp:</strong> Albums that you want to listen to. You can also see your next
+                                few
+                                albums in the sidebar on the right.</ul>
+                            <ul><strong>Listened to:</strong> The albums from the list you've already listened to.</ul>
+                            <ul><strong>Full database:</strong> To see all the albums in a database, including ones you
+                                previously removed.</ul>
+                        </ol>
+                    </div>
+                    {{!-- Buttons to select database --}}
+                    <div class="row justify-content-center">
+                        <div class="col">
+                            <button type="button" class="btn btn-lg mr-3" data-toggle="collapse" data-target=".multi-collapse"
+                                aria-expanded="false" aria-controls="db-explanation updates-explanation">View All</button>
+                            <button type="button" class="btn btn-lg mr-3" data-toggle="collapse" data-target=".multi-collapse"
+                                aria-expanded="false" aria-controls="db-explanation updates-explanation">NextUp</button>
+                            <button type="button" class="btn btn-lg mr-3" data-toggle="collapse" data-target=".multi-collapse"
+                                aria-expanded="false" aria-controls="db-explanation updates-explanation">Listened To</button>
+                            <a href="#" data-toggle="collapse" data-target=".multi-collapse"
+                                aria-expanded="false" aria-controls="db-explanation updates-explanation">Full Database</a>
+                        </div>
+                    </div>
+                    {{!-- Explanation for how to interact with database --}}
+                    <div class="collapse multi-collapse mt-3" id="updates-explanation">
+                        <h4>Making updates</h4>
+                        <p>As you go through the list below, use the options to customize it.</p>
+                        <ol>
+                            <ul><strong>NextUp:</strong> Adds the album to your NextUp list so you know you want to
+                                listen
+                                to it in the future.
+                            </ul>
+                            <ul><strong>Listened to:</strong> Marks the album as listened to; you can look up the
+                                albums
+                                you've listened to whenever you want.
+                            </ul>
+                            <ul><strong>Remove:</strong> Only select this if you haven't listened to this album and
+                                know
+                                you never want to. It will be permanently deleted from the database.
+                            </ul>
+                        </ol>
+                    </div>
+                </div>
+
+                {{!-- Dummy text for database data --}}
+                <div class="mt-3" id="database">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Rank</th>
+                                <th scope="col">Album</th>
+                                <th scope="col">Artist</th>
+                                <th scope="col">Year</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Pet Sounds</td>
+                                <td>The Beach Boys</td>
+                                <td>1966</td>
+                                <td><button type="button" class="btn btn-sm" id="completed">NextUp</button>
+                                    <button type="button" class="btn btn-sm ml-1" id="completed">Listened to</button>
+                                    <button type="button" class="btn btn-sm ml-1" id="completed">Remove</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Revolver</td>
+                                <td>The Beatles</td>
+                                <td>1966</td>
+                                <td><button type="button" class="btn btn-sm" id="completed">NextUp</button>
+                                    <button type="button" class="btn btn-sm ml-1" id="completed">Listened to</button>
+                                    <button type="button" class="btn btn-sm ml-1" id="completed">Remove</button></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Nevermind</td>
+                                <td>Nirvana</td>
+                                <td>1991</td>
+                                <td><button type="button" class="btn btn-sm" id="completed">NextUp</button>
+                                    <button type="button" class="btn btn-sm ml-1" id="completed">Listened to</button>
+                                    <button type="button" class="btn btn-sm ml-1" id="completed">Remove</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            {{!-- NextUp list -right sidebar --}}
+            <div class="col-md-3 mt-5 px-0 border" id="sidebar">
+                <h3 class="p-3" id="bar">NextUp</h3>
+                <div class="px-3">
+                    <h5 class="pt-2">Pet Sounds</h5>
+                    <p class="mb-2">The Beach Boys — 1966</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
+                    </div>
+                    <h5 class="pt-2">Revolver</h5>
+                    <p class="mb-2">The Beatles — 1966</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
+                    </div>
+                    <h5 class="pt-2">Nevermind</h5>
+                    <p class="mb-2">Nirvana — 1991</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>

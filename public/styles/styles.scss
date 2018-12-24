@@ -7,6 +7,7 @@ $navbar-text:white;
 $body-color-dash: white;
 $button-color: #153E5c;
 $button-hover: #87AEB4;
+$container-width: 1200px;
 
 // NAVBAR
 .navbar {
@@ -31,9 +32,9 @@ $button-hover: #87AEB4;
     }
 }
 
-// INDEX PAGE
-#index-pg {
-    background-color: $body-color-index;
+// GLOBAL STYLES
+a {
+    color: $navbar-color;
 }
 
 .btn {
@@ -44,8 +45,32 @@ $button-hover: #87AEB4;
     background-color: $button-hover;
 }
 
-.container {
-    width: 700px;
+.btn-sm {
+    color: white;
+    background-color: $navbar-color;
+}
+
+.btn-lg {
+    color: white;
+    background-color: $navbar-color;
+}
+
+.container-fluid {
+    width: $container-width;
+}
+
+#bar {
+    background-color: $navbar-color;
+    color: $navbar-text;
+}
+
+#sidebar {
+    background-color: $film-color;
+}
+
+// INDEX PAGE
+#index-pg {
+    background-color: $body-color-index;
 }
 
 // DASHBOARD PAGE
@@ -57,15 +82,10 @@ p {
     background-color: $body-color-dash
 }
 
-.btn-sm {
-    color: white;
-    background-color: $navbar-color;
-}
 
 #dash-container {
-    width: 1200px;
+    width: $container-width;
 }
-
 
 #music-col {
     background-color: $music-color;
@@ -81,7 +101,13 @@ p {
     background-color: $book-color;
 }
 
+// MUSIC PAGE
 
+#music-container {
+    background-color: $music-color;
+}
 
-
+#database {
+    background-color: white;
+}
 

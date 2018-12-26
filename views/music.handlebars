@@ -1,7 +1,7 @@
 {{!-- Three vertical sections --}}
 
 <body id="music-pg">
-    <div class="container-fluid">
+    <div class="container-fluid" id="big-container">
         <div class="row mb-5">
             {{!-- Explanation text for how to select a database --}}
             <div class="col-md-9">
@@ -11,34 +11,33 @@
                         <p>NextUp starts with a list of 3000 top albums compiled by Acclaimed Music and based on
                             thousands
                             of critics' lists. Choose from one of the options below:</p>
-                        <ol>
-                            <ul><strong>View All:</strong> Albums in the database that you haven't marked yet. You'll
-                                see
-                                20 albums at a time.</ul>
-                            <ul><strong>NextUp:</strong> Albums that you want to listen to. You can also see your next
-                                few
-                                albums in the sidebar on the right.</ul>
-                            <ul><strong>Listened to:</strong> The albums from the list you've already listened to.</ul>
-                            <ul><strong>Full database:</strong> To see all the albums in a database, including ones you
-                                previously removed.</ul>
-                        </ol>
+                        <ul>
+                            <li><strong>View All:</strong> Albums in the database that you haven't marked yet. You'll
+                                see 20 albums at a time.</li>
+                            <li><strong>NextUp:</strong> Albums that you want to listen to. You can also see your next
+                                few albums in the sidebar on the right.</li>
+                            <li><strong>Listened to:</strong> The albums from the list you've already listened to.</li>
+                            <li><strong>Full database:</strong> To see all the albums in a database, including ones you
+                                previously removed.</li>
+                        </ul>
                     </div>
-                    {{!-- Buttons to select database --}}
-                    <div class="row justify-content-center">
-                        <div class="col">
-                            <button type="button" class="btn btn-lg mr-3" data-toggle="collapse" data-target=".multi-collapse"
-                                aria-expanded="false" aria-controls="db-explanation updates-explanation">View All</button>
-                            <button type="button" class="btn btn-lg mr-3" data-toggle="collapse" data-target=".multi-collapse"
-                                aria-expanded="false" aria-controls="db-explanation updates-explanation">NextUp</button>
-                            <button type="button" class="btn btn-lg mr-3" data-toggle="collapse" data-target=".multi-collapse"
-                                aria-expanded="false" aria-controls="db-explanation updates-explanation">Listened To</button>
-                            <a href="#" data-toggle="collapse" data-target=".multi-collapse"
-                                aria-expanded="false" aria-controls="db-explanation updates-explanation">Full Database</a>
+                    {{!-- Dropdown to select database --}}
+                    <div class="dropdown">
+                        <button class="btn btn-secondary btn-lg border-0 dropdown-toggle" type="button" id="db-list"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select your list
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="db-list">
+                            <button class="dropdown-item" type="button" id="view-all">View All</a>
+                            <button class="dropdown-item" type="button" id="next-up">NextUp</a>
+                            <button class="dropdown-item" type="button" id="listened-to">Listened To</a>
+                            <button class="dropdown-item" type="button" id="full-db">Full Database</a>
                         </div>
                     </div>
+
                     {{!-- Explanation for how to interact with database --}}
                     <div class="collapse multi-collapse mt-3" id="updates-explanation">
-                        <h4>Making updates</h4>
+                        <h4>Update your list</h4>
                         <p>As you go through the list below, use the options to customize it.</p>
                         <ol>
                             <ul><strong>NextUp:</strong> Adds the album to your NextUp list so you know you want to
@@ -58,7 +57,7 @@
                 </div>
 
                 {{!-- Dummy text for database data --}}
-                <div class="mt-3" id="database">
+                <div class="table-responsive mt-3" id="database">
                     <table class="table">
                         <thead>
                             <tr>
@@ -75,30 +74,31 @@
                                 <td>Pet Sounds</td>
                                 <td>The Beach Boys</td>
                                 <td>1966</td>
-                                <td><button type="button" class="btn btn-sm" id="completed">NextUp</button>
-                                    <button type="button" class="btn btn-sm ml-1" id="completed">Listened to</button>
-                                    <button type="button" class="btn btn-sm ml-1" id="completed">Remove</button></td>
+                                <td><button type="button" class="btn btn-sm">NextUp</button>
+                                    <button type="button" class="btn btn-sm">Listened to</button>
+                                    <button type="button" class="btn btn-sm" id="btn-remove">Remove</button></td>
                             </tr>
                             <tr>
                                 <th scope="row">2</th>
                                 <td>Revolver</td>
                                 <td>The Beatles</td>
                                 <td>1966</td>
-                                <td><button type="button" class="btn btn-sm" id="completed">NextUp</button>
-                                    <button type="button" class="btn btn-sm ml-1" id="completed">Listened to</button>
-                                    <button type="button" class="btn btn-sm ml-1" id="completed">Remove</button></td>
+                                <td><button type="button" class="btn btn-sm">NextUp</button>
+                                    <button type="button" class="btn btn-sm">Listened to</button>
+                                    <button type="button" class="btn btn-sm" id="btn-remove">Remove</button></td>
                             </tr>
                             <tr>
                                 <th scope="row">3</th>
                                 <td>Nevermind</td>
                                 <td>Nirvana</td>
                                 <td>1991</td>
-                                <td><button type="button" class="btn btn-sm" id="completed">NextUp</button>
-                                    <button type="button" class="btn btn-sm ml-1" id="completed">Listened to</button>
-                                    <button type="button" class="btn btn-sm ml-1" id="completed">Remove</button></td>
+                                <td><button type="button" class="btn btn-sm">NextUp</button>
+                                    <button type="button" class="btn btn-sm">Listened to</button>
+                                    <button type="button" class="btn btn-sm" id="btn-remove">Remove</button></td>
                             </tr>
                         </tbody>
                     </table>
+                    <button type="button" class="btn btn-sm" id="more">Show Me More</button>
                 </div>
 
             </div>

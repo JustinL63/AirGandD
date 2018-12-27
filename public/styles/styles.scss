@@ -7,10 +7,9 @@ $navbar-text:white;
 $body-color-dash: white;
 $button-color: #153E5c;
 $button-hover: #87AEB4;
-$container-width: 1200px;
 
 // NAVBAR
-.navbar {
+.navbar-dark {
     background-color: $navbar-color;
     height: 80px;
         
@@ -22,7 +21,8 @@ $container-width: 1200px;
 
     .navbar-nav {
         margin-left: 5%;
-    }
+        margin-top: 2%;
+}
 
     .nav-link {
         font-size: 20px;
@@ -55,10 +55,6 @@ a {
     background-color: $navbar-color;
 }
 
-.container-fluid {
-    width: $container-width;
-}
-
 #bar {
     background-color: $navbar-color;
     color: $navbar-text;
@@ -73,18 +69,26 @@ a {
     background-color: $body-color-index;
 }
 
+#create {
+    display: inline;
+}
+
+#create-btn {
+    width: 200px;
+}
+
+// LOGIN PAGE
+#login-container {
+    background-color: $music-color;
+}
+
 // DASHBOARD PAGE
-p {
+p#subline {
     font-size: 17px;
 }
 
 #dash-pg {
     background-color: $body-color-dash
-}
-
-
-#dash-container {
-    width: $container-width;
 }
 
 #music-col {
@@ -99,9 +103,22 @@ p {
 
 #books-col {
     background-color: $book-color;
+    border-right: 10px solid white;
 }
 
-// MUSIC PAGE
+// SPECIFIC PAGES
+
+table {
+    border-bottom: 1px solid #dee2e6; 
+}
+
+#big-container {
+    width: 95%;
+}
+
+#btn-remove {
+    margin-top: 2px;
+}
 
 #music-container {
     background-color: $music-color;
@@ -111,3 +128,62 @@ p {
     background-color: white;
 }
 
+
+
+// MEDIA QUERIES
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        z-index: 1;
+    }
+    
+    .navbar-nav {
+      background: $navbar-color;
+    }    
+
+    .display-4 {
+        font-size: 3rem;
+    }
+
+    #dash-container {
+        z-index: 0;
+        margin-top: 2%!important;
+    }
+
+    #music-col {
+        border: none;
+    }
+
+    #films-col {
+        border: none;
+        margin-top: 2%;
+    }
+    
+    #books-col {
+        border: none;
+        margin-top: 2%;
+    }
+
+    #sidebar {
+        display:none;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .table>tbody>tr>td {
+        display: block;
+        border-top: none;
+        padding: 3px;
+    }
+    
+    .table>tbody>tr>th {
+        display: block;
+        padding: 3px;
+        margin-top: 15px;
+    }
+
+    .table>thead>tr>th {
+        display: none;
+    }
+}

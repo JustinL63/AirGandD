@@ -4,7 +4,7 @@ $(document).ready(function () {
   // View All
   $("#view-all").on("click", function(event) {
     event.preventDefault();
-    $("#db-list").text("View All");
+    $("#db-list").text("View Remaining");
     $("#db-explanation").collapse();
   })
 

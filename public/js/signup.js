@@ -1,25 +1,27 @@
 $(document).ready(function() {
-    // vars for ref
-    var signUpForm = $("form.signup");
+    // Create variables to hold form data
     var emailInput = $("#emailInput");
     var passwordInput = $("#passwordInput");
     var nameInput = $("#nameInput");
     var userNameInput = $("#userNameInput");
   
-    // on click event for the data. Checks to see if theres no empty fields
-    signUpForm.on("submit", function(event) {
+    // When submit button is clicked...
+    $("#create").on("click", function(event) {
       event.preventDefault();
+
+      // Grab values from form and store in userData object
       var userData = {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim(),
         name: nameInput.val().trim(),
         userName: userNameInput.val()
       };
-  
+
+      // Check to make sure all form fields have been filled out
       if (!userData.email || !userData.password || !userData.name || !userData.userName) {
         return;
       }
-      // once all fields have been filled (and all values are unique) we empty out the forms
+      // Once all fields have been filled (and all values are unique), the form is emptied
       signUpUser(userData.email, userData.password, userData.name, userData.userName);
       emailInput.val("");
       passwordInput.val("");
@@ -27,7 +29,7 @@ $(document).ready(function() {
       userNameInput.val("")
     });
   
-    // posts up to the signup info api
+    // Posts user info to the signup info api
     function signUpUser(email, password, name, userName) {
       $.post("/api/signup", {
         email: email,
@@ -35,6 +37,7 @@ $(document).ready(function() {
         name: name,
         userName: userName
       }).then(function(data) {
+        console.log(data)
         window.location.replace(data);
         // throws error
       })

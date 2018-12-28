@@ -1,11 +1,10 @@
 $(document).ready(function() {
     // var refs
-    var loginForm = $("form.login");
-    var emailInput = $("emailInput");
-    var passwordInput = $("passwordInput");
+    var emailInput = $("#emailInput");
+    var passwordInput = $("#passwordInput");
   
     // checks to see if theres an empty form and checks to see if theres matching values in the user table
-    loginForm.on("submit", function(event) {
+    $("#login").on("click", function(event) {
       event.preventDefault();
       var userData = {
         email: emailInput.val().trim(),

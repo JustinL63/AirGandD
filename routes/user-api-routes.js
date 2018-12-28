@@ -7,7 +7,7 @@ module.exports = function(app) {
     res.json("/dashboard");
   });
 
-  // route for signins. 
+  // route for signins
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
     db.User.create({

@@ -29,6 +29,8 @@ $(document).ready(function () {
     $("#db-explanation").collapse();
   })
 
+// SAMPLE HELP FROM CLASS=======DELETE EVENTUALLY=======================================
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");

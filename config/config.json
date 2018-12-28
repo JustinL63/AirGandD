@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "burgers_db",
+    "database": "nextup_db",
     "host": "localhost",
     "dialect": "mysql"
   },

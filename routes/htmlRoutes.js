@@ -10,12 +10,13 @@ module.exports = function (app) {
       });
     });
   });
+  
   // Route to generic login page
   app.get("/login", function (req, res) {
     res.render("login", {
-
     })
   });
+
   // Route to generic create page
   app.get("/create", function (req, res) {
     res.render("create", {
@@ -63,6 +64,8 @@ module.exports = function (app) {
       });
     });
   });
+
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

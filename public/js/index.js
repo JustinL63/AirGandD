@@ -1,3 +1,34 @@
+$(document).ready(function () {
+
+  // CLICK FUNCTIONS FOR DATABASE SELECTION
+  // View All
+  $("#view-all").on("click", function(event) {
+    event.preventDefault();
+    $("#db-list").text("View All");
+    $("#db-explanation").collapse();
+  })
+
+  // NextUp
+  $("#next-up").on("click", function(event) {
+    event.preventDefault();
+    $("#db-list").text("NextUp");
+    $("#db-explanation").collapse();
+  })
+
+  // Listened to
+  $("#listened-to").on("click", function(event) {
+    event.preventDefault();
+    $("#db-list").text("Listened To");
+    $("#db-explanation").collapse();
+  })
+
+  // Full database
+  $("#full-db").on("click", function(event) {
+    event.preventDefault();
+    $("#db-list").text("Full Database");
+    $("#db-explanation").collapse();
+  })
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
@@ -97,3 +128,5 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+})

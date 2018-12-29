@@ -21,7 +21,7 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-};
+
 // Get all data from users database
 app.get("/user db location", function(req, res) {
   db.Post.findAll({})
@@ -158,5 +158,5 @@ app.get("/api/books/nextup", function(req, res) {
       res.json(dbPost);
     });
 });
-
+};
 

@@ -37,8 +37,7 @@ $(document).ready(function() {
         name: name,
         userName: userName
       }).then(function(data) {
-        console.log(data)
-        window.location.replace(data);
+        window.location.replace(data)
         // throws error
       })
     }

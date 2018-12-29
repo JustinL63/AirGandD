@@ -22,11 +22,11 @@ module.exports = function(sequelize, DataTypes) {
     name:{
       type: DataTypes.STRING,
       allowNull: false,
-      unique: false,
+      unique: false
     },
     userName:{
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull: false,
       unique: true
     }
   });

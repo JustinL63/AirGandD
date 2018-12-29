@@ -29,6 +29,8 @@ passport.use(new LocalStrategy(
         });
       }
       // If none of the above, return the user
+      console.log("starting")
+      console.log(dbUser);
       return done(null, dbUser);
     });
   }

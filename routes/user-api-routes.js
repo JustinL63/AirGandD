@@ -3,6 +3,7 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function(app) {
+  // Authenticates whether the user has valid login credentials. If so, the user is sent to the dashboard page.
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json("/dashboard");
   });
@@ -32,8 +33,9 @@ module.exports = function(app) {
   // route for getting some data about our user to be used client side
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
-      // sends back empty object if theres no one is logged in
+      // sends back empty object if no one is logged in
       res.json({});
+      console.log("user data request received but NOT sent");
     }
     else {
       // sends back info on who just logged in
@@ -43,6 +45,7 @@ module.exports = function(app) {
         name: req.user.name,
         userName: req.user.userName
       });
+      console.log("user data request received and sent");
     }
   });
 

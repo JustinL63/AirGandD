@@ -26,6 +26,7 @@ module.exports = function (app) {
   // Route to generic dashboard page
   app.get("/dashboard", isAuthenticated, function (req, res) {
     db.UserAlbum.findAll({ 
+      limit: 5,
       where: {
         user_id: req.user.id,
         nextup: true 

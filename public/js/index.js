@@ -1,46 +1,103 @@
 $(document).ready(function () {
 
+  // Variable to save userID;
+  var userID;
+
+  // Variable to save counter used in Show More button
+  var counter = 0;
+
   // Check to see if user is logged in
   $.get("/api/user_data").then(function(data) {
-    console.log(data);
-    if (data.userName) {
+    if (data.id) {
     $("#login-status").text("Log Out");
     $("#login-status").attr("href", "/logout");
-    }
-    else {
+    userID = data.id;
+
+    } else {
     $("#login-status").text("Log In");
     $("#login-status").attr("href", "/login");
     }
   });
   
-  // CLICK FUNCTIONS FOR DATABASE SELECTION
+  // CLICK FUNCTIONS FOR DATABASE SELECTION=======================================
   // View Remaining
   $("#view-all").on("click", function(event) {
     event.preventDefault();
+    // Collapse intro text and change dropdown text to display choice 
     $("#db-list").text("View Remaining");
     $("#db-explanation").collapse();
-  })
 
+  })
+  
   // NextUp
   $("#next-up").on("click", function(event) {
     event.preventDefault();
+    // Collapse intro text and change dropdown text to display choice 
     $("#db-list").text("NextUp");
     $("#db-explanation").collapse();
   })
-
+  
   // Listened to
   $("#listened-to").on("click", function(event) {
     event.preventDefault();
+    // Collapse intro text and change dropdown text to display choice 
     $("#db-list").text("Listened To");
     $("#db-explanation").collapse();
   })
-
+  
   // Full database
   $("#full-db").on("click", function(event) {
     event.preventDefault();
+    // Collapse intro text and change dropdown text to display choice 
     $("#db-list").text("Full Database");
     $("#db-explanation").collapse();
   })
+
+  // CLICK FUNCTIONS FOR USER-DB INTERACTION===========================================
+  // NEXTUP BUTTON
+  $(".btn-nextup").on("click", function(event) {
+    event.preventDefault();
+    // Grab id and save to variable
+    var albumID = $(this).attr("id");
+
+    // Create object to send to database with nextup = true
+    var nextupObj = {
+      user_id: userID,
+      AlbumId: albumID,
+      nextup: true
+    }    
+
+    // Send post request with new object to update user-album DB
+    $.post("/api/music/nextup", nextupObj
+    ).then(function(data) {
+      console.log(data);
+      // If there's an error, log the error
+    }).catch(function(err) {
+      console.log(err);
+    });
+  })    
+
+  // SHOW MORE BUTTON
+  $("#more").on("click", function(event) {
+    event.preventDefault();
+    // Increase counter by 50
+    counter += 50;
+    // Create counter object to send
+    var counterObj = {
+      counter: counter
+    }
+   
+    // Send get request with counter to show more entries
+    $.post("/api/music/more", counterObj
+    ).then(function(data) {
+      console.log(data);
+      // location.reload();
+      // If there's an error, log the error
+    }).catch(function(err) {
+      console.log(err);
+    });
+  })
+
 
 // SAMPLE HELP FROM CLASS=======DELETE EVENTUALLY=======================================
 

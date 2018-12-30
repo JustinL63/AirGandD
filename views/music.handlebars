@@ -55,47 +55,31 @@
                         </ol>
                     </div>
                 </div>
-
+                
                 {{!-- Dummy text for database data --}}
                 <div class="table-responsive mt-3" id="database">
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col">Rank</th>
-                                <th scope="col">Album</th>
-                                <th scope="col">Artist</th>
-                                <th scope="col">Year</th>
-                                <th scope="col"></th>
+                            <tr class="d-flex">
+                                <th scope="col" class="col-1">Rank</th>
+                                <th scope="col" class="col-3">Album</th>
+                                <th scope="col" class="col-3">Artist</th>
+                                <th scope="col" class="col-1">Year</th>
+                                <th scope="col" class="col-4"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Pet Sounds</td>
-                                <td>The Beach Boys</td>
-                                <td>1966</td>
-                                <td><button type="button" class="btn btn-sm">NextUp</button>
-                                    <button type="button" class="btn btn-sm">Listened to</button>
-                                    <button type="button" class="btn btn-sm" id="btn-remove">Remove</button></td>
+                            {{#each albums}}
+                            <tr class="d-flex">
+                                <th scope="row" class="col-1">{{this.rank}}</th>
+                                <td class="col-3">{{this.album}}</td>
+                                <td class="col-3">{{this.artist}}</td>
+                                <td class="col-1">{{this.Year}}</td>
+                                <td class="col-4"><button type="button" class="btn btn-sm btn-nextup" id="{{this.id}}">NextUp</button>
+                                    <button type="button" class="btn btn-sm btn-completed" id="{{this.id}}">Listened to</button>
+                                    <button type="button" class="btn btn-sm btn-remove" id="{{this.id}}">Remove</button></td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Revolver</td>
-                                <td>The Beatles</td>
-                                <td>1966</td>
-                                <td><button type="button" class="btn btn-sm">NextUp</button>
-                                    <button type="button" class="btn btn-sm">Listened to</button>
-                                    <button type="button" class="btn btn-sm" id="btn-remove">Remove</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Nevermind</td>
-                                <td>Nirvana</td>
-                                <td>1991</td>
-                                <td><button type="button" class="btn btn-sm">NextUp</button>
-                                    <button type="button" class="btn btn-sm">Listened to</button>
-                                    <button type="button" class="btn btn-sm" id="btn-remove">Remove</button></td>
-                            </tr>
+                            {{/each}}                            
                         </tbody>
                     </table>
                     <button type="button" class="btn btn-sm" id="more">Show Me More</button>

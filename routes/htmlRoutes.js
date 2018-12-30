@@ -22,17 +22,37 @@ module.exports = function (app) {
 
     })
   });
+  
   // Route to generic dashboard page
   app.get("/dashboard", isAuthenticated, function (req, res) {
-    res.render("dashboard", {
+    db.UserAlbum.findAll({ 
+      where: {
+        user_id: req.user.id,
+        nextup: true 
+      },
+      include: [db.Album]
+    })
+    .then(function(data) {
+      var hbsObject = {
+        albums: data
+      };
+      console.log(JSON.stringify(hbsObject));
+    res.render("dashboard", hbsObject) 
+    })
+  });
+  // Route to generic music page, will bring back View Remaining info on load
+  // Currently this is the full database and this will need changed once View Remaining is operational
+  // Also need to add back in isAuthenticated
+  app.get("/music", function (req, res) {
+    db.Album.findAll({ limit: 50 })
+    .then(function(data) {
+      var hbsObject = {
+        albums: data
+      };
+      res.render("music", hbsObject);
+      });
+  });
 
-    })
-  });
-  // Route to generic music page
-  app.get("/music", isAuthenticated, function (req, res) {
-    res.render("music", {
-    })
-  });
   // Route to generic movies page
   app.get("/film", isAuthenticated, function (req, res) {
     res.render("film", {

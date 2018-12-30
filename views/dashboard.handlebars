@@ -4,6 +4,13 @@
         <div class="row">
             {{!-- Music column --}}
             <div class="col-12 col-md-4" id="music-col">
+            {{!-- TEST SECTION --}}
+                {{#each albums}}
+                {{Album.artist}}
+                {{Album.album}}
+                {{/each}}
+            
+            
                 <h3 class="py-2 border-bottom border-white">Music</h3>
                 {{!-- Dummy text for now --}}
                 <h5 class="pt-2">Pet Sounds</h5>

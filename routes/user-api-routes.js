@@ -35,7 +35,6 @@ module.exports = function(app) {
     if (!req.user) {
       // sends back empty object if no one is logged in
       res.json({});
-      console.log("user data request received but NOT sent");
     }
     else {
       // sends back info on who just logged in
@@ -45,7 +44,6 @@ module.exports = function(app) {
         name: req.user.name,
         userName: req.user.userName
       });
-      console.log("user data request received and sent");
     }
   });
 

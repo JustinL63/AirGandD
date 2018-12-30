@@ -2,44 +2,21 @@
 <body id="dash-pg">
     <div class="container mt-5 mb-4" id="dash-container">
         <div class="row">
-            {{!-- Music column --}}
+            {{!-- Music column - data from database coming in --}}
             <div class="col-12 col-md-4" id="music-col">
-            {{!-- TEST SECTION --}}
-                {{#each albums}}
-                {{Album.artist}}
-                {{Album.album}}
-                {{/each}}
-            
-            
                 <h3 class="py-2 border-bottom border-white">Music</h3>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Pet Sounds</h5>
-                <p class="mb-2" id="subline">The Beach Boys — 1966</p>
+                {{#each albums}}
+                <h5 class="pt-2">{{Album.album}}</h5>
+                <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
                 <div class="border-bottom border-white pb-2 mb-2">
                     {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Listened to</button>
+                    <button type="button" class="btn btn-sm completed" id="{{Album.id}}">Listened to</button>
                     {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
+                    <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
                 </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Revolver</h5>
-                <p class="mb-2" id="subline">The Beatles — 1966</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Listened to</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Nevermind</h5>
-                <p class="mb-2" id="subline">Nirvana — 1991</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Listened to</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
+            {{/each}}
             </div>
+
             {{!-- Film column --}}
             <div class="col-12 col-md-4" id="films-col">
                 <h3 class="py-2 border-bottom border-white">Films</h3>

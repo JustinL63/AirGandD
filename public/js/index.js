@@ -3,6 +3,9 @@ $(document).ready(function () {
   // Variable to save userID;
   var userID;
 
+  // Variable to save albumID;
+  var albumID;
+
   // Variable to save counter used in Show More button
   var counter = 0;
 
@@ -53,32 +56,43 @@ $(document).ready(function () {
     $("#db-explanation").collapse();
   })
 
-  // CLICK FUNCTIONS FOR USER-DB INTERACTION===========================================
-  // NEXTUP BUTTON
-  $(".btn-nextup").on("click", function(event) {
-    event.preventDefault();
-    // Grab id and save to variable
-    var albumID = $(this).attr("id");
-
-    // Create object to send to database with nextup = true
+  // CLICK FUNCTIONS FOR USER-DB INTERACTION IN MAIN SECTION=============================
+  // Function to run when any db-interaction button is clicked the first time
+  function initialAction(nextupval, completedval, removedval, postval) {    
+  
+    // Create object to send to database with 
     var nextupObj = {
       user_id: userID,
       AlbumId: albumID,
-      nextup: true
+      nextup: nextupval,
+      completed: completedval,
+      removed: removedval
     }
-    
+      
+  // Send post request with new object to update user-album DB
+  $.post("/api/music/" + postval, nextupObj
+  ).then(function(data) {
+    console.log(data);
+    // If there's an error, log the error
+  }).catch(function(err) {
+    console.log(err);
+  });
+}
+
+  // NEXTUP BUTTON
+  $(".btn-nextup").on("click", function(event) {
+    event.preventDefault();
+
+    // Grabl album ID
+    albumID = $(this).attr("id");
+    console.log(albumID);
+
     // Remove row from album table display
     $(this).closest ('tr').remove();
-
-    // Send post request with new object to update user-album DB
-    $.post("/api/music/nextup", nextupObj
-    ).then(function(data) {
-      console.log(data);
-      // If there's an error, log the error
-    }).catch(function(err) {
-      console.log(err);
-    });
-  })    
+    
+    // Run intial action function, passing correct values and post URL
+    initialAction(true, false, false, "nextup");
+  }) 
 
   // SHOW MORE BUTTON
   $("#more").on("click", function(event) {

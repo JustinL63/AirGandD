@@ -65,7 +65,10 @@ $(document).ready(function () {
       user_id: userID,
       AlbumId: albumID,
       nextup: true
-    }    
+    }
+    
+    // Remove row from album table display
+    $(this).closest ('tr').remove();
 
     // Send post request with new object to update user-album DB
     $.post("/api/music/nextup", nextupObj

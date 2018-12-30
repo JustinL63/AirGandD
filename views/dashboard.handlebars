@@ -14,70 +14,37 @@
                     {{!-- Button to remove --}}
                     <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
                 </div>
-            {{/each}}
+                {{/each}}
             </div>
 
             {{!-- Film column --}}
             <div class="col-12 col-md-4" id="films-col">
                 <h3 class="py-2 border-bottom border-white">Films</h3>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">The Godfather</h5>
-                <p class="mb-2" id="subline">1972</p>
+                {{#each albums}}
+                <h5 class="pt-2">{{Album.album}}</h5>
+                <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
                 <div class="border-bottom border-white pb-2 mb-2">
                     {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Watched</button>
+                    <button type="button" class="btn btn-sm completed" id="{{Album.id}}">Listened to</button>
                     {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
+                    <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
                 </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">The Godfather II</h5>
-                <p class="mb-2" id="subline">1974</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Watched</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Psycho</h5>
-                <p class="mb-2" id="subline">1960</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Watched</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
+                {{/each}}
             </div>
+
             {{!-- Books column --}}
             <div class="col-12 col-md-4" id="books-col">
                 <h3 class="py-2 border-bottom border-white">Books</h3>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Don Quixote</h5>
-                <p class="mb-2" id="subline">Miguel de Cervantes</p>
+                {{#each albums}}
+                <h5 class="pt-2">{{Album.album}}</h5>
+                <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
                 <div class="border-bottom border-white pb-2 mb-2">
                     {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Finished</button>
+                    <button type="button" class="btn btn-sm completed" id="{{Album.id}}">Listened to</button>
                     {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
+                    <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
                 </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Pilgrim's Progress</h5>
-                <p class="mb-2" id="subline">John Bunyan</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Finished</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Robinson Crusoe</h5>
-                <p class="mb-2" id="subline">Daneil Defoe</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Finished</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
+                {{/each}}            
             </div>
         </div>
     </div>

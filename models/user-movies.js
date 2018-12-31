@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     UserMovies.associate = function(models){
-        UserMovies.belongsTo(models.Movies)
+        UserMovies.belongsTo(models.Movies, {foreignKey: "item"})
     };
 
     return UserMovies;

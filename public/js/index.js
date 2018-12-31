@@ -101,8 +101,8 @@ $(document).ready(function () {
         initialAction(true, false, false, "music/nextup");
         break;
 
-      case "film":
-        console.log("Film selected - code to come")
+      case "movie":
+        console.log("Movie selected - code to come")
         break;
 
       case "books":
@@ -132,8 +132,8 @@ $(document).ready(function () {
         initialAction(false, true, false, "music/completed");
         break;
 
-      case "film":
-        console.log("Film selected - code to come")
+      case "movie":
+        console.log("Movie selected - code to come")
         break;
 
       case "books":
@@ -163,8 +163,8 @@ $(document).ready(function () {
         initialAction(false, false, true, "music/remove");
         break;
 
-      case "film":
-        console.log("Film selected - code to come")
+      case "movie":
+        console.log("Movie selected - code to come")
         break;
 
       case "books":
@@ -204,14 +204,24 @@ $(document).ready(function () {
     });
   }
 
+  // Function to remove item once it's been selected
+  
+
   // LISTENED TO BUTTON
   $(".btn-nx-completed").on("click", function (event) {
     event.preventDefault();
 
     // Grab ID of NextUp record
     nextID = $(this).attr("id");
-    // Remove row from album table display
-    $(this).closest('td').empty();
+
+    // Check to see if button is pressed from main view or sidebar
+    if ($(this).attr("data-site")) {
+      // If data-site is found, that means it's located in the sidebar and the .item div should be hidden
+      $(this).closest(".item").fadeOut();
+  
+    } else
+      // It's in the main view and the buttons should be removed
+      $(this).closest('td').empty();
 
     // Grab data-page value
     var type = $(this).attr("data-page");
@@ -222,8 +232,8 @@ $(document).ready(function () {
         nextAction(true, false, "music/completed");
         break;
 
-      case "film":
-        console.log("Film selected - code to come")
+      case "movie":
+        console.log("Movie selected - code to come")
         break;
 
       case "books":
@@ -244,6 +254,15 @@ $(document).ready(function () {
     // Remove row from album table display
     $(this).closest('td').empty();
 
+    // Check to see if button is pressed from main view or sidebar
+    if ($(this).attr("data-site")) {
+      // If data-site is found, that means it's located in the sidebar and the .item div should be hidden
+      $(this).closest(".item").fadeOut();
+  
+    } else
+      // It's in the main view and the buttons should be removed
+      $(this).closest('td').empty();
+    
     // Grab data-page value
     var type = $(this).attr("data-page");
 
@@ -253,8 +272,8 @@ $(document).ready(function () {
         nextAction(false, true, "music/remove");
         break;
 
-      case "film":
-        console.log("Film selected - code to come")
+      case "movie":
+        console.log("Movie selected - code to come")
         break;
 
       case "books":

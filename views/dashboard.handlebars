@@ -22,7 +22,7 @@
                                 Choose from:
                                 <ul>
                                     <li>3,000 albums</li>
-                                    <li>1,200 films</li>
+                                    <li>1,200 movies</li>
                                     <li>1,000 books</li>
                                 </ul>
                                 <p class="small">Special thanks to Acclaimed Music, Owen Temple and Joel Patrick for
@@ -82,11 +82,14 @@
                         <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
                     </div>
                     {{/each}}
+
+                    {{!-- Link to music page - helpful especially if there is no data yet --}}
+                    <p><strong><a href="/music">Find more albums</strong></a> to add to your NextUp</p>
                 </div>
 
-                {{!-- Film column --}}
-                <div class="col-12 col-md-4" id="films-col">
-                    <h3 class="py-2 border-bottom border-white">Films</h3>
+                {{!-- Movie column --}}
+                <div class="col-12 col-md-4" id="movies-col">
+                    <h3 class="py-2 border-bottom border-white">Movies</h3>
                     {{#each albums}}
                     <h5 class="pt-2">{{Album.album}}</h5>
                     <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
@@ -97,6 +100,9 @@
                         <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
                     </div>
                     {{/each}}
+                    
+                    {{!-- Link to movies page - helpful especially if there is no data yet --}}
+                    <p><strong><a href="/movies">Find more movies</strong></a> to add to your NextUp</p>
                 </div>
 
                 {{!-- Books column --}}
@@ -112,6 +118,9 @@
                         <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
                     </div>
                     {{/each}}
+
+                    {{!-- Link to books page - helpful especially if there is no data yet --}}
+                    <p><strong><a href="/books">Find more books</strong></a> to add to your NextUp</p>
                 </div>
             </div>
         </div>

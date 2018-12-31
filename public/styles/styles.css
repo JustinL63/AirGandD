@@ -88,7 +88,7 @@ p#subline {
   border-right: 10px solid white;
 }
 
-#films-col {
+#movies-col {
   background-color: #CDD4CA;
   border-right: 10px solid white;
 }
@@ -136,7 +136,7 @@ table {
     border: none;
   }
 
-  #films-col {
+  #movies-col {
     border: none;
     margin-top: 2%;
   }

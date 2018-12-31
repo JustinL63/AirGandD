@@ -1,10 +1,12 @@
 var db = require("../models");
 
+// console.log(userID);
+
 module.exports = function (app) {
 
-  // GET REQUESTS
+  // GET REQUESTS=================================================================
   // MUSIC - NEXTUP
-  app.get("/api/music/nextup", function (req, res) {
+  app.get("/api/music/nextup", function (req, res) {     
     db.UserAlbum.findAll({
       where: {
         user_id: req.user.id,
@@ -107,7 +109,7 @@ module.exports = function (app) {
   //     });
 
   // POST REQUESTS
-
+  // INITIAL INTERACTION WITH DATABASE
   // MUSIC - User marks album for NextUp
   app.post("/api/music/nextup", function (req, res) {
     db.UserAlbum.create(req.body)
@@ -129,6 +131,35 @@ module.exports = function (app) {
     db.UserAlbum.create(req.body)
       .then(function (dbCreate) {
         res.json(dbCreate);
+      });
+  })
+
+  // PUT REQUESTS - updates to NextUp list
+  // MUSIC - User marks NextUp album as Listened To/Completed
+  app.put("/api/music/completed", function (req, res) {
+    db.UserAlbum.update(
+      req.body, 
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbUpdate) {
+        res.json(dbUpdate);
+      });
+  })
+
+  // MUSIC - User marks NextUp album as Listened To/Completed
+  app.put("/api/music/remove", function (req, res) {
+    db.UserAlbum.update(
+      req.body, 
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbUpdate) {
+        res.json(dbUpdate);
       });
   })
 

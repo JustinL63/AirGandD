@@ -1,86 +1,20 @@
 <body id="music-nextup-pg">
     <div class="container-fluid" id="big-container">
-        <div class="row mb-5">
-            {{!-- Explanation text for using the database --}}
+        <div class="row my-5">
             <div class="col-12">
-                <div class="mt-5">
-                    <div class="accordion" id="current-view">
-                        <div class="card">
-                            <div class="card-header instruct-header" id="headingOne">
-                                    <button class="btn btn-link text-dark font-weight-bold" id="btn-accordion" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                        aria-expanded="true" aria-controls="collapseOne">
-                                        Your Current View
-                                    </button>
-                            </div>
-
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#current-view">
-                                <div class="card-body instruct-body">
-                                    Below are the albums you indicated you want to listen to. They are displayed in order of when you marked them, from earliest to latest.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header instruct-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed text-dark font-weight-bold" id="btn-accordion" type="button" data-toggle="collapse"
-                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How to Update Your NextUp List
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#current-view">
-                                <div class="card-body instruct-body">
-                                    <ul>
-                                        <li><strong>Listened to:</strong> Marks the album as listened to; you can look
-                                            up the
-                                            albums
-                                            you've listened to whenever you want.
-                                        </li>
-                                        <li><strong>Remove:</strong> Did you change your mind? If you've decided you don't want to listen to this album, clicking Remove will permanently delete it from the database.
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header instruct-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed text-dark font-weight-bold" id="btn-accordion" type="button" data-toggle="collapse"
-                                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Other Views Available
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#current-view">
-                                <div class="card-body instruct-body">
-                                    <ul>
-                                        <li><strong>View Remaining:</strong> The remaining albums that you haven't
-                                        marked yet. Fifty viewed at a time.</li>
-                                        <li><strong>Listened to:</strong> Albums from the list you've already
-                                            listened to.</li>
-                                        <li><strong>Full database:</strong> See all the albums in the database,
-                                            including ones
-                                            you
-                                            previously removed. <em>Note: This list does not include any customizing you may have done.</em></li>
-                                    </ul>
-                                    <div class="dropdown ml-3">
-                                        <button class="btn btn-secondary border-0 dropdown-toggle" type="button" id="db-list"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Select your list
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="db-list">
-                                            <button class="dropdown-item" type="button" id="view-all">View Remaining</a>       
-                                                    <button class="dropdown-item" type="button" id="listened-to">Listened
-                                                        To</a>
-                                                        <button class="dropdown-item" type="button" id="full-db">Full
-                                                            Database</a>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
+                {{!-- View button --}}
+                <div class="dropdown mb-3">
+                    <button class="btn btn-secondary border-0 dropdown-toggle" type="button" id="db-list" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        NextUp
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="db-list">
+                        <button class="dropdown-item" type="button" id="view-all">Remaining</a>
+                            <button class="dropdown-item" type="button" id="listened-to">Listened
+                                To</a>
+                                <button class="dropdown-item" type="button" id="full-db">Full
+                                    Database</a>
+                    </div>
                 </div>
                 {{!-- Database data flows in here--}}
                 <div class="table-responsive mt-3" id="database">
@@ -102,8 +36,8 @@
                                 <td class="col-4">{{Album.artist}}</td>
                                 <td class="col-1">{{Album.Year}}</td>
                                 <td class="col-2">
-                                    <button type="button" class="btn btn-sm btn-nx-completed" id="{{Album.id}}">Listened to</button>
-                                    <button type="button" class="btn btn-sm btn-nx-remove" id="{{Album.id}}">Remove</button></td>
+                                    <button type="button" class="btn btn-sm btn-nx-completed" id="{{this.id}}" data-page="music">Listened to</button>
+                                    <button type="button" class="btn btn-sm btn-nx-remove" id="{{this.id}}" data-page="music">Remove</button></td>
                                 </td>
                             </tr>
                             {{/each}}

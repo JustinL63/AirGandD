@@ -61,8 +61,8 @@ a {
     color: $navbar-text;
 }
 
-#sidebar {
-    background-color: $film-color;
+#sidebar-music {
+    background-color: $music-color;
 }
 
 // INDEX PAGE
@@ -88,6 +88,15 @@ p#subline {
     font-size: 17px;
 }
 
+.card-body {
+    background-color: $film-color;
+}
+
+.card-header {
+    background-color: $music-color;
+    padding: 0;
+}
+
 #dash-pg {
     background-color: $body-color-dash
 }
@@ -104,7 +113,6 @@ p#subline {
 
 #books-col {
     background-color: $book-color;
-    border-right: 10px solid white;
 }
 
 // SPECIFIC PAGES
@@ -120,18 +128,6 @@ table {
 #btn-accordion {
     background-color: $music-color;
     font-size: 20px;
-}
-
-.btn-remove {
-    margin-top: 2px;
-}
-
-.instruct-header {
-    background-color: $music-color;
-}
-
-.instruct-body {
-    background-color: $film-color;
 }
 
 #database {

@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
   
 // Creating association between album and useralbum
 UserAlbum.associate = function(models) {
-    UserAlbum.belongsTo(models.Album);
+    UserAlbum.belongsTo(models.Album, {foreignKey: "item"});
     };
 
       return UserAlbum;

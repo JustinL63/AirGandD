@@ -46,8 +46,8 @@ a {
   color: white;
 }
 
-#sidebar {
-  background-color: #CDD4CA;
+#sidebar-music {
+  background-color: #F2BE54;
 }
 
 #index-pg {
@@ -70,6 +70,15 @@ p#subline {
   font-size: 17px;
 }
 
+.card-body {
+  background-color: #CDD4CA;
+}
+
+.card-header {
+  background-color: #F2BE54;
+  padding: 0;
+}
+
 #dash-pg {
   background-color: white;
 }
@@ -86,7 +95,6 @@ p#subline {
 
 #books-col {
   background-color: #87AEB4;
-  border-right: 10px solid white;
 }
 
 table {
@@ -100,18 +108,6 @@ table {
 #btn-accordion {
   background-color: #F2BE54;
   font-size: 20px;
-}
-
-.btn-remove {
-  margin-top: 2px;
-}
-
-.instruct-header {
-  background-color: #F2BE54;
-}
-
-.instruct-body {
-  background-color: #CDD4CA;
 }
 
 #database {

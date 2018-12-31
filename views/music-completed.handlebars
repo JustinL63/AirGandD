@@ -1,62 +1,19 @@
 <body id="music-pg">
     <div class="container-fluid" id="big-container">
-        <div class="row mb-5">
-            {{!-- Explanation text for using the database --}}
+        <div class="row my-5">
             <div class="col-md-9">
-                <div class="mt-5">
-                    <div class="accordion" id="current-view">
-                        <div class="card">
-                            <div class="card-header instruct-header" id="headingOne">
-                                    <button class="btn btn-link text-dark font-weight-bold" id="btn-accordion" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                        aria-expanded="true" aria-controls="collapseOne">
-                                        Your Current View
-                                    </button>
-                            </div>
-
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#current-view">
-                                <div class="card-body instruct-body">
-                                    These are all the albums from the list that you've listened to.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header instruct-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed text-dark font-weight-bold" id="btn-accordion" type="button" data-toggle="collapse"
-                                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Other Views Available
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#current-view">
-                                <div class="card-body instruct-body">
-                                    <ul>
-                                        <li><strong>View Remaining:</strong> The remaining albums that you haven't
-                                        marked yet. Fifty viewed at a time.</li>
-                                        <li><strong>NextUp:</strong> Albums that you want to listen to. You can also
-                                            see your next
-                                            few albums in the sidebar on the right.</li>
-                                        <li><strong>Full database:</strong> See all the albums in the database,
-                                            including ones
-                                            you
-                                            previously removed. <em>Note: This list does not include any customizing you may have done.</em></li>
-                                    </ul>
-                                    <div class="dropdown ml-3">
-                                        <button class="btn btn-secondary border-0 dropdown-toggle" type="button" id="db-list"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Select your list
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="db-list">
-                                            <button class="dropdown-item" type="button" id="view-all">View Remaining</a>
-                                            <button class="dropdown-item" type="button" id="next-up">NextUp</a>
-                                            <button class="dropdown-item" type="button" id="full-db">Full Database</a>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
+                {{!-- View button --}}
+                <div class="dropdown mb-3">
+                    <button class="btn btn-secondary border-0 dropdown-toggle" type="button" id="db-list" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Listened To
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="db-list">
+                        <button class="dropdown-item" type="button" id="view-all">Remaining</a>
+                            <button class="dropdown-item" type="button" id="next-up">NextUp</a>
+                                <button class="dropdown-item" type="button" id="full-db">Full
+                                    Database</a>
+                    </div>
                 </div>
                 {{!-- Database data flows in here--}}
                 <div class="table-responsive mt-3" id="database">
@@ -84,7 +41,7 @@
             </div>
 
             {{!-- NextUp list -right sidebar --}}
-            <div class="col-md-3 mt-5 px-0 border" id="sidebar">
+            <div class="col-md-3 mt-5 px-0 border" id="sidebar-music">
                 <h3 class="p-3" id="bar">NextUp</h3>
                 <div class="px-3">
                     <h5 class="pt-2">Pet Sounds</h5>

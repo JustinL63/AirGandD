@@ -15,43 +15,7 @@
 
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#current-view">
                                 <div class="card-body instruct-body">
-                                    NextUp includes a list of 3000 top albums compiled by Acclaimed Music and based
-                                        on
-                                        thousands of critics' lists.<br> The top 50 ranked albums that you haven't
-                                        marked yet are
-                                        listed below.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header instruct-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed text-dark font-weight-bold" id="btn-accordion" type="button" data-toggle="collapse"
-                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How to Update Your List
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#current-view">
-                                <div class="card-body instruct-body">
-                                    <p>As you go through the list, use the buttons to customize it.</p>
-                                    <ul>
-                                        <li><strong>NextUp:</strong> Adds the album to your NextUp list so you know you
-                                            want to
-                                            listen
-                                            to it in the future.
-                                        </li>
-                                        <li><strong>Listened to:</strong> Marks the album as listened to; you can look
-                                            up the
-                                            albums
-                                            you've listened to whenever you want.
-                                        </li>
-                                        <li><strong>Remove:</strong> Only select this if you haven't listened to this
-                                            album and
-                                            know
-                                            you never want to. It will be permanently deleted from the database.
-                                        </li>
-                                    </ul>
+                                    These are all the albums from the list that you've listened to.
                                 </div>
                             </div>
                         </div>
@@ -67,11 +31,11 @@
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#current-view">
                                 <div class="card-body instruct-body">
                                     <ul>
+                                        <li><strong>View Remaining:</strong> The remaining albums that you haven't
+                                        marked yet. Fifty viewed at a time.</li>
                                         <li><strong>NextUp:</strong> Albums that you want to listen to. You can also
                                             see your next
                                             few albums in the sidebar on the right.</li>
-                                        <li><strong>Listened to:</strong> Albums from the list you've already
-                                            listened to.</li>
                                         <li><strong>Full database:</strong> See all the albums in the database,
                                             including ones
                                             you
@@ -83,8 +47,8 @@
                                             Select your list
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="db-list">
+                                            <button class="dropdown-item" type="button" id="view-all">View Remaining</a>
                                             <button class="dropdown-item" type="button" id="next-up">NextUp</a>
-                                            <button class="dropdown-item" type="button" id="listened-to">Listened To</a>
                                             <button class="dropdown-item" type="button" id="full-db">Full Database</a>
                                         </div>
                                     </div>
@@ -99,28 +63,23 @@
                     <table class="table">
                         <thead>
                             <tr class="d-flex">
-                                <th scope="col" class="col-1">Rank</th>
-                                <th scope="col" class="col-3">Album</th>
-                                <th scope="col" class="col-3">Artist</th>
-                                <th scope="col" class="col-1">Year</th>
-                                <th scope="col" class="col-4"></th>
+                                <th scope="col" class="col-2">Rank</th>
+                                <th scope="col" class="col-4">Album</th>
+                                <th scope="col" class="col-4">Artist</th>
+                                <th scope="col" class="col-2">Year</th>
                             </tr>
                         </thead>
                         <tbody>
                             {{#each albums}}
                             <tr class="d-flex">
-                                <th scope="row" class="col-1">{{this.rank}}</th>
-                                <td class="col-3">{{this.album}}</td>
-                                <td class="col-3">{{this.artist}}</td>
-                                <td class="col-1">{{this.Year}}</td>
-                                <td class="col-4"><button type="button" class="btn btn-sm btn-nextup" id="{{this.id}}">NextUp</button>
-                                    <button type="button" class="btn btn-sm btn-completed" id="{{this.id}}">Listened to</button>
-                                    <button type="button" class="btn btn-sm btn-remove" id="{{this.id}}">Remove</button></td>
+                                <th scope="row" class="col-2">{{Album.rank}}</th>
+                                <td class="col-4">{{Album.album}}</td>
+                                <td class="col-4">{{Album.artist}}</td>
+                                <td class="col-2">{{Album.Year}}</td>
                             </tr>
                             {{/each}}
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-sm" id="more">Show Me More</button>
                 </div>
             </div>
 

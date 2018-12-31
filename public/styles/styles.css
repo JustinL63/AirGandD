@@ -97,12 +97,21 @@ table {
   width: 95%;
 }
 
+#btn-accordion {
+  background-color: #F2BE54;
+  font-size: 20px;
+}
+
 .btn-remove {
   margin-top: 2px;
 }
 
-#music-container {
+.instruct-header {
   background-color: #F2BE54;
+}
+
+.instruct-body {
+  background-color: #CDD4CA;
 }
 
 #database {

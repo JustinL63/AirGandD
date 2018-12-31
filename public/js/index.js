@@ -1,11 +1,9 @@
 $(document).ready(function () {
-
+  // GLOBAL VARIABLES
   // Variable to save userID;
   var userID;
-
   // Variable to save albumID;
   var albumID;
-
   // Variable to save counter used in Show More button
   var counter = 0;
 
@@ -22,200 +20,128 @@ $(document).ready(function () {
     }
   });
   
-  // CLICK FUNCTIONS FOR DATABASE SELECTION=======================================
-  // View Remaining
+  // CLICK FUNCTIONS TO CHOOSE DATABASE=======================================
+  // MUSIC - View Remaining
   $("#view-all").on("click", function(event) {
     event.preventDefault();
-    // Collapse intro text and change dropdown text to display choice 
-    $("#db-list").text("View Remaining");
-    $("#db-explanation").collapse();
-
-  })
+    // Goes directly to "/music". HTML route runs the db query
+    window.location.href = "/music"; 
+  });
   
-  // NextUp
+  // MUSIC - NextUp
   $("#next-up").on("click", function(event) {
     event.preventDefault();
-    // Collapse intro text and change dropdown text to display choice 
-    $("#db-list").text("NextUp");
-    $("#db-explanation").collapse();
-  })
+
+    // Send get request for music already marked NextUp by user
+    $.get("/api/music/nextup", function(data) {
+      window.location.href = "/api/music/nextup";
+    })
+  });
   
-  // Listened to
+  // MUSIC - Listened To
   $("#listened-to").on("click", function(event) {
     event.preventDefault();
-    // Collapse intro text and change dropdown text to display choice 
-    $("#db-list").text("Listened To");
-    $("#db-explanation").collapse();
-  })
+    
+    // Send get request for music already marked Listened To by user
+    $.get("/api/music/completed", function(data) {
+      window.location.href = "/api/music/completed";
+    })
+  });
   
-  // Full database
+  // MUSIC - Full database
   $("#full-db").on("click", function(event) {
     event.preventDefault();
-    // Collapse intro text and change dropdown text to display choice 
-    $("#db-list").text("Full Database");
-    $("#db-explanation").collapse();
-  })
+
+    // Send get request for music already marked Listened To by user
+    $.get("/api/music/full", function(data) {
+    window.location.href = "/api/music/full";
+    })
+  });
 
   // CLICK FUNCTIONS FOR USER-DB INTERACTION IN MAIN SECTION=============================
   // Function to run when any db-interaction button is clicked the first time
-  function initialAction(nextupval, completedval, removedval, postval) {    
+  function initialAction(nextupval, completedval, removedval, query) {    
   
     // Create object to send to database with 
-    var nextupObj = {
+    var albumObj = {
       user_id: userID,
       AlbumId: albumID,
       nextup: nextupval,
       completed: completedval,
-      removed: removedval
+      remove: removedval
     }
-      
-  // Send post request with new object to update user-album DB
-  $.post("/api/music/" + postval, nextupObj
-  ).then(function(data) {
-    console.log(data);
-    // If there's an error, log the error
-  }).catch(function(err) {
-    console.log(err);
-  });
-}
+      console.log(albumObj);
+  
+    // Send post request with new object to update user-album DB
+    $.post("/api/music/" + query, albumObj
+    ).then(function(data) {
+      console.log(data);
+      // If there's an error, log the error
+    }).catch(function(err) {
+      console.log(err);
+    });
+  }
 
   // NEXTUP BUTTON
   $(".btn-nextup").on("click", function(event) {
     event.preventDefault();
 
-    // Grabl album ID
+    // Grab album ID
     albumID = $(this).attr("id");
-    console.log(albumID);
 
-    // Remove row from album table display
-    $(this).closest ('tr').remove();
+    // Shade row and remove buttons from table display    
+    $(this).closest("td").empty();
     
     // Run intial action function, passing correct values and post URL
     initialAction(true, false, false, "nextup");
   }) 
+  
+  // LISTENED TO BUTTON
+  $(".btn-completed").on("click", function(event) {
+    event.preventDefault();
+
+    // Grab album ID
+    albumID = $(this).attr("id");
+
+    // Remove row from album table display
+    $(this).closest('td').empty();
+    
+    // Run intial action function, passing correct values and post URL
+    initialAction(false, true, false, "completed");
+  }) 
+
+  // REMOVE BUTTON
+  $(".btn-remove").on("click", function(event) {
+    event.preventDefault();
+
+    // Grab album ID
+    albumID = $(this).attr("id");
+
+    // Remove row from album table display
+    $(this).closest('td').empty();
+  
+    // Run intial action function, passing correct values and post URL
+    initialAction(false, false, true, "remove");
+    })
 
   // SHOW MORE BUTTON
-  $("#more").on("click", function(event) {
-    event.preventDefault();
-    // Increase counter by 50
-    counter += 50;
-    // Create counter object to send
-    var counterObj = {
-      counter: counter
-    }
+  // $("#more").on("click", function(event) {
+  //   event.preventDefault();
+  //   // Increase counter by 50
+  //   counter += 50;
+  //   // Create counter object to send
+  //   var counterObj = {
+  //     counter: counter
+  //   }
    
-    // Send get request with counter to show more entries
-    $.post("/api/music/more", counterObj
-    ).then(function(data) {
-      console.log(data);
-      // location.reload();
-      // If there's an error, log the error
-    }).catch(function(err) {
-      console.log(err);
-    });
-  })
-
-
-// SAMPLE HELP FROM CLASS=======DELETE EVENTUALLY=======================================
-
-// Get references to page elements
-// var $exampleText = $("#example-text");
-// var $exampleDescription = $("#example-description");
-// var $submitBtn = $("#submit");
-// var $exampleList = $("#example-list");
-
-// // The API object contains methods for each kind of request we'll make
-// var API = {
-//   saveExample: function(example) {
-//     return $.ajax({
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       type: "POST",
-//       url: "api/examples",
-//       data: JSON.stringify(example)
-//     });
-//   },
-//   getExamples: function() {
-//     return $.ajax({
-//       url: "api/examples",
-//       type: "GET"
-//     });
-//   },
-//   deleteExample: function(id) {
-//     return $.ajax({
-//       url: "api/examples/" + id,
-//       type: "DELETE"
-//     });
-//   }
-// };
-
-// // refreshExamples gets new examples from the db and repopulates the list
-// var refreshExamples = function() {
-//   API.getExamples().then(function(data) {
-//     var $examples = data.map(function(example) {
-//       var $a = $("<a>")
-//         .text(example.text)
-//         .attr("href", "/example/" + example.id);
-
-//       var $li = $("<li>")
-//         .attr({
-//           class: "list-group-item",
-//           "data-id": example.id
-//         })
-//         .append($a);
-
-//       var $button = $("<button>")
-//         .addClass("btn btn-danger float-right delete")
-//         .text("ｘ");
-
-//       $li.append($button);
-
-//       return $li;
-//     });
-
-//     $exampleList.empty();
-//     $exampleList.append($examples);
-//   });
-// };
-
-// // handleFormSubmit is called whenever we submit a new example
-// // Save the new example to the db and refresh the list
-// var handleFormSubmit = function(event) {
-//   event.preventDefault();
-
-//   var example = {
-//     text: $exampleText.val().trim(),
-//     description: $exampleDescription.val().trim()
-//   };
-
-//   if (!(example.text && example.description)) {
-//     alert("You must enter an example text and description!");
-//     return;
-//   }
-
-//   API.saveExample(example).then(function() {
-//     refreshExamples();
-//   });
-
-//   $exampleText.val("");
-//   $exampleDescription.val("");
-// };
-
-// // handleDeleteBtnClick is called when an example's delete button is clicked
-// // Remove the example from the db and refresh the list
-// var handleDeleteBtnClick = function() {
-//   var idToDelete = $(this)
-//     .parent()
-//     .attr("data-id");
-
-//   API.deleteExample(idToDelete).then(function() {
-//     refreshExamples();
-//   });
-// };
-
-// // Add event listeners to the submit and delete buttons
-// $submitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
-
+  //   // Send get request with counter to show more entries
+  //   $.post("/api/music/more", counterObj
+  //   ).then(function(data) {
+  //     console.log(data);
+  //     // location.reload();
+  //     // If there's an error, log the error
+  //   }).catch(function(err) {
+  //     console.log(err);
+  //   });
+  // })
 })

@@ -1,84 +1,118 @@
 {{!-- Three vertical sections --}}
+
 <body id="dash-pg">
     <div class="container mt-5 mb-4" id="dash-container">
         <div class="row">
-            {{!-- Music column - data from database coming in --}}
-            <div class="col-12 col-md-4" id="music-col">
-                <h3 class="py-2 border-bottom border-white">Music</h3>
-                {{#each albums}}
-                <h5 class="pt-2">{{Album.album}}</h5>
-                <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm completed" id="{{Album.id}}">Listened to</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
-                </div>
-            {{/each}}
-            </div>
+            {{!-- Explanation text for using the database --}}
+            <div class="col-12 px-0">
+                <div class="accordion" id="current-view">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <button class="btn btn-link text-dark font-weight-bold" id="btn-accordion" type="button"
+                                data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                How to Use NextUp
+                            </button>
+                        </div>
 
-            {{!-- Film column --}}
-            <div class="col-12 col-md-4" id="films-col">
-                <h3 class="py-2 border-bottom border-white">Films</h3>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">The Godfather</h5>
-                <p class="mb-2" id="subline">1972</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Watched</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">The Godfather II</h5>
-                <p class="mb-2" id="subline">1974</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Watched</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Psycho</h5>
-                <p class="mb-2" id="subline">1960</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Watched</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
-            </div>
-            {{!-- Books column --}}
-            <div class="col-12 col-md-4" id="books-col">
-                <h3 class="py-2 border-bottom border-white">Books</h3>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Don Quixote</h5>
-                <p class="mb-2" id="subline">Miguel de Cervantes</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Finished</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Pilgrim's Progress</h5>
-                <p class="mb-2" id="subline">John Bunyan</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Finished</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
-                </div>
-                {{!-- Dummy text for now --}}
-                <h5 class="pt-2">Robinson Crusoe</h5>
-                <p class="mb-2" id="subline">Daneil Defoe</p>
-                <div class="border-bottom border-white pb-2 mb-2">
-                    {{!-- Button to mark as listened to --}}
-                    <button type="button" class="btn btn-sm" id="completed">Finished</button>
-                    {{!-- Button to remove --}}
-                    <button type="button" class="btn btn-sm ml-2" id="remove">Remove</button>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#current-view">
+                            <div class="card-body">
+                                <h5>Our Lists</h5>
+                                NextUp's lists combine rankings from several different sources to give you the best
+                                best-of lists we could find.
+                                Choose from:
+                                <ul>
+                                    <li>3,000 albums</li>
+                                    <li>1,200 films</li>
+                                    <li>1,000 books</li>
+                                </ul>
+                                <p class="small">Special thanks to Acclaimed Music, Owen Temple and Joel Patrick for
+                                    making their combined rankings available.
+                                </p>
+
+                                <h5>Customizing Your Lists</h5>
+                                <p>Use these buttons to customize your lists</p>
+                                <ul>
+                                    <li><strong>NextUp:</strong> Adds the album to your NextUp list so you know you
+                                        want to
+                                        listen
+                                        to it in the future.
+                                    </li>
+                                    <li><strong>Listened to:</strong> Marks the album as listened to; you can look
+                                        up the
+                                        albums
+                                        you've listened to whenever you want.
+                                    </li>
+                                    <li><strong>Remove:</strong> Only select this if you haven't listened to this
+                                        album and
+                                        know
+                                        you never want to. It will be permanently deleted from the database.
+                                    </li>
+                                </ul>
+                                <h5>Views Available</h5>
+                                <ul>
+                                    <li><strong>Remaining:</strong> Shows all of the albums that you have yet to interact with.</strong></li>
+                                    <li><strong>NextUp:</strong> Albums that you want to listen to. You can also
+                                        see your next
+                                        few albums in the sidebar on the right.</li>
+                                    <li><strong>Listened to:</strong> Albums from the list you've already
+                                        listened to.</li>
+                                    <li><strong>Full database:</strong> See all the albums in the database,
+                                        including ones
+                                        you
+                                        previously removed. <em>Note: This list does not include any customizing
+                                            you may have done.</em></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row mt-3">
+                {{!-- Music column - data from database coming in --}}
+                <div class="col-12 col-md-4" id="music-col">
+                    <h3 class="py-2 border-bottom border-white">Music</h3>
+                    {{#each albums}}
+                    <h5 class="pt-2">{{Album.album}}</h5>
+                    <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        {{!-- Button to mark as listened to --}}
+                        <button type="button" class="btn btn-sm completed" id="{{Album.id}}">Listened to</button>
+                        {{!-- Button to remove --}}
+                        <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
+                    </div>
+                    {{/each}}
+                </div>
+
+                {{!-- Film column --}}
+                <div class="col-12 col-md-4" id="films-col">
+                    <h3 class="py-2 border-bottom border-white">Films</h3>
+                    {{#each albums}}
+                    <h5 class="pt-2">{{Album.album}}</h5>
+                    <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        {{!-- Button to mark as listened to --}}
+                        <button type="button" class="btn btn-sm completed" id="{{Album.id}}">Listened to</button>
+                        {{!-- Button to remove --}}
+                        <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
+                    </div>
+                    {{/each}}
+                </div>
+
+                {{!-- Books column --}}
+                <div class="col-12 col-md-4" id="books-col">
+                    <h3 class="py-2 border-bottom border-white">Books</h3>
+                    {{#each albums}}
+                    <h5 class="pt-2">{{Album.album}}</h5>
+                    <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        {{!-- Button to mark as listened to --}}
+                        <button type="button" class="btn btn-sm completed" id="{{Album.id}}">Listened to</button>
+                        {{!-- Button to remove --}}
+                        <button type="button" class="btn btn-sm ml-2 remove" id="{{Album.id}}">Remove</button>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
 </body>

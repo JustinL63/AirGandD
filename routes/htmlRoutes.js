@@ -38,14 +38,15 @@ module.exports = function (app) {
         albums: data
       };
       console.log(JSON.stringify(hbsObject));
-    res.render("dashboard", hbsObject) 
+      res.render("dashboard", hbsObject) 
     })
   });
-  // Route to generic music page, will bring back View Remaining info on load
-  // Currently this is the full database and this will need changed once View Remaining is operational
-  // Also need to add back in isAuthenticated
-  app.get("/music", function (req, res) {
-    db.Album.findAll({ limit: 50 })
+  // Route to generic music page. Right now it brings back the Full Database but would like this to display View Remaining when that gets figured out
+  app.get("/music", isAuthenticated, function (req, res) {
+    db.Album.findAll({ 
+      limit: 50,
+
+     })
     .then(function(data) {
       var hbsObject = {
         albums: data
@@ -64,23 +65,6 @@ module.exports = function (app) {
     res.render("books", {
     })
   });
-  // app.get("/dashboard", isAuthenticated, function (req, res) {
-  //   db.Users.findAll({}).then(function (dbUsers) {
-  //     res.render("dashboard", {
-  //       msg: "Welcome!",
-  //       examples: dbUsers
-  //     });
-  //   });
-  // });
-
-  // Load example page and pass in an example by id
-  // app.get("/music", function (req, res) {
-  //   db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-  //     res.render("music", {
-  //       example: dbExample
-  //     });
-  //   });
-  // });
 
   // Render 404 page for any unmatched routes
   // app.get("*", function (req, res) {

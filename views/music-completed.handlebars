@@ -1,0 +1,65 @@
+<body id="music-pg">
+    <div class="container-fluid" id="big-container">
+        <div class="row my-5">
+            <div class="col-md-9">
+                {{!-- View button --}}
+                <div class="dropdown mb-3">
+                    <button class="btn btn-secondary border-0 dropdown-toggle" type="button" id="db-list" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Listened To
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="db-list">
+                        <button class="dropdown-item" type="button" id="view-all">Remaining</a>
+                            <button class="dropdown-item" type="button" id="next-up">NextUp</a>
+                                <button class="dropdown-item" type="button" id="full-db">Full
+                                    Database</a>
+                    </div>
+                </div>
+                {{!-- Database data flows in here--}}
+                <div class="table-responsive mt-3" id="database">
+                    <table class="table">
+                        <thead>
+                            <tr class="d-flex">
+                                <th scope="col" class="col-2">Rank</th>
+                                <th scope="col" class="col-4">Album</th>
+                                <th scope="col" class="col-4">Artist</th>
+                                <th scope="col" class="col-2">Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each albums}}
+                            <tr class="d-flex">
+                                <th scope="row" class="col-2">{{Album.rank}}</th>
+                                <td class="col-4">{{Album.album}}</td>
+                                <td class="col-4">{{Album.artist}}</td>
+                                <td class="col-2">{{Album.Year}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {{!-- NextUp list -right sidebar --}}
+            <div class="col-md-3 mt-5 px-0 border" id="sidebar-music">
+                <h3 class="p-3" id="bar">NextUp</h3>
+                <div class="px-3">
+                    <h5 class="pt-2">Pet Sounds</h5>
+                    <p class="mb-2">The Beach Boys — 1966</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
+                    </div>
+                    <h5 class="pt-2">Revolver</h5>
+                    <p class="mb-2">The Beatles — 1966</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
+                    </div>
+                    <h5 class="pt-2">Nevermind</h5>
+                    <p class="mb-2">Nirvana — 1991</p>
+                    <div class="border-bottom border-white pb-2 mb-2">
+                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>

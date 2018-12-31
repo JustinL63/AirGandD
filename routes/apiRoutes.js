@@ -25,6 +25,7 @@ module.exports = function (app) {
 
   // MUSIC - LISTENED
   app.get("/api/music/completed", function (req, res) {
+    // Query database for all albums that user has listened to
     db.UserAlbum.findAll({
       where: {
         user_id: req.user.id,
@@ -32,30 +33,52 @@ module.exports = function (app) {
       },
       include: [db.Album]
     })
-      .then(function (data) {
+    .then(function (data1) {
+      // Query for NextUp sidebar
+      db.UserAlbum.findAll({
+        limit: 5,
+        where: {
+          user_id: req.user.id,
+          nextup: true
+        },
+        include: [db.Album]
+      }).then(function (data2) {
         var hbsObject = {
-          albums: data
+          albums: data1,
+          dashboard: data2
         };
-        console.log(JSON.stringify(hbsObject));
         res.render("music-completed", hbsObject)
-      })
+      });
+    });
   });
 
   // MUSIC - FULL DB
   app.get("/api/music/full", function (req, res) {
+    // Query for full database
     db.Album.findAll({
       limit: 50,
     })
-      .then(function (data) {
-        var hbsObject = {
-          albums: data
-        };
-        res.render("music-full", hbsObject);
+      .then(function (data1) {
+        // Query for NextUp sidebar
+        db.UserAlbum.findAll({
+          limit: 5,
+          where: {
+            user_id: req.user.id,
+            nextup: true
+          },
+          include: [db.Album]
+        }).then(function (data2) {
+          var hbsObject = {
+            albums: data1,
+            dashboard: data2
+          };
+          res.render("music-full", hbsObject);
+        });
       });
   });
 
 
-  // app.get("/api/films/nextup", function(req, res) {
+  // app.get("/api/movies/nextup", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all the movies the user has marked as interested in.
   //   })
@@ -64,7 +87,7 @@ module.exports = function (app) {
   //     });
   // });
 
-  // app.get("/api/films/completed", function(req, res) {
+  // app.get("/api/movies/completed", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all the movies the user has marked as listen to.
   //   })
@@ -73,7 +96,7 @@ module.exports = function (app) {
   //     });
   // });
 
-  // });app.get("/api/films/full", function(req, res) {
+  // });app.get("/api/movies/full", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all of the movies from the original music list, does not require user input
   //   })

@@ -2,7 +2,7 @@
     <div class="container-fluid" id="big-container">
         <div class="row my-5">
             <div class="col-md-9">
-            {{!-- View button --}}
+                {{!-- View button --}}
                 <div class="dropdown mb-3">
                     <button class="btn btn-secondary border-0 dropdown-toggle" type="button" id="db-list" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -14,8 +14,8 @@
                     <div class="dropdown-menu" aria-labelledby="db-list">
                         <button class="dropdown-item" type="button" id="view-all">Remaining</a>
                             <button class="dropdown-item" type="button" id="next-up">NextUp</a>
-                            <button class="dropdown-item" type="button" id="listened-to">Listened
-                                To</a>                               
+                                <button class="dropdown-item" type="button" id="listened-to">Listened
+                                    To</a>
                     </div>
                 </div>
                 {{!-- Database data flows in here--}}
@@ -37,9 +37,11 @@
                                 <td class="col-3">{{this.album}}</td>
                                 <td class="col-3">{{this.artist}}</td>
                                 <td class="col-1">{{this.Year}}</td>
-                                <td class="col-4"><button type="button" class="btn btn-sm btn-nextup" id="{{this.id}}">NextUp</button>
-                                    <button type="button" class="btn btn-sm btn-completed" id="{{this.id}}">Listened to</button>
-                                    <button type="button" class="btn btn-sm btn-remove" id="{{this.id}}">Remove</button></td>
+                                <td class="col-4"><button type="button" class="btn btn-sm btn-nextup" data-page="music"
+                                        id="{{this.id}}">NextUp</button>
+                                    <button type="button" class="btn btn-sm btn-completed" data-page="music" id="{{this.id}}">Listened
+                                        to</button>
+                                    <button type="button" class="btn btn-sm btn-remove" data-page="music" id="{{this.id}}">Remove</button></td>
                             </tr>
                             {{/each}}
                         </tbody>
@@ -48,25 +50,12 @@
                 </div>
             </div>
             {{!-- NextUp list -right sidebar --}}
-            <div class="col-md-3 mt-5 px-0 border" id="sidebar-music">
+            <div class="col-md-3 px-0 border" id="sidebar-music">
                 <h3 class="p-3" id="bar">NextUp</h3>
-                <div class="px-3">
-                    <h5 class="pt-2">Pet Sounds</h5>
-                    <p class="mb-2">The Beach Boys — 1966</p>
-                    <div class="border-bottom border-white pb-2 mb-2">
-                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
-                    </div>
-                    <h5 class="pt-2">Revolver</h5>
-                    <p class="mb-2">The Beatles — 1966</p>
-                    <div class="border-bottom border-white pb-2 mb-2">
-                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
-                    </div>
-                    <h5 class="pt-2">Nevermind</h5>
-                    <p class="mb-2">Nirvana — 1991</p>
-                    <div class="border-bottom border-white pb-2 mb-2">
-                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
-                    </div>
-                </div>
+                {{!-- Bring in sidebar partial --}}
+                {{#each dashboard}}
+                {{> music/sidebar}}
+                {{/each}}
             </div>
         </div>
 </body>

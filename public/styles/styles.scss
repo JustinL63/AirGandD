@@ -1,5 +1,5 @@
 $music-color: #F2BE54;
-$film-color: #CDD4CA;
+$movie-color: #CDD4CA;
 $book-color: #87AEB4;
 $body-color-index: #F3D250;
 $navbar-color: #153E5C;
@@ -89,7 +89,7 @@ p#subline {
 }
 
 .card-body {
-    background-color: $film-color;
+    background-color: $movie-color;
 }
 
 .card-header {
@@ -106,8 +106,8 @@ p#subline {
     border-right: 10px solid white;
 }
 
-#films-col {
-    background-color: $film-color;
+#movies-col {
+    background-color: $movie-color;
     border-right: 10px solid white;
 }
 
@@ -160,7 +160,7 @@ table {
         border: none;
     }
 
-    #films-col {
+    #movies-col {
         border: none;
         margin-top: 2%;
     }

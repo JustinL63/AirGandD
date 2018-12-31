@@ -45,26 +45,13 @@
                 <button type="button" class="btn btn-sm" id="more">Show Me More</button>
             </div>
 
-            {{!-- NextUp list -right sidebar --}}
+            {{!-- NextUp list - right sidebar --}}
             <div class="col-md-3 px-0 border" id="sidebar-music">
                 <h3 class="p-3" id="bar">NextUp</h3>
-                <div class="px-3">
-                    <h5 class="pt-2">Pet Sounds</h5>
-                    <p class="mb-2">The Beach Boys — 1966</p>
-                    <div class="border-bottom border-white pb-2 mb-2">
-                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
-                    </div>
-                    <h5 class="pt-2">Revolver</h5>
-                    <p class="mb-2">The Beatles — 1966</p>
-                    <div class="border-bottom border-white pb-2 mb-2">
-                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
-                    </div>
-                    <h5 class="pt-2">Nevermind</h5>
-                    <p class="mb-2">Nirvana — 1991</p>
-                    <div class="border-bottom border-white pb-2 mb-2">
-                        <button type="button" class="btn btn-sm" id="completed">Listened to</button>
-                    </div>
-                </div>
+
+                {{#each dashboard}}
+                {{> music/sidebar}}
+                {{/each}}
             </div>
         </div>
     </div>

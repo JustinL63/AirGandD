@@ -1,15 +1,19 @@
 var db = require("../models");
 
+// Creating variable for Sequelize operators - not sure where else to put this
+var Sequelize = require("sequelize");
+const Op = Sequelize.Op;
+
 // Requiring middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
-  
+
   // Load index page
   app.get("/", function (req, res) {
     res.render("index");
   });
-  
+
   // Route to generic login page
   app.get("/login", function (req, res) {
     res.render("login", {
@@ -22,42 +26,75 @@ module.exports = function (app) {
 
     })
   });
-  
+
   // Route to generic dashboard page
   app.get("/dashboard", isAuthenticated, function (req, res) {
-    db.UserAlbum.findAll({ 
+    db.UserAlbum.findAll({
       limit: 5,
       where: {
         user_id: req.user.id,
-        nextup: true 
+        nextup: true
       },
       include: [db.Album]
     })
-    .then(function(data) {
-      var hbsObject = {
-        albums: data
-      };
-      console.log(JSON.stringify(hbsObject));
-      res.render("dashboard", hbsObject) 
-    })
+      .then(function (data) {
+        var hbsObject = {
+          albums: data
+        };
+        console.log(JSON.stringify(hbsObject));
+        res.render("dashboard", hbsObject)
+      })
   });
-  // Route to generic music page. Right now it brings back the Full Database but would like this to display View Remaining when that gets figured out
-  app.get("/music", isAuthenticated, function (req, res) {
-    db.Album.findAll({ 
-      limit: 50,
 
-     })
-    .then(function(data) {
-      var hbsObject = {
-        albums: data
-      };
-      res.render("music", hbsObject);
+  // Route to music page. Shows Remaining songs and NextUp dashboard on the sidebar.
+  app.get("/music", isAuthenticated, function (req, res) {
+    // Set array variable to hold matches returned from useralbum query
+    var matches = [];
+
+    // Query to search useralbum and bring back items that user is associated 
+    db.UserAlbum.findAll({
+      where: {
+        user_id: req.user.id
+      }
+    })
+      .then(function (data1) {
+        if (data1.length > 0) {
+          for (let i = 0; i < data1.length; i++) {
+            matches.push(data1[i].item)
+          }
+          // Query albums database, where album id does not match array items
+          db.Album.findAll({
+            limit: 50,
+            where: {
+              id: { [Op.notIn]: matches }
+            }
+          }).then(function (data2) {
+            // Query for NextUp sidebar
+            db.UserAlbum.findAll({
+              limit: 5,
+              where: {
+                user_id: req.user.id,
+                nextup: true
+              },
+              include: [db.Album]
+            }).then(function (data3) {
+              var hbsObject = {
+                albums: data2,
+                dashboard: data3
+              };
+                res.render("music", hbsObject)
+              });
+            });
+
+          } else {
+              console.log("User has no data");
+            }
       });
   });
 
   // Route to generic movies page
-  app.get("/film", isAuthenticated, function (req, res) {
-    res.render("film", {
+  app.get("/movies", isAuthenticated, function (req, res) {
+    res.render("movies", {
     })
   });
   // Route to generic books page

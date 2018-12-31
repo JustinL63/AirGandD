@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
   
 // Creating association between album and useralbum
 UserBooks.associate = function(models) {
-    UserBooks.belongsTo(models.Books);
+    UserBooks.belongsTo(models.Books, {foreignKey: "item"});
     };
 
       return UserBooks;

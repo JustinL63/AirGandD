@@ -19,6 +19,7 @@ $(document).ready(function() {
 
       // Check to make sure all form fields have been filled out
       if (!userData.email || !userData.password || !userData.name || !userData.userName) {
+        alert("please fill out all forms");
         return;
       }
       // Once all fields have been filled (and all values are unique), the form is emptied
@@ -39,6 +40,11 @@ $(document).ready(function() {
       }).then(function(data) {
         window.location.replace(data)
         // throws error
-      })
+      }).catch(logInErr);
+
+      function logInErr(err){
+        $("#alert .msg").text(err.responseJSON);
+        $("#alert").fadeIn(500);
+      }
     }
   });

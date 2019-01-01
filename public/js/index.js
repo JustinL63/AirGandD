@@ -7,6 +7,8 @@ $(document).ready(function () {
   // Variable to save counter used in Show More button
   // var counter = 0;
 
+  $("#signUp").on("click")
+
   // Check to see if user is logged in
   $.get("/api/user_data").then(function (data) {
     if (data.id) {

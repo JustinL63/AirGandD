@@ -1,18 +1,20 @@
-<body id="music-pg">
+<body data-content="music">
     <div class="container-fluid" id="big-container">
-        <div class="row my-5">
+        <div class="row align-items-start my-5">
             <div class="col-md-9">
                 {{!-- View button --}}
                 <div class="dropdown mb-3">
-                    <button class="btn btn-secondary border-0 dropdown-toggle" type="button" id="db-list" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Listened To
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="db-list">
-                        <button class="dropdown-item" type="button" id="view-all">Remaining</a>
-                            <button class="dropdown-item" type="button" id="next-up">NextUp</a>
-                                <button class="dropdown-item" type="button" id="full-db">Full
-                                    Database</a>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Listened To</h5>
+                            <div class="small">
+                              * This view shows every album you've listened to from the list.
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            {{!-- View button --}}
+                            {{> all/view-toggle}}
+                        </div>
                     </div>
                 </div>
                 {{!-- Database data flows in here--}}
@@ -47,6 +49,8 @@
                 {{#each dashboard}}
                 {{> music/sidebar}}
                 {{/each}}
+
+                <p class="pl-3 py-1">Go here to see your<a href="/api/music/nextup"><strong> full list of NextUp albums</strong></a>.</p>
             </div>
         </div>
 </body>

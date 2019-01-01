@@ -114,6 +114,10 @@ table {
   background-color: white;
 }
 
+#views {
+  float: right;
+}
+
 @media screen and (max-width: 768px) {
   .navbar {
     z-index: 1;

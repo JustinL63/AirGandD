@@ -7,6 +7,7 @@ module.exports = function (app) {
   // GET REQUESTS=================================================================
   // MUSIC - NEXTUP
   app.get("/api/music/nextup", function (req, res) {     
+    // Query database to find all albums that the user marked for NextUp
     db.UserAlbum.findAll({
       where: {
         user_id: req.user.id,
@@ -18,7 +19,6 @@ module.exports = function (app) {
         var hbsObject = {
           albums: data
         };
-        console.log(JSON.stringify(hbsObject));
         res.render("music-nextup", hbsObject)
       })
   });
@@ -55,9 +55,7 @@ module.exports = function (app) {
   // MUSIC - FULL DB
   app.get("/api/music/full", function (req, res) {
     // Query for full database
-    db.Album.findAll({
-      limit: 50,
-    })
+    db.Album.findAll({})
       .then(function (data1) {
         // Query for NextUp sidebar
         db.UserAlbum.findAll({
@@ -76,7 +74,6 @@ module.exports = function (app) {
         });
       });
   });
-
 
   // app.get("/api/movies/nextup", function(req, res) {
   //   db.Post.findAll({
@@ -131,7 +128,9 @@ module.exports = function (app) {
   //       res.json(dbPost);
   //     });
 
-  // POST REQUESTS
+  // =================================================================================
+
+  // POST REQUESTS==================================================================
   // INITIAL INTERACTION WITH DATABASE
   // MUSIC - User marks album for NextUp
   app.post("/api/music/nextup", function (req, res) {
@@ -157,7 +156,10 @@ module.exports = function (app) {
       });
   })
 
-  // PUT REQUESTS - updates to NextUp list
+  // =========================================================================
+
+
+  // PUT REQUESTS - updates to NextUp list====================================
   // MUSIC - User marks NextUp album as Listened To/Completed
   app.put("/api/music/completed", function (req, res) {
     db.UserAlbum.update(
@@ -185,20 +187,4 @@ module.exports = function (app) {
         res.json(dbUpdate);
       });
   })
-
 }
-
-  // SHOW MORE - Request to show next 50 items in music database - STILL NEED TO GET THIS DISPLAYED ON THE PAGE
-
-  // app.post("/api/music/more", function(req, res) {
-  //   var counterID = parseInt(req.body.counter); 
-  //   console.log(counterID);
-  //   db.Album.findAll({ offset: counterID, limit: 50 })
-  //   .then(function(data) {
-  //     var hbsObject = {
-  //       albums: data
-  //     };
-  //     console.log(hbsObject);
-  //     res.render("music", hbsObject);
-  //     });
-  // });

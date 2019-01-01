@@ -1,65 +1,155 @@
 $(document).ready(function () {
-  // GLOBAL VARIABLES
+  // GLOBAL VARIABLES=========================================
   // Variable to save userID;
   var userID;
-  // Variable to save albumID;
-  var albumID;
-  // Variable to save counter used in Show More button
-  // var counter = 0;
 
   $("#signUp").on("click")
 
-  // Check to see if user is logged in
   $.get("/api/user_data").then(function (data) {
     if (data.id) {
+      // Change navbar text to Log Out and point to logout page
       $("#login-status").text("Log Out");
       $("#login-status").attr("href", "/logout");
       userID = data.id;
 
     } else {
+      // If user logs out, change text to Log In and point to login page
       $("#login-status").text("Log In");
       $("#login-status").attr("href", "/login");
     }
   });
 
-  // CLICK FUNCTIONS TO CHOOSE DATABASE=======================================
-  // MUSIC - View Remaining
+  // CLICK FUNCTIONS TO CHOOSE DATABASE VIEW=======================================
+  // Remaining List  
   $("#view-all").on("click", function (event) {
     event.preventDefault();
-    // Goes directly to "/music". HTML route runs the db query
-    window.location.href = "/music";
-  });
+    
+    // Retrieve page section info 
+    var pageID = $("body").attr("data-content");
+    
+    // Run switch statement to determine which page to go to. HTML route runs the db query on page load
+    switch (pageID) {
+      case "music":
+        window.location.href = "/music";
+        break;
+        
+        case "movie":
+        window.location.href = "/movies";
+        break;
 
-  // MUSIC - NextUp
+        case "books":
+        window.location.href = "/books";
+        break;
+
+        default:
+        console.log("Something is wrong.")
+    }
+  })
+
+  // NextUp
   $("#next-up").on("click", function (event) {
     event.preventDefault();
 
-    // Send get request for music already marked NextUp by user
-    $.get("/api/music/nextup", function (data) {
-      window.location.href = "/api/music/nextup";
-    })
-  });
+    // Retrieve page section info 
+    var pageID = $("body").attr("data-content");
+    
+    // Run switch statement to determine correct get request
+    switch (pageID) {
+      case "music":
+        $.get("/api/music/nextup", function (data) {
+          window.location.href = "/api/music/nextup";
+        })
+        break;
+      
+        case "movie":
+        $.get("/api/movies/nextup", function (data) {
+          window.location.href = "/api/movies/nextup";
+        })
+        break;
 
-  // MUSIC - Listened To
+        case "books":
+        $.get("/api/books/nextup", function (data) {
+          window.location.href = "/api/books/nextup";
+        })
+        break;
+
+        default:
+        console.log("Something is wrong.")
+    }
+  })
+
+  // Listened To
   $("#listened-to").on("click", function (event) {
     event.preventDefault();
 
-    // Send get request for music already marked Listened To by user
-    $.get("/api/music/completed", function (data) {
-      window.location.href = "/api/music/completed";
-    })
-  });
+    // Retrieve page section info 
+    var pageID = $("body").attr("data-content");
+    
+    // Run switch statement to determine correct get request
+    switch (pageID) {
+      case "music":
+        $.get("/api/music/completed", function (data) {
+          window.location.href = "/api/music/completed";
+        })
+        break;
+      
+        case "movie":
+        $.get("/api/movies/completed", function (data) {
+          window.location.href = "/api/movies/completed";
+        })
+        break;
 
-  // MUSIC - Full database
+        case "books":
+        $.get("/api/books/completed", function (data) {
+          window.location.href = "/api/books/completed";
+        })
+        break;
+
+        default:
+        console.log("Something is wrong.")
+    }
+  })
+    
+  // Full database
   $("#full-db").on("click", function (event) {
     event.preventDefault();
 
-    // Send get request for music already marked Listened To by user
-    $.get("/api/music/full", function (data) {
-      window.location.href = "/api/music/full";
-    })
+    // Retrieve page section info 
+    var pageID = $("body").attr("data-content");
+    
+    // Run switch statement to determine correct get request
+    switch (pageID) {
+      case "music":
+        $.get("/api/music/full", function (data) {
+          window.location.href = "/api/music/full";
+        })
+        break;
+      
+        case "movie":
+        $.get("/api/movies/full", function (data) {
+          window.location.href = "/api/movies/full";
+        })
+        break;
+
+        case "books":
+        $.get("/api/books/full", function (data) {
+          window.location.href = "/api/books/full";
+        })
+        break;
+
+        default:
+        console.log("Something is wrong.")
+    }
+  })
+    
+  // REFRESH - To update list on Remaining view  
+  $("#refresh").on("click", function (event) {
+    event.preventDefault();
+    // Goes directly to "/music". HTML route runs the db query on page load
+    window.location.href = "/music";
   });
-  // x
+// ================================================================================
+
   // CLICK FUNCTIONS FOR USER-DB INTERACTION IN VIEW REMAINING/FULL======================
   // Function to run when any db-interaction button is clicked the first time
   function initialAction(nextupval, completedval, removedval, query) {
@@ -84,15 +174,17 @@ $(document).ready(function () {
     });
   }
 
-  // BUTTONS============================================================================
   // NEXTUP BUTTON
   $(".btn-nextup").on("click", function (event) {
     event.preventDefault();
 
     // Grab item ID
     itemID = $(this).attr("id");
-    // Shade row and remove buttons from table display    
-    $(this).closest("td").empty();
+    
+    // Fade row, then remove it from table display    
+    $(this).closest("tr").fadeOut(500, function() {
+      $(this).closest("tr").empty() 
+    });
 
     // Grab data-page value
     var type = $(this).attr("data-page");
@@ -122,8 +214,11 @@ $(document).ready(function () {
 
     // Grab item ID
     itemID = $(this).attr("id");
-    // Remove row from album table display
-    $(this).closest('td').empty();
+    
+    // Fade row, then remove it from table display    
+    $(this).closest("tr").fadeOut(500, function() {
+      $(this).closest("tr").empty() 
+    });
 
     // Grab data-page value
     var type = $(this).attr("data-page");
@@ -153,8 +248,11 @@ $(document).ready(function () {
 
     // Grab item ID
     itemID = $(this).attr("id");
-    // Remove row from album table display
-    $(this).closest('td').empty();
+  
+    // Fade row, then remove it from table display    
+    $(this).closest("tr").fadeOut(500, function() {
+      $(this).closest("tr").empty() 
+    });
 
     // Grab data-page value
     var type = $(this).attr("data-page");
@@ -204,10 +302,7 @@ $(document).ready(function () {
     }).catch(function (err) {
       console.log(err);
     });
-  }
-
-  // Function to remove item once it's been selected
-  
+  }  
 
   // LISTENED TO BUTTON
   $(".btn-nx-completed").on("click", function (event) {
@@ -286,38 +381,4 @@ $(document).ready(function () {
         console.log("Something is wrong.")
     }
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // SHOW MORE BUTTON
-  // $("#more").on("click", function(event) {
-  //   event.preventDefault();
-  //   // Increase counter by 50
-  //   counter += 50;
-  //   // Create counter object to send
-  //   var counterObj = {
-  //     counter: counter
-  //   }
-
-  //   // Send get request with counter to show more entries
-  //   $.post("/api/music/more", counterObj
-  //   ).then(function(data) {
-  //     console.log(data);
-  //     // location.reload();
-  //     // If there's an error, log the error
-  //   }).catch(function(err) {
-  //     console.log(err);
-  //   });
-  // })
-})
+});

@@ -19,7 +19,7 @@ $(document).ready(function() {
 
       // Check to make sure all form fields have been filled out
       if (!userData.email || !userData.password || !userData.name || !userData.userName) {
-        alert("please fill out all forms");
+        alert("please fill out all fields");
         return;
       }
       // Once all fields have been filled (and all values are unique), the form is emptied

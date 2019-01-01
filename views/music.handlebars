@@ -1,68 +1,39 @@
 <body data-content="music">
     <div class="container-fluid" id="big-container">
         <div class="row align-items-start my-5">
-            <div class="col-md-9">
+            <div class="col-12 col-md-9">
                 {{!-- View button --}}
                 <div class="dropdown">
                     <div class="row">
-                        <div class="col-md-10">
+                        <div class="col-12 col-md-10">
                             <h5>Remaining albums</h5>
                             <div class="small">
                                 * The highest-ranked 50 albums that you haven't interacted with yet.
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col col-md-2">
                             {{!-- View button --}}
                             {{> all/view-toggle}}
                         </div>
                     </div>
                 </div>
                 {{!-- Database flows in here --}}
-                <div class="row">
-                    <div class="col-12">
-                        <div class="table-responsive mt-3" id="database">
-                            <table class="table">
-                                <thead>
-                                    <tr class="d-flex">
-                                        <th scope="col" class="col-1">Rank</th>
-                                        <th scope="col" class="col-3">Album</th>
-                                        <th scope="col" class="col-3">Artist</th>
-                                        <th scope="col" class="col-1">Year</th>
-                                        <th scope="col" class="col-4"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{#each albums}}
-                                    <tr class="d-flex">
-                                        <th scope="row" class="col-1">{{this.rank}}</th>
-                                        <td class="col-3">{{this.album}}</td>
-                                        <td class="col-3">{{this.artist}}</td>
-                                        <td class="col-1">{{this.Year}}</td>
-                                        <td class="col-4"><button type="button" class="btn btn-sm btn-nextup" data-page="music"
-                                                id="{{this.id}}">NextUp</button>
-                                            <button type="button" class="btn btn-sm btn-completed" data-page="music" id="{{this.id}}">Listened
-                                                to</button>
-                                            <button type="button" class="btn btn-sm btn-remove" data-page="music" id="{{this.id}}">Remove</button></td>
-                                    </tr>
-                                    {{/each}}
-                                </tbody>
-                            </table>
-                        </div>
-                            <button type="button" class="btn btn-sm" id="refresh">Refresh List</button>
-                        </div>
-                    </div>
-                </div>
-                {{!-- NextUp list - right sidebar --}}
-                <div class="col-md-3 px-0 border" id="sidebar-music">
-                    <h3 class="p-3" id="bar">NextUp</h3>
-
-                    {{#each dashboard}}
-                    {{> music/sidebar}}
-                    {{/each}}
-
-                    <p class="pl-3 py-1">Go here to see your<a href="/api/music/nextup"><strong> full list of
-                                NextUp albums</strong></a>.</p>
-                </div>
+                {{> music/table-this}}
+                <button type="button" class="btn btn-sm" id="refresh">Refresh List</button>
             </div>
         </div>
+    </div>
+    {{!-- NextUp list - right sidebar --}}
+    <div class="col-md-3 px-0 border" id="sidebar-music">
+        <h3 class="p-3" id="bar">NextUp</h3>
+
+        {{#each dashboard}}
+        {{> music/sidebar}}
+        {{/each}}
+
+        <p class="pl-3 py-1">Go here to see your<a href="/api/music/nextup"><strong> full list of
+                    NextUp albums</strong></a>.</p>
+    </div>
+    </div>
+    </div>
 </body>

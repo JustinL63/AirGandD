@@ -49,6 +49,7 @@ a {
 .btn-sm {
     color: white;
     background-color: $navbar-color;
+    margin-bottom: .3rem;
 }
 
 .btn-lg {
@@ -130,6 +131,10 @@ table {
     font-size: 20px;
 }
 
+#btn-row {
+    width: 28%;
+}
+
 #database {
     background-color: white;
 }
@@ -140,7 +145,7 @@ table {
 
 // MEDIA QUERIES
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767.98px) {
     .navbar {
         z-index: 1;
     }
@@ -172,8 +177,13 @@ table {
         margin-top: 2%;
     }
 
-    #sidebar {
+    #sidebar-music {
         display:none;
+    }
+
+    #views {
+        float: left;
+        margin-top: .3rem;
     }
 
 }
@@ -193,5 +203,9 @@ table {
 
     .table>thead>tr>th {
         display: none;
+    }
+
+    #btn-row {
+        width: 100%;
     }
 }

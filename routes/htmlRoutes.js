@@ -1,6 +1,6 @@
 var db = require("../models");
 
-// Creating variable for Sequelize operators - not sure where else to put this
+// Creating variable for Sequelize operators
 var Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
@@ -58,6 +58,7 @@ module.exports = function (app) {
       }
     })
       .then(function (data1) {
+        // If user has entries in useralbum...
         if (data1.length > 0) {
           for (let i = 0; i < data1.length; i++) {
             matches.push(data1[i].item)
@@ -82,13 +83,34 @@ module.exports = function (app) {
                 albums: data2,
                 dashboard: data3
               };
-                res.render("music", hbsObject)
-              });
+              res.render("music", hbsObject)
             });
+          });
 
-          } else {
-              console.log("User has no data");
+        // If user does not have any entries in useralbum
+        } else {
+          // Query albums database, where album id does not match array items
+          db.Album.findAll({
+            limit: 50
             }
+          ).then(function (data2) {
+            // Query for NextUp sidebar
+            db.UserAlbum.findAll({
+              limit: 5,
+              where: {
+                user_id: req.user.id,
+                nextup: true
+              },
+              include: [db.Album]
+            }).then(function (data3) {
+              var hbsObject = {
+                albums: data2,
+                dashboard: data3
+              };
+              res.render("music", hbsObject)
+            });
+          });
+        }
       });
   });
 

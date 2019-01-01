@@ -13,7 +13,7 @@ $(document).ready(function() {
       };
   
       if (!userData.email || !userData.password) {
-        alert("Please fill out all forms")
+        document.getElementById("notFilledOut").innerHTML = "Please fill out all forms"
         return;
       }
   
@@ -32,7 +32,9 @@ $(document).ready(function() {
         window.location.replace(data);
         // throws error
       }).catch(function(err) {
+        document.getElementById("wrongInfo").innerHTML = "Incorrect login credentials. Please enter valid information"
         console.log(err);
+        return
       });
     }
   

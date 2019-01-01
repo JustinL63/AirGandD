@@ -3,9 +3,8 @@ $(document).ready(function () {
   // Variable to save userID;
   var userID;
 
-// ===========================================================
+  $("#signUp").on("click")
 
-  // CHECK TO SEE IF USER IS LOGGED IN
   $.get("/api/user_data").then(function (data) {
     if (data.id) {
       // Change navbar text to Log Out and point to logout page

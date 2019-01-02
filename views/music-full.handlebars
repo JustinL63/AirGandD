@@ -23,12 +23,7 @@
         </div>
     </div>
     {{!-- NextUp list - right sidebar --}}
-    <div class="col-md-3 px-0 border" id="sidebar-music">
-        <h3 class="p-3" id="bar">NextUp</h3>
-
-        {{#each dashboard}}
-        {{> music/sidebar}}
-        {{/each}}
+    {{> music/sidebar}}
 
         <p class="pl-3 py-1">Go here to see your<a href="/api/music/nextup"><strong> full list of
                     NextUp albums</strong></a>.</p>

@@ -56,20 +56,20 @@ $(document).ready(function () {
     // Run switch statement to determine correct get request
     switch (pageID) {
       case "music":
-        $.get("/api/music/nextup", function (data) {
-          window.location.href = "/api/music/nextup";
+        $.get("/music/nextup", function (data) {
+          window.location.href = "/music/nextup";
         })
         break;
       
         case "movie":
-        $.get("/api/movies/nextup", function (data) {
-          window.location.href = "/api/movies/nextup";
+        $.get("/movies/nextup", function (data) {
+          window.location.href = "/movies/nextup";
         })
         break;
 
         case "books":
-        $.get("/api/books/nextup", function (data) {
-          window.location.href = "/api/books/nextup";
+        $.get("/books/nextup", function (data) {
+          window.location.href = "/books/nextup";
         })
         break;
 
@@ -88,20 +88,20 @@ $(document).ready(function () {
     // Run switch statement to determine correct get request
     switch (pageID) {
       case "music":
-        $.get("/api/music/completed", function (data) {
-          window.location.href = "/api/music/completed";
+        $.get("/music/completed", function (data) {
+          window.location.href = "/music/completed";
         })
         break;
       
         case "movie":
-        $.get("/api/movies/completed", function (data) {
-          window.location.href = "/api/movies/completed";
+        $.get("/movies/completed", function (data) {
+          window.location.href = "/movies/completed";
         })
         break;
 
         case "books":
-        $.get("/api/books/completed", function (data) {
-          window.location.href = "/api/books/completed";
+        $.get("/books/completed", function (data) {
+          window.location.href = "/books/completed";
         })
         break;
 
@@ -120,20 +120,20 @@ $(document).ready(function () {
     // Run switch statement to determine correct get request
     switch (pageID) {
       case "music":
-        $.get("/api/music/full", function (data) {
-          window.location.href = "/api/music/full";
+        $.get("/music/full", function (data) {
+          window.location.href = "/music/full";
         })
         break;
       
         case "movie":
-        $.get("/api/movies/full", function (data) {
-          window.location.href = "/api/movies/full";
+        $.get("/movies/full", function (data) {
+          window.location.href = "/movies/full";
         })
         break;
 
         case "books":
-        $.get("/api/books/full", function (data) {
-          window.location.href = "/api/books/full";
+        $.get("/books/full", function (data) {
+          window.location.href = "/books/full";
         })
         break;
 
@@ -148,6 +148,12 @@ $(document).ready(function () {
     // Goes directly to "/music". HTML route runs the db query on page load
     window.location.href = "/music";
   });
+
+  // SIDEBAR - refresh
+  $("#side-refresh").on("click", function (event) {
+    event.preventDefault();
+    location.reload();
+  })
 // ================================================================================
 
   // CLICK FUNCTIONS FOR USER-DB INTERACTION IN VIEW REMAINING/FULL======================
@@ -165,7 +171,7 @@ $(document).ready(function () {
     console.log(Obj);
 
     // Send post request with new object to update user-album DB
-    $.post("/api/" + query, Obj
+    $.post(query, Obj
     ).then(function (data) {
       console.log(data);
       // If there's an error, log the error
@@ -294,7 +300,7 @@ $(document).ready(function () {
     // Send put request to update user-album DB
     $.ajax({
       method: "PUT",
-      url: "/api/" + query,
+      url: query,
       data: Obj
     }).then(function (data) {
       console.log(data);
@@ -310,10 +316,10 @@ $(document).ready(function () {
 
     // Grab ID of NextUp record
     nextID = $(this).attr("id");
-
-    // Check to see if button is pressed from main view or sidebar
+    
+    // Check to see if button is pressed from main view or sidebar/dashboard
     if ($(this).attr("data-site")) {
-      // If data-site is found, that means it's located in the sidebar and the .item div should be hidden
+      // If data-site is found, that means it's located in the sidebar/dashboard and the .item div should be hidden
       $(this).closest(".item").fadeOut();
   
     } else

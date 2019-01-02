@@ -6,7 +6,7 @@ module.exports = function (app) {
 
   // GET REQUESTS=================================================================
   // MUSIC - NEXTUP
-  app.get("/api/music/nextup", function (req, res) {     
+  app.get("/music/nextup", function (req, res) {     
     // Query database to find all albums that the user marked for NextUp
     db.UserAlbum.findAll({
       where: {
@@ -24,7 +24,7 @@ module.exports = function (app) {
   });
 
   // MUSIC - LISTENED
-  app.get("/api/music/completed", function (req, res) {
+  app.get("/music/completed", function (req, res) {
     // Query database for all albums that user has listened to
     db.UserAlbum.findAll({
       where: {
@@ -53,7 +53,7 @@ module.exports = function (app) {
   });
 
   // MUSIC - FULL DB
-  app.get("/api/music/full", function (req, res) {
+  app.get("/music/full", function (req, res) {
     // Query for full database
     db.Album.findAll({})
       .then(function (data1) {
@@ -75,7 +75,7 @@ module.exports = function (app) {
       });
   });
 
-  // app.get("/api/movies/nextup", function(req, res) {
+  // app.get("/movies/nextup", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all the movies the user has marked as interested in.
   //   })
@@ -84,7 +84,7 @@ module.exports = function (app) {
   //     });
   // });
 
-  // app.get("/api/movies/completed", function(req, res) {
+  // app.get("/movies/completed", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all the movies the user has marked as listen to.
   //   })
@@ -93,7 +93,7 @@ module.exports = function (app) {
   //     });
   // });
 
-  // });app.get("/api/movies/full", function(req, res) {
+  // });app.get("/movies/full", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all of the movies from the original music list, does not require user input
   //   })
@@ -102,7 +102,7 @@ module.exports = function (app) {
   //     });
   // });
 
-  // app.get("/api/books/nextup", function(req, res) {
+  // app.get("/books/nextup", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all the albums the user has marked as interested in.
   //   })
@@ -111,7 +111,7 @@ module.exports = function (app) {
   //     });
   // });
 
-  // app.get("/api/books/completed", function(req, res) {
+  // app.get("/books/completed", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all the music the user has marked as listen to.
   //   })
@@ -120,7 +120,7 @@ module.exports = function (app) {
   //     });
   // });
 
-  // app.get("/api/books/full", function(req, res) {
+  // app.get("/books/full", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all the albums the user has marked as interested in.
   //   })
@@ -133,7 +133,7 @@ module.exports = function (app) {
   // POST REQUESTS==================================================================
   // INITIAL INTERACTION WITH DATABASE
   // MUSIC - User marks album for NextUp
-  app.post("/api/music/nextup", function (req, res) {
+  app.post("/music/nextup", function (req, res) {
     db.UserAlbum.create(req.body)
       .then(function (dbCreate) {
         res.json(dbCreate);
@@ -141,7 +141,7 @@ module.exports = function (app) {
   });
 
   // MUSIC - User marks album as Listened To/Completed
-  app.post("/api/music/completed", function (req, res) {
+  app.post("/music/completed", function (req, res) {
     db.UserAlbum.create(req.body)
       .then(function (dbCreate) {
         res.json(dbCreate);
@@ -149,7 +149,7 @@ module.exports = function (app) {
   })
 
   // MUSIC - User removes album
-  app.post("/api/music/remove", function (req, res) {
+  app.post("/music/remove", function (req, res) {
     db.UserAlbum.create(req.body)
       .then(function (dbCreate) {
         res.json(dbCreate);
@@ -161,7 +161,7 @@ module.exports = function (app) {
 
   // PUT REQUESTS - updates to NextUp list====================================
   // MUSIC - User marks NextUp album as Listened To/Completed
-  app.put("/api/music/completed", function (req, res) {
+  app.put("/music/completed", function (req, res) {
     db.UserAlbum.update(
       req.body, 
       {
@@ -175,7 +175,7 @@ module.exports = function (app) {
   })
 
   // MUSIC - User marks NextUp album as Listened To/Completed
-  app.put("/api/music/remove", function (req, res) {
+  app.put("/music/remove", function (req, res) {
     db.UserAlbum.update(
       req.body, 
       {

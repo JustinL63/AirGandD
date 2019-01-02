@@ -1,4 +1,4 @@
-<body data-content="music">
+<body data-content="movies">
     <div class="container-fluid" id="big-container">
         <div class="row align-items-start my-5">
             <div class="col-md-9">
@@ -6,9 +6,9 @@
                 <div class="dropdown mb-3">
                     <div class="row">
                         <div class="col-md-10">
-                            <h5>Listened To</h5>
+                            <h5>Watched</h5>
                             <div class="small">
-                              * This view shows every album you've listened to from the list.
+                              * This view shows every movie you've watched from the list.
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -18,15 +18,15 @@
                     </div>
                 </div>
                 {{!-- Database data flows in here--}}
-                {{> music/table-album}}
+                {{> movies/table-movies}}
             </div>
         </div>
     </div>
 
             {{!-- NextUp list -right sidebar --}}
-            {{> music/sidebar}}
+            {{> movies/sidebar}}
 
-                <p class="pl-3 py-1">Go here to see your<a href="/music/nextup"><strong> full list of NextUp albums</strong></a>.</p>
+                <p class="pl-3 py-1">Go here to see your<a href="/movies/nextup"><strong> full list of NextUp movies</strong></a>.</p>
             </div>
         </div>
 </body>

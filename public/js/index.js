@@ -33,7 +33,7 @@ $(document).ready(function () {
         window.location.href = "/music";
         break;
         
-        case "movie":
+        case "movies":
         window.location.href = "/movies";
         break;
 
@@ -49,31 +49,31 @@ $(document).ready(function () {
   // NextUp
   $("#next-up").on("click", function (event) {
     event.preventDefault();
-
+    console.log("Button clicked")
     // Retrieve page section info 
     var pageID = $("body").attr("data-content");
-    
+
     // Run switch statement to determine correct get request
     switch (pageID) {
       case "music":
         $.get("/music/nextup", function (data) {
-          window.location.href = "/music/nextup";
+          // window.location.href = "/music/nextup";
         })
         break;
       
-        case "movie":
+      case "movies":
         $.get("/movies/nextup", function (data) {
           window.location.href = "/movies/nextup";
         })
         break;
 
-        case "books":
+      case "books":
         $.get("/books/nextup", function (data) {
           window.location.href = "/books/nextup";
         })
         break;
 
-        default:
+      default:
         console.log("Something is wrong.")
     }
   })
@@ -93,7 +93,7 @@ $(document).ready(function () {
         })
         break;
       
-        case "movie":
+        case "movies":
         $.get("/movies/completed", function (data) {
           window.location.href = "/movies/completed";
         })
@@ -125,7 +125,7 @@ $(document).ready(function () {
         })
         break;
       
-        case "movie":
+        case "movies":
         $.get("/movies/full", function (data) {
           window.location.href = "/movies/full";
         })
@@ -169,8 +169,9 @@ $(document).ready(function () {
       remove: removedval
     }
     console.log(Obj);
+    console.log(query);
 
-    // Send post request with new object to update user-album DB
+    // Send post request with new object to update user-album/music/movies DB
     $.post(query, Obj
     ).then(function (data) {
       console.log(data);
@@ -201,8 +202,8 @@ $(document).ready(function () {
         initialAction(true, false, false, "music/nextup");
         break;
 
-      case "movie":
-        console.log("Movie selected - code to come")
+      case "movies":
+        initialAction(true, false, false, "movies/nextup");
         break;
 
       case "books":
@@ -235,8 +236,8 @@ $(document).ready(function () {
         initialAction(false, true, false, "music/completed");
         break;
 
-      case "movie":
-        console.log("Movie selected - code to come")
+      case "movies":
+        initialAction(false, true, false, "movies/completed");
         break;
 
       case "books":
@@ -269,8 +270,8 @@ $(document).ready(function () {
         initialAction(false, false, true, "music/remove");
         break;
 
-      case "movie":
-        console.log("Movie selected - code to come")
+      case "movies":
+        initialAction(false, false, true, "movies/remove");
         break;
 
       case "books":
@@ -297,7 +298,7 @@ $(document).ready(function () {
     }
     console.log(Obj);
 
-    // Send put request to update user-album DB
+    // Send put request to update user-album/movies/books DB
     $.ajax({
       method: "PUT",
       url: query,
@@ -335,8 +336,8 @@ $(document).ready(function () {
         nextAction(true, false, "music/completed");
         break;
 
-      case "movie":
-        console.log("Movie selected - code to come")
+      case "movies":
+        nextAction(true, false, "movies/completed");
         break;
 
       case "books":
@@ -354,7 +355,7 @@ $(document).ready(function () {
 
     // Grab ID of NextUp record
     nextID = $(this).attr("id");
-    // Remove row from album table display
+    // Remove row from table display
     $(this).closest('td').empty();
 
     // Check to see if button is pressed from main view or sidebar
@@ -375,8 +376,8 @@ $(document).ready(function () {
         nextAction(false, true, "music/remove");
         break;
 
-      case "movie":
-        console.log("Movie selected - code to come")
+      case "movies":
+        nextAction(false, true, "movies/remove");
         break;
 
       case "books":

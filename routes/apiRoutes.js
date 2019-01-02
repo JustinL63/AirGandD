@@ -75,33 +75,77 @@ module.exports = function (app) {
       });
   });
 
-  // app.get("/movies/nextup", function(req, res) {
-  //   db.Post.findAll({
-  //     //function to get all the movies the user has marked as interested in.
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
-
-  // app.get("/movies/completed", function(req, res) {
-  //   db.Post.findAll({
-  //     //function to get all the movies the user has marked as listen to.
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
-
-  // });app.get("/movies/full", function(req, res) {
-  //   db.Post.findAll({
-  //     //function to get all of the movies from the original music list, does not require user input
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
-
+  // MOVIES - NEXTUP
+  app.get("/movies/nextup", function (req, res) {     
+      // Query database to find all movies that the user marked for NextUp
+      console.log("Movies is hit");
+      db.UserMovies.findAll({
+        where: {
+          user_id: req.user.id,
+          nextup: true
+        },
+        include: [db.Movies]
+      })
+        .then(function (data) {
+          var hbsObject = {
+            movies: data
+          };
+          res.render("movies-nextup", hbsObject)
+        })
+    });
+  
+    // MOVIES - LISTENED
+    app.get("/movies/completed", function (req, res) {
+      // Query database for all movies that user has listened to
+      db.UserMovies.findAll({
+        where: {
+          user_id: req.user.id,
+          completed: true
+        },
+        include: [db.Movies]
+      })
+      .then(function (data1) {
+        // Query for NextUp sidebar
+        db.UserMovies.findAll({
+          limit: 5,
+          where: {
+            user_id: req.user.id,
+            nextup: true
+          },
+          include: [db.Movies]
+        }).then(function (data2) {
+          var hbsObject = {
+            movies: data1,
+            dashboard: data2
+          };
+          res.render("movies-completed", hbsObject)
+        });
+      });
+    });
+  
+    // MOVIES - FULL DB
+    app.get("/movies/full", function (req, res) {
+      // Query for full database
+      db.Movies.findAll({})
+        .then(function (data1) {
+          // Query for NextUp sidebar
+          db.UserMovies.findAll({
+            limit: 5,
+            where: {
+              user_id: req.user.id,
+              nextup: true
+            },
+            include: [db.Movies]
+          }).then(function (data2) {
+            var hbsObject = {
+              movies: data1,
+              dashboard: data2
+            };
+            res.render("movies-full", hbsObject);
+          });
+        });
+    });
+  
   // app.get("/books/nextup", function(req, res) {
   //   db.Post.findAll({
   //     //function to get all the albums the user has marked as interested in.
@@ -156,13 +200,37 @@ module.exports = function (app) {
       });
   })
 
+  // MOVIES - User marks movie for NextUp
+  app.post("/movies/nextup", function (req, res) {
+    db.UserMovies.create(req.body)
+      .then(function (dbCreate) {
+        res.json(dbCreate);
+      });
+  });
+
+  // MOVIES - User marks movie as Listened To/Completed
+  app.post("/movies/completed", function (req, res) {
+    db.UserMovies.create(req.body)
+      .then(function (dbCreate) {
+        res.json(dbCreate);
+      });
+  })
+
+  // MOVIE - User removes album
+  app.post("/movies/remove", function (req, res) {
+    db.UserMovies.create(req.body)
+      .then(function (dbCreate) {
+        res.json(dbCreate);
+      });
+  })
+
   // =========================================================================
 
 
   // PUT REQUESTS - updates to NextUp list====================================
-  // MUSIC - User marks NextUp album as Listened To/Completed
-  app.put("/music/completed", function (req, res) {
-    db.UserAlbum.update(
+  // MOVIE - User marks NextUp movie as Listened To/Completed
+  app.put("/movies/completed", function (req, res) {
+    db.UserMovies.update(
       req.body, 
       {
         where: {
@@ -174,9 +242,37 @@ module.exports = function (app) {
       });
   })
 
-  // MUSIC - User marks NextUp album as Listened To/Completed
-  app.put("/music/remove", function (req, res) {
-    db.UserAlbum.update(
+  // MOVIE - User marks NextUp movie as Listened To/Completed
+  app.put("/movies/remove", function (req, res) {
+    db.UserMovies.update(
+      req.body, 
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbUpdate) {
+        res.json(dbUpdate);
+      });
+  })
+
+  // MOVIE - User marks NextUp movie as Listened To/Completed
+  app.put("/movies/completed", function (req, res) {
+    db.UserMovies.update(
+      req.body, 
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbUpdate) {
+        res.json(dbUpdate);
+      });
+  })
+
+  // MOVIE - User marks NextUp movie as Listened To/Completed
+  app.put("/movies/remove", function (req, res) {
+    db.UserMovies.update(
       req.body, 
       {
         where: {

@@ -37,6 +37,11 @@ a {
     color: $navbar-color;
 }
 
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
 .btn {
     background-color: $button-color;
     color: white;
@@ -44,6 +49,7 @@ a {
 
 .btn:hover {
     background-color: $button-hover;
+    border: none;
 }
 
 .btn-sm {
@@ -86,7 +92,7 @@ a {
 
 // DASHBOARD PAGE
 p#subline {
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .card-body {
@@ -129,6 +135,12 @@ table {
 #btn-accordion {
     background-color: $music-color;
     font-size: 20px;
+}
+
+.btn-link:hover{
+    color: white!important;
+    text-decoration: none;
+
 }
 
 #btn-row {

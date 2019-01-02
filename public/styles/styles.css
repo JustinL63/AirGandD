@@ -22,6 +22,11 @@ a {
   color: #153E5C;
 }
 
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
 .btn {
   background-color: #153E5c;
   color: white;
@@ -29,6 +34,7 @@ a {
 
 .btn:hover {
   background-color: #87AEB4;
+  border: none;
 }
 
 .btn-sm {
@@ -68,7 +74,7 @@ a {
 }
 
 p#subline {
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .card-body {
@@ -109,6 +115,11 @@ table {
 #btn-accordion {
   background-color: #F2BE54;
   font-size: 20px;
+}
+
+.btn-link:hover {
+  color: white !important;
+  text-decoration: none;
 }
 
 #btn-row {

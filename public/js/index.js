@@ -57,7 +57,7 @@ $(document).ready(function () {
     switch (pageID) {
       case "music":
         $.get("/music/nextup", function (data) {
-          // window.location.href = "/music/nextup";
+          window.location.href = "/music/nextup";
         })
         break;
       
@@ -207,7 +207,7 @@ $(document).ready(function () {
         break;
 
       case "books":
-        console.log("Books selected - code to come")
+        initialAction(true, false, false, "books/nextup");
         break;
 
       default:
@@ -241,7 +241,7 @@ $(document).ready(function () {
         break;
 
       case "books":
-        console.log("Books selected - code to come")
+        initialAction(false, true, false, "books/completed");
         break;
 
       default:
@@ -275,7 +275,7 @@ $(document).ready(function () {
         break;
 
       case "books":
-        console.log("Books selected - code to come")
+        initialAction(false, false, true, "books/remove");
         break;
 
       default:
@@ -341,7 +341,7 @@ $(document).ready(function () {
         break;
 
       case "books":
-        console.log("Books selected - code to come")
+        nextAction(true, false, "books/completed");
         break;
 
       default:
@@ -381,7 +381,7 @@ $(document).ready(function () {
         break;
 
       case "books":
-        console.log("Books selected - code to come")
+        nextAction(false, true, "books/remove");
         break;
 
       default:

@@ -1,0 +1,33 @@
+<body data-content="books">
+    <div class="container-fluid" id="big-container">
+        <div class="row align-items-start my-5">
+            <div class="col-12 col-md-9">
+                {{!-- View button --}}
+                <div class="dropdown">
+                    <div class="row">
+                        <div class="col-12 col-md-10">
+                            <h5>Full Database</h5>
+                            <div class="small">
+                                * Every book on the list, without any of your interactions.
+                            </div>
+                        </div>
+                        <div class="col col-md-2">
+                            {{!-- View button --}}
+                            {{> all/view-toggle}}
+                        </div>
+                    </div>
+                </div>
+                {{!-- Database flows in here --}}
+                {{> books/table-this}}
+            </div>
+        </div>
+    </div>
+    {{!-- NextUp list - right sidebar --}}
+    {{> books/sidebar}}
+
+        <p class="pl-3 py-1">Go here to see your<a href="/books/nextup"><strong> full list of
+                    NextUp books</strong></a>.</p>
+    </div>
+    </div>
+    </div>
+</body>

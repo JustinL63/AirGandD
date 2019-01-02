@@ -32,35 +32,30 @@
                                 <h5>Customizing Your Lists</h5>
                                 <p>Use these buttons to customize your lists</p>
                                 <ul>
-                                    <li><strong>NextUp:</strong> Adds the album to your NextUp list so you know you
-                                        want to
-                                        listen
-                                        to it in the future.
+                                    <li><strong>NextUp:</strong> Adds the item to your NextUp list so you know you
+                                        want to enjoy it in the future.
                                     </li>
-                                    <li><strong>Listened to:</strong> Marks the album as listened to; you can look
+                                    <li><strong>Finished:</strong> Marks the album as finished; you can look
                                         up the
-                                        albums
-                                        you've listened to whenever you want.
+                                        items
+                                        you've finished whenever you want.
                                     </li>
-                                    <li><strong>Remove:</strong> Only select this if you haven't listened to this
-                                        album and
+                                    <li><strong>Remove:</strong> Only select this if you haven't finished this
+                                        item and
                                         know
-                                        you never want to. It will be permanently deleted from the database.
+                                        you never want to. It will be permanently deleted from your lists.
                                     </li>
                                 </ul>
                                 <h5>Views Available</h5>
                                 <ul>
-                                    <li><strong>Remaining:</strong> Shows all of the albums that you have yet to
+                                    <li><strong>Remaining:</strong> Shows the items in the list that you have yet to
                                         interact with.</strong></li>
-                                    <li><strong>NextUp:</strong> Albums that you want to listen to. You can also
-                                        see your next
-                                        few albums in the sidebar on the right.</li>
-                                    <li><strong>Listened to:</strong> Albums from the list you've already
-                                        listened to.</li>
-                                    <li><strong>Full database:</strong> See all the albums in the database,
-                                        including ones
-                                        you
-                                        previously removed. <em>Note: This list does not include any customizing
+                                    <li><strong>NextUp:</strong> Items you want to enjoy. You can also
+                                        see your next few items in the sidebar on the right.</li>
+                                    <li><strong>Finished:</strong> Items from the list you've already
+                                        finished.</li>
+                                    <li><strong>Full database:</strong> See all the items in the database,
+                                        including ones you previously removed. <em>Note: This list does not include any customizing
                                             you may have done.</em></li>
                                 </ul>
                             </div>
@@ -96,14 +91,14 @@
                 <div class="col-12 col-md-4" id="movies-col">
                     <h4 class="py-2 border-bottom border-white">Movies NextUp</h4>
                     {{#each movies}}
-                    <h6 class="pt-1">{{Movies.title}}</h6>
-                    <p class="mb-1" id="subline">{{Movies.year}} — Rated: {{Movies.rating}}</p>
+                    <h6 class="pt-1">{{Movie.title}}</h6>
+                    <p class="mb-1" id="subline">{{Movie.year}} — Rated: {{Movie.rating}}</p>
                     <div class="border-bottom border-white pb-1 mb-1">
                         {{!-- Button to mark as listened to --}}
-                        <button type="button" class="btn btn-sm completed" id="{{Movies.id}}" data-page="movies"
+                        <button type="button" class="btn btn-sm btn-nx-completed" id="{{Movie.id}}" data-page="movies"
                             data-site="sidebar">Listened to</button>
                         {{!-- Button to remove --}}
-                        <button type="button" class="btn btn-sm ml-2 remove" id="{{Movies.id}}" data-page="movies"
+                        <button type="button" class="btn btn-sm ml-2 btn-nx-remove" id="{{Movie.id}}" data-page="movies"
                             data-site="sidebar">Remove</button>
                     </div>
                     {{/each}}
@@ -116,14 +111,14 @@
                 <div class="col-12 col-md-4" id="books-col">
                     <h4 class="py-2 border-bottom border-white">Books NextUp</h4>
                     {{#each books}}
-                    <h6 class="pt-1">{{Books.title}}</h6>
-                    <p class="mb-1" id="subline">{{Books.author}}</p>
+                    <h6 class="pt-1">{{Book.title}}</h6>
+                    <p class="mb-1" id="subline">{{Book.author}}</p>
                     <div class="border-bottom border-white pb-1 mb-1">
                         {{!-- Button to mark as listened to --}}
-                        <button type="button" class="btn btn-sm completed" id="{{Books.id}}" data-page="books"
-                            data-site="sidebar">Listened to</button>
+                        <button type="button" class="btn btn-sm btn-nx-completed" id="{{Book.id}}" data-page="books"
+                            data-site="sidebar">Finished</button>
                         {{!-- Button to remove --}}
-                        <button type="button" class="btn btn-sm ml-2 remove" id="{{Books.id}}" data-page="books"
+                        <button type="button" class="btn btn-sm ml-2 btn-nx-remove" id="{{Book.id}}" data-page="books"
                             data-site="sidebar">Remove</button>
                     </div>
                     {{/each}}

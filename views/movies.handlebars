@@ -1,4 +1,4 @@
-<body data-content="music">
+<body data-content="movies">
     <div class="container-fluid" id="big-container">
         <div class="row align-items-start my-5">
             <div class="col-12 col-md-9">
@@ -6,9 +6,9 @@
                 <div class="dropdown">
                     <div class="row">
                         <div class="col-12 col-md-10">
-                            <h5>Full Database</h5>
+                            <h5>Remaining movies</h5>
                             <div class="small">
-                                * Every album on the list, without any of your interactions.
+                                * The highest-ranked 50 movies that you haven't interacted with yet.
                             </div>
                         </div>
                         <div class="col col-md-2">
@@ -18,15 +18,16 @@
                     </div>
                 </div>
                 {{!-- Database flows in here --}}
-                {{> music/table-this}}
+                {{> movies/table-this}}
+                <button type="button" class="btn btn-sm" id="refresh">Refresh List</button>
             </div>
         </div>
     </div>
     {{!-- NextUp list - right sidebar --}}
-    {{> music/sidebar}}
-
-        <p class="pl-3 py-1">Go here to see your<a href="/music/nextup"><strong> full list of
-                    NextUp albums</strong></a>.</p>
+    {{> movies/sidebar}}
+        
+        <p class="pl-3 py-1">Go here to see your<a href="movies/nextup"><strong> full list of
+                    NextUp movies</strong></a>.</p>
     </div>
     </div>
     </div>

@@ -116,9 +116,72 @@ module.exports = function (app) {
 
   // Route to generic movies page
   app.get("/movies", isAuthenticated, function (req, res) {
-    res.render("movies", {
+    // Set array variable to hold matches returned from useralbum query
+    var matches = [];
+
+    // Query to search useralbum and bring back items that user is associated 
+    db.UserMovies.findAll({
+      where: {
+        user_id: req.user.id
+      }
     })
+      .then(function (data1) {
+        // If user has entries in useralbum...
+        if (data1.length > 0) {
+          for (let i = 0; i < data1.length; i++) {
+            matches.push(data1[i].item)
+          }
+          // Query albums database, where album id does not match array items
+          db.Movies.findAll({
+            limit: 50,
+            where: {
+              id: { [Op.notIn]: matches }
+            }
+          }).then(function (data2) {
+            // Query for NextUp sidebar
+            db.UserMovies.findAll({
+              limit: 5,
+              where: {
+                user_id: req.user.id,
+                nextup: true
+              },
+              include: [db.Movies]
+            }).then(function (data3) {
+              var hbsObject = {
+                movies: data2,
+                dashboard: data3
+              };
+              res.render("movies", hbsObject)
+            });
+          });
+
+        // If user does not have any entries in useralbum
+        } else {
+          // Query albums database, where album id does not match array items
+          db.Movies.findAll({
+            limit: 50
+            }
+          ).then(function (data2) {
+            // Query for NextUp sidebar
+            db.UserMovies.findAll({
+              limit: 5,
+              where: {
+                user_id: req.user.id,
+                nextup: true
+              },
+              include: [db.Movies]
+            }).then(function (data3) {
+              var hbsObject = {
+                movies: data2,
+                dashboard: data3
+              };
+              res.render("movies", hbsObject)
+            });
+          });
+        }
+      });
   });
+  
   // Route to generic books page
   app.get("/books", isAuthenticated, function (req, res) {
     res.render("books", {

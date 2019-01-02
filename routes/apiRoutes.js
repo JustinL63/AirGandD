@@ -6,7 +6,7 @@ module.exports = function (app) {
 
   // GET REQUESTS=================================================================
   // MUSIC - NEXTUP
-  app.get("/music/nextup", function (req, res) {     
+  app.get("/music/nextup", function (req, res) {
     // Query database to find all albums that the user marked for NextUp
     db.UserAlbum.findAll({
       where: {
@@ -33,23 +33,23 @@ module.exports = function (app) {
       },
       include: [db.Album]
     })
-    .then(function (data1) {
-      // Query for NextUp sidebar
-      db.UserAlbum.findAll({
-        limit: 5,
-        where: {
-          user_id: req.user.id,
-          nextup: true
-        },
-        include: [db.Album]
-      }).then(function (data2) {
-        var hbsObject = {
-          albums: data1,
-          dashboard: data2
-        };
-        res.render("music-completed", hbsObject)
+      .then(function (data1) {
+        // Query for NextUp sidebar
+        db.UserAlbum.findAll({
+          limit: 5,
+          where: {
+            user_id: req.user.id,
+            nextup: true
+          },
+          include: [db.Album]
+        }).then(function (data2) {
+          var hbsObject = {
+            albums: data1,
+            dashboard: data2
+          };
+          res.render("music-completed", hbsObject);
+        });
       });
-    });
   });
 
   // MUSIC - FULL DB
@@ -76,34 +76,34 @@ module.exports = function (app) {
   });
 
   // MOVIES - NEXTUP
-  app.get("/movies/nextup", function (req, res) {     
-      // Query database to find all movies that the user marked for NextUp
-      console.log("Movies is hit");
-      db.UserMovies.findAll({
-        where: {
-          user_id: req.user.id,
-          nextup: true
-        },
-        include: [db.Movies]
+  app.get("/movies/nextup", function (req, res) {
+    // Query database to find all movies that the user marked for NextUp
+    console.log("Movies is hit");
+    db.UserMovies.findAll({
+      where: {
+        user_id: req.user.id,
+        nextup: true
+      },
+      include: [db.Movies]
+    })
+      .then(function (data) {
+        var hbsObject = {
+          movies: data
+        };
+        res.render("movies-nextup", hbsObject)
       })
-        .then(function (data) {
-          var hbsObject = {
-            movies: data
-          };
-          res.render("movies-nextup", hbsObject)
-        })
-    });
-  
-    // MOVIES - LISTENED
-    app.get("/movies/completed", function (req, res) {
-      // Query database for all movies that user has listened to
-      db.UserMovies.findAll({
-        where: {
-          user_id: req.user.id,
-          completed: true
-        },
-        include: [db.Movies]
-      })
+  });
+
+  // MOVIES - LISTENED
+  app.get("/movies/completed", function (req, res) {
+    // Query database for all movies that user has listened to
+    db.UserMovies.findAll({
+      where: {
+        user_id: req.user.id,
+        completed: true
+      },
+      include: [db.Movies]
+    })
       .then(function (data1) {
         // Query for NextUp sidebar
         db.UserMovies.findAll({
@@ -121,57 +121,100 @@ module.exports = function (app) {
           res.render("movies-completed", hbsObject)
         });
       });
-    });
-  
-    // MOVIES - FULL DB
-    app.get("/movies/full", function (req, res) {
-      // Query for full database
-      db.Movies.findAll({})
-        .then(function (data1) {
-          // Query for NextUp sidebar
-          db.UserMovies.findAll({
-            limit: 5,
-            where: {
-              user_id: req.user.id,
-              nextup: true
-            },
-            include: [db.Movies]
-          }).then(function (data2) {
-            var hbsObject = {
-              movies: data1,
-              dashboard: data2
-            };
-            res.render("movies-full", hbsObject);
-          });
+  });
+
+  // MOVIES - FULL DB
+  app.get("/movies/full", function (req, res) {
+    // Query for full database
+    db.Movies.findAll({})
+      .then(function (data1) {
+        // Query for NextUp sidebar
+        db.UserMovies.findAll({
+          limit: 5,
+          where: {
+            user_id: req.user.id,
+            nextup: true
+          },
+          include: [db.Movies]
+        }).then(function (data2) {
+          var hbsObject = {
+            movies: data1,
+            dashboard: data2
+          };
+          res.render("movies-full", hbsObject);
         });
-    });
-  
-  // app.get("/books/nextup", function(req, res) {
-  //   db.Post.findAll({
-  //     //function to get all the albums the user has marked as interested in.
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
+      });
+  });
 
-  // app.get("/books/completed", function(req, res) {
-  //   db.Post.findAll({
-  //     //function to get all the music the user has marked as listen to.
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
+  // BOOKS - NEXTUP
+  app.get("/books/nextup", function (req, res) {
+    // Query database to find all movies that the user marked for NextUp
+    db.UserBooks.findAll({
+      where: {
+        user_id: req.user.id,
+        nextup: true
+      },
+      include: [db.Books]
+    })
+      .then(function (data) {
+        var hbsObject = {
+          books: data
+        };
+        res.render("books-nextup", hbsObject)
+      })
+  });
 
-  // app.get("/books/full", function(req, res) {
-  //   db.Post.findAll({
-  //     //function to get all the albums the user has marked as interested in.
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
+  // BOOKS - LISTENED
+  app.get("/books/completed", function (req, res) {
+    // Query database for all movies that user has listened to
+    db.UserBooks.findAll({
+      where: {
+        user_id: req.user.id,
+        completed: true
+      },
+      include: [db.Books]
+    })
+      .then(function (data1) {
+        // Query for NextUp sidebar
+        db.UserBooks.findAll({
+          limit: 5,
+          where: {
+            user_id: req.user.id,
+            nextup: true
+          },
+          include: [db.Books]
+        }).then(function (data2) {
+          var hbsObject = {
+            books: data1,
+            dashboard: data2
+          };
+          res.render("books-completed", hbsObject)
+        });
+      });
+  });
 
+  // BOOKS - FULL DB
+  app.get("/books/full", function (req, res) {
+    // Query for full database
+    db.Books.findAll({})
+      .then(function (data1) {
+        // Query for NextUp sidebar
+        db.UserBooks.findAll({
+          limit: 5,
+          where: {
+            user_id: req.user.id,
+            nextup: true
+          },
+          include: [db.Books]
+        }).then(function (data2) {
+          var hbsObject = {
+            books: data1,
+            dashboard: data2
+          };
+          res.render("books-full", hbsObject);
+        });
+      });
+  });
   // =================================================================================
 
   // POST REQUESTS==================================================================
@@ -216,9 +259,33 @@ module.exports = function (app) {
       });
   })
 
-  // MOVIE - User removes album
+  // MOVIE - User removes movie
   app.post("/movies/remove", function (req, res) {
     db.UserMovies.create(req.body)
+      .then(function (dbCreate) {
+        res.json(dbCreate);
+      });
+  })
+
+  // BOOKS - User marks books for NextUp
+  app.post("/books/nextup", function (req, res) {
+    db.UserBooks.create(req.body)
+      .then(function (dbCreate) {
+        res.json(dbCreate);
+      });
+  });
+
+  // BOOKS - User marks books as Read/Completed
+  app.post("/books/completed", function (req, res) {
+    db.UserBooks.create(req.body)
+      .then(function (dbCreate) {
+        res.json(dbCreate);
+      });
+  })
+
+  // BOOKS - User removes book
+  app.post("/books/remove", function (req, res) {
+    db.UserBooks.create(req.body)
       .then(function (dbCreate) {
         res.json(dbCreate);
       });
@@ -228,10 +295,38 @@ module.exports = function (app) {
 
 
   // PUT REQUESTS - updates to NextUp list====================================
+  // MUSIC - User marks NextUp album as Listened To/Completed
+  app.put("/music/completed", function (req, res) {
+    db.UserAlbum.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbUpdate) {
+        res.json(dbUpdate);
+      });
+  })
+
+  // MUSIC - User marks NextUp album as Remove
+  app.put("/music/remove", function (req, res) {
+    db.UserAlbum.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function (dbUpdate) {
+        res.json(dbUpdate);
+      });
+  })
+
   // MOVIE - User marks NextUp movie as Listened To/Completed
   app.put("/movies/completed", function (req, res) {
     db.UserMovies.update(
-      req.body, 
+      req.body,
       {
         where: {
           id: req.body.id
@@ -245,7 +340,7 @@ module.exports = function (app) {
   // MOVIE - User marks NextUp movie as Listened To/Completed
   app.put("/movies/remove", function (req, res) {
     db.UserMovies.update(
-      req.body, 
+      req.body,
       {
         where: {
           id: req.body.id
@@ -256,10 +351,10 @@ module.exports = function (app) {
       });
   })
 
-  // MOVIE - User marks NextUp movie as Listened To/Completed
-  app.put("/movies/completed", function (req, res) {
-    db.UserMovies.update(
-      req.body, 
+  // BOOKS - User marks NextUp book as Read
+  app.put("/books/completed", function (req, res) {
+    db.UserBooks.update(
+      req.body,
       {
         where: {
           id: req.body.id
@@ -270,10 +365,10 @@ module.exports = function (app) {
       });
   })
 
-  // MOVIE - User marks NextUp movie as Listened To/Completed
-  app.put("/movies/remove", function (req, res) {
-    db.UserMovies.update(
-      req.body, 
+  // BOOKS - User marks NextUp books as Read
+  app.put("/books/remove", function (req, res) {
+    db.UserBooks.update(
+      req.body,
       {
         where: {
           id: req.body.id

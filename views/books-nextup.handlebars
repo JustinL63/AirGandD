@@ -1,0 +1,49 @@
+<body data-content="books">
+    <div class="container-fluid" id="big-container">
+        <div class="row my-5">
+            <div class="col-12">
+                {{!-- View button --}}
+                <div class="dropdown mb-3">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>NextUp</h5>
+                            <div class="small">
+                                * This view shows every book you've marked for NextUp.
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            {{!-- View button --}}
+                            {{> all/view-toggle}}
+                        </div>
+                    </div>
+                </div>
+                {{!-- Database data flows in here--}}
+                <div class="row">
+    <div class="col-12">
+        <div class="table-responsive" id="database">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each books}}
+                    <tr>
+                        <th scope="row">{{Book.rank}}</th>
+                        <td>{{Book.title}}</td>
+                        <td>{{Book.author}}</td>
+                        <td id="btn-row"><button type="button" class="btn btn-sm btn-completed" data-page="books" id="{{this.id}}">Finished</button>
+                            <button type="button" class="btn btn-sm btn-remove" data-page="books" id="{{this.id}}">Remove</button></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+            </div>
+        </div>
+    </div>
+</body>

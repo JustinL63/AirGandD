@@ -6,7 +6,7 @@
                 <div class="dropdown mb-3">
                     <div class="row">
                         <div class="col-md-10">
-                            <h5>Listened To</h5>
+                            <h5>Finished</h5>
                             <div class="small">
                               * This view shows every album you've listened to from the list.
                             </div>
@@ -18,10 +18,35 @@
                     </div>
                 </div>
                 {{!-- Database data flows in here--}}
-                {{> music/table-album}}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive" id="database">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Rank</th>
+                                        <th scope="col">Album</th>
+                                        <th scope="col">Artist</th>
+                                        <th scope="col">Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each albums}}
+                                    <tr>
+                                        <th scope="row">{{Album.rank}}</th>
+                                        <td>{{Album.album}}</td>
+                                        <td>{{Album.artist}}</td>
+                                        <td>{{Album.Year}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        
+    
 
             {{!-- NextUp list -right sidebar --}}
             {{> music/sidebar}}

@@ -37,17 +37,15 @@ $(document).ready(function() {
         name: name,
         userName: userName
       }).then(function(data) {
-        checkInfo(emailInput, userNameInput);
+        document.location.replace(data)
       }).catch(function(err){
+        checkInfo(emailInput, userNameInput, data);
         console.log(err);
       });
-      function checkInfo(data, emailInput, userNameInput){
-        if (emailInput == data.email || userNameInput == data.userName){
-          document.getElementById("alreadyTaken").innerHTML = "Email or Username already taken. Please enter different information";
-          return;
-        } else{
-          window.location.replace(data)
-        }
+      function checkInfo(data){
+        if (!emailInput === data.email || !userNameInput === data.userName){
+        } else
+        document.getElementById("alreadyTaken").innerHTML = "Email or Username already taken. Please enter different information";
       }
     }
   });

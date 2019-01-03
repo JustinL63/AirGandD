@@ -55,7 +55,8 @@
                                     <li><strong>Finished:</strong> Items from the list you've already
                                         finished.</li>
                                     <li><strong>Full database:</strong> See all the items in the database,
-                                        including ones you previously removed. <em>Note: This list does not include any customizing
+                                        including ones you previously removed. <em>Note: This list does not include any
+                                            customizing
                                             you may have done.</em></li>
                                 </ul>
                             </div>
@@ -73,9 +74,9 @@
                     <h6 class="pt-1 item">{{Album.album}}</h6>
                     <p class="mb-1" id="subline">{{Album.artist}} — {{Album.Year}}</p>
                     <div class="border-bottom border-white pb-1 mb-1">
-                        {{!-- Button to mark as listened to --}}
+                        {{!-- Button to mark as finished --}}
                         <button type="button" class="btn btn-sm btn-nx-completed" id="{{Album.id}}" data-page="music"
-                            data-site="sidebar">Listened to</button>
+                            data-site="sidebar">Finished</button>
                         {{!-- Button to remove --}}
                         <button type="button" class="btn btn-sm ml-2 btn-nx-remove" id="{{Album.id}}" data-page="music"
                             data-site="sidebar">Remove</button>
@@ -87,45 +88,49 @@
                 <p><strong><a href="/music">Find more albums</strong></a> to add to your NextUp</p>
             </div>
 
-                {{!-- Movie column --}}
-                <div class="col-12 col-md-4" id="movies-col">
-                    <h4 class="py-2 border-bottom border-white">Movies NextUp</h4>
-                    {{#each movies}}
-                    <h6 class="pt-1">{{Movie.title}}</h6>
-                    <p class="mb-1" id="subline">{{Movie.year}} — Rated: {{Movie.rating}}</p>
+            {{!-- Movie column --}}
+            <div class="col-12 col-md-4" id="movies-col">
+                <h4 class="py-2 border-bottom border-white">Movies NextUp</h4>
+                {{#each movies}}
+                <div class="item">
+                    <h6 class="pt-1 item">{{Movie.title}}</h6>
+                    <p class="mb-1" id="subline">{{Movie.year}} — {{Movie.rating}}</p>
                     <div class="border-bottom border-white pb-1 mb-1">
-                        {{!-- Button to mark as listened to --}}
+                        {{!-- Button to mark as finished --}}
                         <button type="button" class="btn btn-sm btn-nx-completed" id="{{Movie.id}}" data-page="movies"
-                            data-site="sidebar">Listened to</button>
+                            data-site="sidebar">Finished</button>
                         {{!-- Button to remove --}}
                         <button type="button" class="btn btn-sm ml-2 btn-nx-remove" id="{{Movie.id}}" data-page="movies"
                             data-site="sidebar">Remove</button>
                     </div>
-                    {{/each}}
-
-                    {{!-- Link to movies page - helpful especially if there is no data yet --}}
-                    <p><strong><a href="/movies">Find more movies</strong></a> to add to your NextUp</p>
                 </div>
+                {{/each}}
 
-                {{!-- Books column --}}
-                <div class="col-12 col-md-4" id="books-col">
-                    <h4 class="py-2 border-bottom border-white">Books NextUp</h4>
-                    {{#each books}}
-                    <h6 class="pt-1">{{Book.title}}</h6>
+                {{!-- Link to movies page - helpful especially if there is no data yet --}}
+                <p><strong><a href="/movies">Find more movies</strong></a> to add to your NextUp</p>
+            </div>
+
+            {{!-- Books column --}}
+            <div class="col-12 col-md-4" id="books-col">
+                <h4 class="py-2 border-bottom border-white">Books NextUp</h4>
+                {{#each books}}
+                <div class="item">
+                    <h6 class="pt-1 item">{{Book.title}}</h6>
                     <p class="mb-1" id="subline">{{Book.author}}</p>
                     <div class="border-bottom border-white pb-1 mb-1">
-                        {{!-- Button to mark as listened to --}}
+                        {{!-- Button to mark as finished --}}
                         <button type="button" class="btn btn-sm btn-nx-completed" id="{{Book.id}}" data-page="books"
                             data-site="sidebar">Finished</button>
                         {{!-- Button to remove --}}
                         <button type="button" class="btn btn-sm ml-2 btn-nx-remove" id="{{Book.id}}" data-page="books"
                             data-site="sidebar">Remove</button>
                     </div>
-                    {{/each}}
-
-                    {{!-- Link to books page - helpful especially if there is no data yet --}}
-                    <p><strong><a href="/books">Find more books</strong></a> to add to your NextUp</p>
                 </div>
+                {{/each}}
+
+                {{!-- Link to books page - helpful especially if there is no data yet --}}
+                <p><strong><a href="/books">Find more books</strong></a> to add to your NextUp</p>
             </div>
         </div>
+    </div>
 </body>

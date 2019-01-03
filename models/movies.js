@@ -12,6 +12,13 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: false
         },
+        
+        year: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            unique: false
+        },        
+        
         rating:{
             type: DataTypes.STRING,
             allowNull: false,

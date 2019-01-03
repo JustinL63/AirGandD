@@ -49,7 +49,6 @@ $(document).ready(function () {
   // NextUp
   $("#next-up").on("click", function (event) {
     event.preventDefault();
-    console.log("Button clicked")
     // Retrieve page section info 
     var pageID = $("body").attr("data-content");
 
@@ -168,9 +167,7 @@ $(document).ready(function () {
       completed: completedval,
       remove: removedval
     }
-    console.log(Obj);
-    console.log(query);
-
+    
     // Send post request with new object to update user-album/music/movies DB
     $.post(query, Obj
     ).then(function (data) {
@@ -199,15 +196,15 @@ $(document).ready(function () {
     // Run switch statement to determine which parameters to pass to initialAction function
     switch (type) {
       case "music":
-        initialAction(true, false, false, "music/nextup");
+        initialAction(true, false, false, "/music/nextup");
         break;
 
       case "movies":
-        initialAction(true, false, false, "movies/nextup");
+        initialAction(true, false, false, "/movies/nextup");
         break;
 
       case "books":
-        initialAction(true, false, false, "books/nextup");
+        initialAction(true, false, false, "/books/nextup");
         break;
 
       default:
@@ -233,15 +230,15 @@ $(document).ready(function () {
     // Run switch statement to determine which parameters to pass to initialAction function and run function
     switch (type) {
       case "music":
-        initialAction(false, true, false, "music/completed");
+        initialAction(false, true, false, "/music/completed");
         break;
 
       case "movies":
-        initialAction(false, true, false, "movies/completed");
+        initialAction(false, true, false, "/movies/completed");
         break;
 
       case "books":
-        initialAction(false, true, false, "books/completed");
+        initialAction(false, true, false, "/books/completed");
         break;
 
       default:
@@ -267,15 +264,15 @@ $(document).ready(function () {
     // Run switch statement to determine which parameters to pass to initialAction function
     switch (type) {
       case "music":
-        initialAction(false, false, true, "music/remove");
+        initialAction(false, false, true, "/music/remove");
         break;
 
       case "movies":
-        initialAction(false, false, true, "movies/remove");
+        initialAction(false, false, true, "/movies/remove");
         break;
 
       case "books":
-        initialAction(false, false, true, "books/remove");
+        initialAction(false, false, true, "/books/remove");
         break;
 
       default:
@@ -291,13 +288,12 @@ $(document).ready(function () {
     // Create object to send to database 
     var Obj = {
       user_id: userID,
-      id: nextID,
+      item: nextID,
       nextup: false,
       completed: completedval,
       remove: removedval
     }
     console.log(Obj);
-
     // Send put request to update user-album/movies/books DB
     $.ajax({
       method: "PUT",
@@ -314,34 +310,40 @@ $(document).ready(function () {
   // LISTENED TO BUTTON
   $(".btn-nx-completed").on("click", function (event) {
     event.preventDefault();
-
+    console.log("Button clicked");
     // Grab ID of NextUp record
     nextID = $(this).attr("id");
     
-    // Check to see if button is pressed from main view or sidebar/dashboard
+    // Check to see where button was pressed
     if ($(this).attr("data-site")) {
       // If data-site is found, that means it's located in the sidebar/dashboard and the .item div should be hidden
       $(this).closest(".item").fadeOut();
   
-    } else
-      // It's in the main view and the buttons should be removed
-      $(this).closest('td').empty();
+    } else {
+      // It's in the main view and the table row should be removed
+      $(this).closest("tr").fadeOut(500, function() {
+        $(this).closest("tr").empty();
+      });
+    }
 
     // Grab data-page value
     var type = $(this).attr("data-page");
-
+    console.log("Type: " + type)
     // Run switch statement to determine which parameters to pass to initialAction function and run function
     switch (type) {
       case "music":
-        nextAction(true, false, "music/completed");
+        nextAction(true, false, "/music/completed");
+        console.log("music still working");
         break;
-
-      case "movies":
-        nextAction(true, false, "movies/completed");
+        
+        case "movies":
+        nextAction(true, false, "/movies/completed");
+        console.log("movies still working");
         break;
-
-      case "books":
-        nextAction(true, false, "books/completed");
+        
+        case "books":
+        nextAction(true, false, "/books/completed");
+        console.log("books still working");
         break;
 
       default:
@@ -355,33 +357,36 @@ $(document).ready(function () {
 
     // Grab ID of NextUp record
     nextID = $(this).attr("id");
-    // Remove row from table display
-    $(this).closest('td').empty();
 
     // Check to see if button is pressed from main view or sidebar
     if ($(this).attr("data-site")) {
       // If data-site is found, that means it's located in the sidebar and the .item div should be hidden
       $(this).closest(".item").fadeOut();
+      console.log("data-site ran")
   
-    } else
-      // It's in the main view and the buttons should be removed
-      $(this).closest('td').empty();
-    
+    } else {
+      // It's in the main view and the row should be removed
+      $(this).closest("tr").fadeOut(500, function() {
+        $(this).closest("tr").empty()
+        console.log("correct one ran"); 
+      });
+    }
+
     // Grab data-page value
     var type = $(this).attr("data-page");
 
     // Run switch statement to determine which parameters to pass to initialAction function and run function
     switch (type) {
       case "music":
-        nextAction(false, true, "music/remove");
+        nextAction(false, true, "/music/remove");
         break;
 
       case "movies":
-        nextAction(false, true, "movies/remove");
+        nextAction(false, true, "/movies/remove");
         break;
 
       case "books":
-        nextAction(false, true, "books/remove");
+        nextAction(false, true, "/books/remove");
         break;
 
       default:

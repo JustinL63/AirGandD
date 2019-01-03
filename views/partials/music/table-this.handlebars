@@ -18,15 +18,39 @@
                         <td>{{this.album}}</td>
                         <td>{{this.artist}}</td>
                         <td>{{this.Year}}</td>
-                        <td id="btn-row"><button type="button" class="btn btn-sm btn-nextup" data-page="music" id="{{this.id}}">NextUp</button>
-                            <button type="button" class="btn btn-sm btn-completed" data-page="music" id="{{this.id}}">Listened
-                                to</button>
-                            <button type="button" class="btn btn-sm btn-remove" data-page="music" id="{{this.id}}">Remove</button></td>
+                        <td id="btn-row">
+                            <button type="button" class="btn btn-sm btn-nextup" data-page="music" id="{{this.id}}">NextUp</button>
+                            <button type="button" class="btn btn-sm btn-completed" data-page="music" id="{{this.id}}">Listened to
+                            </button>
+                            <button type="button" class="btn btn-sm btn-remove" data-page="music" id="{{this.id}}">Remove</button>
+                        </td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
-            {{!-- guessing the script goes here for the search feature --}}
-            {{!-- var input = document.getElementById("serachInput")--}}
-            {{!-- var filter = input.value.toLowerCase --}}
+            <script>
+                function musicSearchBar() {
+                    var input = document.getElementById("musicInput");
+                    var string = input.value;
+                    var filter = string.toLowerCase();
+                    var tbody = document.getElementsByTagName("tbody")
+                    var tr = document.getElementsByTagName("tr")
+                    var artist = document.getElementById("artist")
+                    console.log("this is var input " + input)
+                    console.log("this is what happens after you run var input through var filter " + filter)
+                    console.log("this is what happens when I do input.value " + string)
+                    for (var i = 0; i < tr.length; i++) {
+                        var td = tr[i].getElementsByTagName("td")[1];
+                        if (td) {
+                            var txtValue = td.textContent || td.innerText;
+                            console.log("this is the txtValue " + txtValue)
+                            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                tr[i].style.display = "none";
+                            }
+                        }
+                    }
+                }
+            </script>
         </div>

@@ -3,8 +3,8 @@
     <h6 class="px-3" id="side-refresh"><a href=".">Refresh this list</a></h6>
     {{#each dashboard}}
     <div class="px-3 item">
-        <h5 class="pt-2">{{Movie.title}}</h5>
-        <p class="mb-2">{{Movie.year}} — {{Movie.rating}}</p>
+        <h6 class="pt-1">{{Movie.title}}</h6>
+        <p class="mb-2" id="subline">{{Movie.year}} — {{Movie.rating}}</p>
         <div class="border-bottom border-white pb-2 mb-2">
             <button type="button" class="btn btn-sm btn-nx-completed" id="{{this.id}}" data-page="movies" data-site="sidebar">Finished</button>
             <button type="button" class="btn btn-sm btn-nx-remove" id="{{this.id}}" data-page="movies" data-site="sidebar">Remove</button></td>

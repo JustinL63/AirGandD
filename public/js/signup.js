@@ -24,13 +24,14 @@ $(document).ready(function () {
     }
 
     // Once all fields have been filled (and email and user name values are unique), the form is emptied
-    signUpUser();
+    signUpUser(userData);
     emailInput.val("");
     passwordInput.val("");
     nameInput.val("");
     userNameInput.val("")
 
-    $.post("/api/signup", userdata
+    function signUpUser(userData){
+    $.post("/api/signup", userData
       ).then(function (data) {
         if (data.length > 0) {
           window.location.href = "/dashboard"
@@ -39,5 +40,6 @@ $(document).ready(function () {
           document.getElementById("alreadyTaken").innerHTML = "Email or Username already taken. Please enter different information";
         }   
       })
-    }) 
-  })
+    }
+  }) 
+})

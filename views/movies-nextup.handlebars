@@ -38,8 +38,8 @@
                         <td>{{Movie.title}}</td>
                         <td>{{Movie.year}}</td>
                         <td>{{Movie.rating}}</td>
-                        <td id="btn-row"><button type="button" class="btn btn-sm btn-nx-completed" data-page="movies" id="{{this.id}}">Finished</button>
-                            <button type="button" class="btn btn-sm btn-nx-remove" data-page="movies" id="{{this.id}}">Remove</button></td>
+                        <td id="btn-row"><button type="button" class="btn btn-sm btn-completed" data-page="movies" id="{{this.item}}">Finished</button>
+                            <button type="button" class="btn btn-sm btn-remove" data-page="movies" id="{{this.item}}">Remove</button></td>
                     </tr>
                     {{/each}}
                 </tbody>

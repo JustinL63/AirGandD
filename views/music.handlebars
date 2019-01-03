@@ -18,7 +18,36 @@
                     </div>
                 </div>
                 {{!-- Database flows in here --}}
-                {{> music/table-this}}
+                <div class="row">
+    <div class="col-12">
+        <div class="table-responsive mt-3" id="database">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Artist</th>
+                        <th scope="col">Year</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each albums}}
+                    <tr>
+                        <th scope="row">{{this.rank}}</th>
+                        <td>{{this.album}}</td>
+                        <td>{{this.artist}}</td>
+                        <td>{{this.Year}}</td>
+
+                        <td id="btn-row">
+                            <button type="button" class="btn btn-sm btn-nextup" data-page="music" id="{{this.id}}">NextUp</button>
+                            <button type="button" class="btn btn-sm btn-completed" data-page="music" id="{{this.id}}">Finished</button>
+                            <button type="button" class="btn btn-sm btn-remove" data-page="music" id="{{this.id}}">Remove</button></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
                 <button type="button" class="btn btn-sm" id="refresh">Refresh List</button>
             </div>
         </div>

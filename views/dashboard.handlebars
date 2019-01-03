@@ -75,10 +75,10 @@
                     <p class="mb-1" id="subline">{{Album.artist}} — {{Album.Year}}</p>
                     <div class="border-bottom border-white pb-1 mb-1">
                         {{!-- Button to mark as finished --}}
-                        <button type="button" class="btn btn-sm btn-nx-completed" id="{{Album.id}}" data-page="music"
+                        <button type="button" class="btn btn-sm btn-completed" id="{{this.item}}" data-page="music"
                             data-site="sidebar">Finished</button>
                         {{!-- Button to remove --}}
-                        <button type="button" class="btn btn-sm ml-2 btn-nx-remove" id="{{Album.id}}" data-page="music"
+                        <button type="button" class="btn btn-sm ml-2 btn-remove" id="{{this.item}}" data-page="music"
                             data-site="sidebar">Remove</button>
                     </div>
                 </div>
@@ -97,10 +97,10 @@
                     <p class="mb-1" id="subline">{{Movie.year}} — {{Movie.rating}}</p>
                     <div class="border-bottom border-white pb-1 mb-1">
                         {{!-- Button to mark as finished --}}
-                        <button type="button" class="btn btn-sm btn-nx-completed" id="{{Movie.id}}" data-page="movies"
+                        <button type="button" class="btn btn-sm btn-completed" id="{{this.item}}" data-page="movies"
                             data-site="sidebar">Finished</button>
                         {{!-- Button to remove --}}
-                        <button type="button" class="btn btn-sm ml-2 btn-nx-remove" id="{{Movie.id}}" data-page="movies"
+                        <button type="button" class="btn btn-sm ml-2 btn-remove" id="{{this.item}}" data-page="movies"
                             data-site="sidebar">Remove</button>
                     </div>
                 </div>
@@ -119,10 +119,10 @@
                     <p class="mb-1" id="subline">{{Book.author}}</p>
                     <div class="border-bottom border-white pb-1 mb-1">
                         {{!-- Button to mark as finished --}}
-                        <button type="button" class="btn btn-sm btn-nx-completed" id="{{Book.id}}" data-page="books"
+                        <button type="button" class="btn btn-sm btn-completed" id="{{this.item}}" data-page="books"
                             data-site="sidebar">Finished</button>
                         {{!-- Button to remove --}}
-                        <button type="button" class="btn btn-sm ml-2 btn-nx-remove" id="{{Book.id}}" data-page="books"
+                        <button type="button" class="btn btn-sm ml-2 btn-remove" id="{{this.item}}" data-page="books"
                             data-site="sidebar">Remove</button>
                     </div>
                 </div>

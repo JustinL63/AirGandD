@@ -1,7 +1,5 @@
 var db = require("../models");
 
-// console.log(userID);
-
 module.exports = function (app) {
 
   // GET REQUESTS=================================================================
@@ -78,7 +76,6 @@ module.exports = function (app) {
   // MOVIES - NEXTUP
   app.get("/movies/nextup", function (req, res) {
     // Query database to find all movies that the user marked for NextUp
-    console.log("Movies is hit");
     db.UserMovies.findAll({
       where: {
         user_id: req.user.id,
@@ -301,7 +298,8 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.id
+          item: req.body.item,
+          user_id: req.body.user_id
         }
       })
       .then(function (dbUpdate) {
@@ -315,7 +313,8 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.id
+          item: req.body.item,
+          user_id: req.body.user_id
         }
       })
       .then(function (dbUpdate) {
@@ -329,7 +328,8 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.id
+          item: req.body.item,
+          user_id: req.body.user_id
         }
       })
       .then(function (dbUpdate) {
@@ -343,7 +343,8 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.id
+          item: req.body.item,
+          user_id: req.body.user_id
         }
       })
       .then(function (dbUpdate) {
@@ -357,7 +358,8 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.id
+          item: req.body.item,
+          user_id: req.body.user_id
         }
       })
       .then(function (dbUpdate) {
@@ -371,7 +373,8 @@ module.exports = function (app) {
       req.body,
       {
         where: {
-          id: req.body.id
+          item: req.body.item,
+          user_id: req.body.user_id
         }
       })
       .then(function (dbUpdate) {

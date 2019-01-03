@@ -23,25 +23,25 @@ $(document).ready(function () {
   // Remaining List  
   $("#view-all").on("click", function (event) {
     event.preventDefault();
-    
+
     // Retrieve page section info 
     var pageID = $("body").attr("data-content");
-    
+
     // Run switch statement to determine which page to go to. HTML route runs the db query on page load
     switch (pageID) {
       case "music":
         window.location.href = "/music";
         break;
-        
-        case "movies":
+
+      case "movies":
         window.location.href = "/movies";
         break;
 
-        case "books":
+      case "books":
         window.location.href = "/books";
         break;
 
-        default:
+      default:
         console.log("Something is wrong.")
     }
   })
@@ -59,7 +59,7 @@ $(document).ready(function () {
           window.location.href = "/music/nextup";
         })
         break;
-      
+
       case "movies":
         $.get("/movies/nextup", function (data) {
           window.location.href = "/movies/nextup";
@@ -83,7 +83,7 @@ $(document).ready(function () {
 
     // Retrieve page section info 
     var pageID = $("body").attr("data-content");
-    
+
     // Run switch statement to determine correct get request
     switch (pageID) {
       case "music":
@@ -91,31 +91,31 @@ $(document).ready(function () {
           window.location.href = "/music/completed";
         })
         break;
-      
-        case "movies":
+
+      case "movies":
         $.get("/movies/completed", function (data) {
           window.location.href = "/movies/completed";
         })
         break;
 
-        case "books":
+      case "books":
         $.get("/books/completed", function (data) {
           window.location.href = "/books/completed";
         })
         break;
 
-        default:
+      default:
         console.log("Something is wrong.")
     }
   })
-    
+
   // Full database
   $("#full-db").on("click", function (event) {
     event.preventDefault();
 
     // Retrieve page section info 
     var pageID = $("body").attr("data-content");
-    
+
     // Run switch statement to determine correct get request
     switch (pageID) {
       case "music":
@@ -123,24 +123,24 @@ $(document).ready(function () {
           window.location.href = "/music/full";
         })
         break;
-      
-        case "movies":
+
+      case "movies":
         $.get("/movies/full", function (data) {
           window.location.href = "/movies/full";
         })
         break;
 
-        case "books":
+      case "books":
         $.get("/books/full", function (data) {
           window.location.href = "/books/full";
         })
         break;
 
-        default:
+      default:
         console.log("Something is wrong.")
     }
   })
-    
+
   // REFRESH - To update list on Remaining view  
   $("#refresh").on("click", function (event) {
     event.preventDefault();
@@ -153,7 +153,7 @@ $(document).ready(function () {
     event.preventDefault();
     location.reload();
   })
-// ================================================================================
+  // ================================================================================
 
   // CLICK FUNCTIONS FOR USER-DB INTERACTION IN VIEW REMAINING/FULL======================
   // Function to run when any db-interaction button is clicked the first time
@@ -184,10 +184,10 @@ $(document).ready(function () {
 
     // Grab item ID
     itemID = $(this).attr("id");
-    
+
     // Fade row, then remove it from table display    
-    $(this).closest("tr").fadeOut(500, function() {
-      $(this).closest("tr").empty() 
+    $(this).closest("tr").fadeOut(500, function () {
+      $(this).closest("tr").empty()
     });
 
     // Grab data-page value
@@ -218,10 +218,10 @@ $(document).ready(function () {
 
     // Grab item ID
     itemID = $(this).attr("id");
-    
+
     // Fade row, then remove it from table display    
-    $(this).closest("tr").fadeOut(500, function() {
-      $(this).closest("tr").empty() 
+    $(this).closest("tr").fadeOut(500, function () {
+      $(this).closest("tr").empty()
     });
 
     // Grab data-page value
@@ -252,10 +252,10 @@ $(document).ready(function () {
 
     // Grab item ID
     itemID = $(this).attr("id");
-  
+
     // Fade row, then remove it from table display    
-    $(this).closest("tr").fadeOut(500, function() {
-      $(this).closest("tr").empty() 
+    $(this).closest("tr").fadeOut(500, function () {
+      $(this).closest("tr").empty()
     });
 
     // Grab data-page value
@@ -305,7 +305,7 @@ $(document).ready(function () {
     }).catch(function (err) {
       console.log(err);
     });
-  }  
+  }
 
   // LISTENED TO BUTTON
   $(".btn-nx-completed").on("click", function (event) {
@@ -313,7 +313,7 @@ $(document).ready(function () {
     console.log("Button clicked");
     // Grab ID of NextUp record
     nextID = $(this).attr("id");
-    
+  
     // Check to see where button was pressed
     if ($(this).attr("data-site")) {
       // If data-site is found, that means it's located in the sidebar/dashboard and the .item div should be hidden
@@ -362,7 +362,6 @@ $(document).ready(function () {
     if ($(this).attr("data-site")) {
       // If data-site is found, that means it's located in the sidebar and the .item div should be hidden
       $(this).closest(".item").fadeOut();
-      console.log("data-site ran")
   
     } else {
       // It's in the main view and the row should be removed
@@ -393,4 +392,23 @@ $(document).ready(function () {
         console.log("Something is wrong.")
     }
   })
+//   function musicSearchBar() {
+//     var input = document.getElementById("serachInput");
+//     var filter = input.value.toLowerCase;
+//     var tbody = document.getElementByTagName("tbody")
+//     var tr = document.getElementByTagName("tr")
+//     var artist = document.getElementById("artist")
+//     for (var i = 0; i < tr.length; i++) {
+//       var td = tr[i].getElementsByTagName("td")[0];
+//       if (td) {
+//         var txtValue = artist;
+//         if (txtValue.toLowerCase().indexOf(filter) > -1) {
+//           tr[i].style.display = "";
+//         } else {
+//           tr[i].style.display = "none";
+//         }
+//       }
+//     }
+//   }
+// musicSearchBar();
 });

@@ -155,8 +155,8 @@ $(document).ready(function () {
   })
   // ================================================================================
 
-  // CLICK FUNCTIONS FOR USER-DB INTERACTION IN VIEW REMAINING/FULL======================
-  // Function to run when any db-interaction button is clicked the first time
+  // CLICK FUNCTIONS FOR USER-DB INTERACTION======================
+  // Function to run when any db-interaction button is clicked
   function initialAction(nextupval, completedval, removedval, query) {
 
     // Create object to send to database with 
@@ -185,10 +185,17 @@ $(document).ready(function () {
     // Grab item ID
     itemID = $(this).attr("id");
 
-    // Fade row, then remove it from table display    
-    $(this).closest("tr").fadeOut(500, function () {
-      $(this).closest("tr").empty()
-    });
+    // Check to see where button was pressed
+    if ($(this).attr("data-site")) {
+      // If data-site is found, that means it's located in the sidebar/dashboard and the .item div should be hidden
+      $(this).closest(".item").fadeOut();
+
+    } else {
+      // It's in the main view and the table row should be removed
+      $(this).closest("tr").fadeOut(500, function() {
+        $(this).closest("tr").empty();
+      });
+    }
 
     // Grab data-page value
     var type = $(this).attr("data-page");
@@ -219,10 +226,17 @@ $(document).ready(function () {
     // Grab item ID
     itemID = $(this).attr("id");
 
-    // Fade row, then remove it from table display    
-    $(this).closest("tr").fadeOut(500, function () {
-      $(this).closest("tr").empty()
-    });
+    // Check to see where button was pressed
+    if ($(this).attr("data-site")) {
+      // If data-site is found, that means it's located in the sidebar/dashboard and the .item div should be hidden
+      $(this).closest(".item").fadeOut();
+
+    } else {
+      // It's in the main view and the table row should be removed
+      $(this).closest("tr").fadeOut(500, function() {
+        $(this).closest("tr").empty();
+      });
+    }
 
     // Grab data-page value
     var type = $(this).attr("data-page");
@@ -253,10 +267,17 @@ $(document).ready(function () {
     // Grab item ID
     itemID = $(this).attr("id");
 
-    // Fade row, then remove it from table display    
-    $(this).closest("tr").fadeOut(500, function () {
-      $(this).closest("tr").empty()
-    });
+    // Check to see where button was pressed
+    if ($(this).attr("data-site")) {
+      // If data-site is found, that means it's located in the sidebar/dashboard and the .item div should be hidden
+      $(this).closest(".item").fadeOut();
+
+    } else {
+      // It's in the main view and the table row should be removed
+      $(this).closest("tr").fadeOut(500, function() {
+        $(this).closest("tr").empty();
+      });
+    }
 
     // Grab data-page value
     var type = $(this).attr("data-page");
@@ -283,132 +304,148 @@ $(document).ready(function () {
 
   // CLICK FUNCTIONS FOR NEXTUP INTERACTION======================
   // Function to run when any button is clicked in NextUp queue
-  function nextAction(completedval, removedval, query) {
+  // function nextAction(completedval, removedval, query) {
 
-    // Create object to send to database 
-    var Obj = {
-      user_id: userID,
-      item: nextID,
-      nextup: false,
-      completed: completedval,
-      remove: removedval
-    }
-    console.log(Obj);
-    // Send put request to update user-album/movies/books DB
-    $.ajax({
-      method: "PUT",
-      url: query,
-      data: Obj
-    }).then(function (data) {
-      console.log(data);
-      // If there's an error, log the error
-    }).catch(function (err) {
-      console.log(err);
-    });
-  }
+  //   // Create object to send to database 
+  //   var Obj = {
+  //     user_id: userID,
+  //     item: nextID,
+  //     nextup: false,
+  //     completed: completedval,
+  //     remove: removedval
+  //   }
+  //   console.log(Obj);
+  //   // Send put request to update user-album/movies/books DB
+  //   $.ajax({
+  //     method: "PUT",
+  //     url: query,
+  //     data: Obj
+  //   }).then(function (data) {
+  //     console.log(data);
+  //     // If there's an error, log the error
+  //   }).catch(function (err) {
+  //     console.log(err);
+  //   });
+  // }
 
-  // LISTENED TO BUTTON
-  $(".btn-nx-completed").on("click", function (event) {
-    event.preventDefault();
-    console.log("Button clicked");
-    // Grab ID of NextUp record
-    nextID = $(this).attr("id");
+  // // LISTENED TO BUTTON
+  // $(".btn-nx-completed").on("click", function (event) {
+  //   event.preventDefault();
+  //   console.log("Button clicked");
+  //   // Grab ID of NextUp record
+  //   nextID = $(this).attr("id");
   
-    // Check to see where button was pressed
-    if ($(this).attr("data-site")) {
-      // If data-site is found, that means it's located in the sidebar/dashboard and the .item div should be hidden
-      $(this).closest(".item").fadeOut();
+  //   // Check to see where button was pressed
+  //   if ($(this).attr("data-site")) {
+  //     // If data-site is found, that means it's located in the sidebar/dashboard and the .item div should be hidden
+  //     $(this).closest(".item").fadeOut();
   
-    } else {
-      // It's in the main view and the table row should be removed
-      $(this).closest("tr").fadeOut(500, function() {
-        $(this).closest("tr").empty();
-      });
-    }
+  //   } else {
+  //     // It's in the main view and the table row should be removed
+  //     $(this).closest("tr").fadeOut(500, function() {
+  //       $(this).closest("tr").empty();
+  //     });
+  //   }
 
-    // Grab data-page value
-    var type = $(this).attr("data-page");
-    console.log("Type: " + type)
-    // Run switch statement to determine which parameters to pass to initialAction function and run function
-    switch (type) {
-      case "music":
-        nextAction(true, false, "/music/completed");
-        console.log("music still working");
-        break;
+  //   // Grab data-page value
+  //   var type = $(this).attr("data-page");
+  //   console.log("Type: " + type)
+  //   // Run switch statement to determine which parameters to pass to initialAction function and run function
+  //   switch (type) {
+  //     case "music":
+  //       nextAction(true, false, "/music/completed");
+  //       console.log("music still working");
+  //       break;
         
-        case "movies":
-        nextAction(true, false, "/movies/completed");
-        console.log("movies still working");
-        break;
+  //       case "movies":
+  //       nextAction(true, false, "/movies/completed");
+  //       console.log("movies still working");
+  //       break;
         
-        case "books":
-        nextAction(true, false, "/books/completed");
-        console.log("books still working");
-        break;
+  //       case "books":
+  //       nextAction(true, false, "/books/completed");
+  //       console.log("books still working");
+  //       break;
 
-      default:
-        console.log("Something is wrong.")
-    }
-  })
+  //     default:
+  //       console.log("Something is wrong.")
+  //   }
+  // })
 
-  // REMOVE BUTTON
-  $(".btn-nx-remove").on("click", function (event) {
-    event.preventDefault();
+  // // REMOVE BUTTON
+  // $(".btn-nx-remove").on("click", function (event) {
+  //   event.preventDefault();
 
-    // Grab ID of NextUp record
-    nextID = $(this).attr("id");
+  //   // Grab ID of NextUp record
+  //   nextID = $(this).attr("id");
 
-    // Check to see if button is pressed from main view or sidebar
-    if ($(this).attr("data-site")) {
-      // If data-site is found, that means it's located in the sidebar and the .item div should be hidden
-      $(this).closest(".item").fadeOut();
+  //   // Check to see if button is pressed from main view or sidebar
+  //   if ($(this).attr("data-site")) {
+  //     // If data-site is found, that means it's located in the sidebar and the .item div should be hidden
+  //     $(this).closest(".item").fadeOut();
   
-    } else {
-      // It's in the main view and the row should be removed
-      $(this).closest("tr").fadeOut(500, function() {
-        $(this).closest("tr").empty()
-        console.log("correct one ran"); 
-      });
-    }
+  //   } else {
+  //     // It's in the main view and the row should be removed
+  //     $(this).closest("tr").fadeOut(500, function() {
+  //       $(this).closest("tr").empty()
+  //       console.log("correct one ran"); 
+  //     });
+  //   }
 
-    // Grab data-page value
-    var type = $(this).attr("data-page");
+  //   // Grab data-page value
+  //   var type = $(this).attr("data-page");
 
-    // Run switch statement to determine which parameters to pass to initialAction function and run function
-    switch (type) {
-      case "music":
-        nextAction(false, true, "/music/remove");
-        break;
+  //   // Run switch statement to determine which parameters to pass to initialAction function and run function
+  //   switch (type) {
+  //     case "music":
+  //       nextAction(false, true, "/music/remove");
+  //       break;
 
-      case "movies":
-        nextAction(false, true, "/movies/remove");
-        break;
+  //     case "movies":
+  //       nextAction(false, true, "/movies/remove");
+  //       break;
 
-      case "books":
-        nextAction(false, true, "/books/remove");
-        break;
+  //     case "books":
+  //       nextAction(false, true, "/books/remove");
+  //       break;
 
-      default:
-        console.log("Something is wrong.")
-    }
-  })
-//   function musicSearchBar() {
-//     var input = document.getElementById("serachInput");
-//     var filter = input.value.toLowerCase;
-//     var tbody = document.getElementByTagName("tbody")
-//     var tr = document.getElementByTagName("tr")
-//     var artist = document.getElementById("artist")
-//     for (var i = 0; i < tr.length; i++) {
-//       var td = tr[i].getElementsByTagName("td")[0];
-//       if (td) {
-//         var txtValue = artist;
-//         if (txtValue.toLowerCase().indexOf(filter) > -1) {
-//           tr[i].style.display = "";
-//         } else {
-//           tr[i].style.display = "none";
-//         }
-//       }
-//     }
-//   }
-// musicSearchBar();
+  //     default:
+  //       console.log("Something is wrong.")
+  //   }
+  // })
+
+  // // TEST BUTTON
+  // $(".btn-remove-test").on("click", function (event) {
+  //   event.preventDefault();
+
+  //   // Grab item ID
+  //   itemID = $(this).attr("id");
+
+  //   // Fade row, then remove it from table display    
+  //   $(this).closest("tr").fadeOut(500, function () {
+  //     $(this).closest("tr").empty()
+  //   });
+
+  //   // Grab data-page value
+  //   var type = $(this).attr("data-page");
+
+  //   // Run switch statement to determine which parameters to pass to initialAction function
+  //   switch (type) {
+  //     case "music":
+  //       initialAction(true, false, false, "/music/nextup");
+  //       break;
+
+  //     case "movies":
+  //       initialAction(true, false, false, "/movies/nextup");
+  //       break;
+
+  //     case "books":
+  //       initialAction(true, false, false, "/books/nextup");
+  //       break;
+
+  //     default:
+  //       console.log("Something is wrong.")
+  //   }
+  // })
+
 });

@@ -6,8 +6,8 @@
         <h6 class="pt-1">{{Album.album}}</h6>
         <p class="mb-2" id="subline">{{Album.artist}} — {{Album.Year}}</p>
         <div class="border-bottom border-white pb-2 mb-2">
-            <button type="button" class="btn btn-sm btn-nx-completed" id="{{this.id}}" data-page="music" data-site="sidebar">Finished</button>
-            <button type="button" class="btn btn-sm btn-nx-remove" id="{{this.id}}" data-page="music" data-site="sidebar">Remove</button></td>
+            <button type="button" class="btn btn-sm btn-completed" id="{{this.item}}" data-page="music" data-site="sidebar">Finished</button>
+            <button type="button" class="btn btn-sm btn-remove" id="{{this.item}}" data-page="music" data-site="sidebar">Remove</button></td>
         </div>
     </div>
     {{/each}}

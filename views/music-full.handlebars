@@ -8,12 +8,22 @@
                         <div class="col-12 col-md-10">
                             <h5>Full Database</h5>
                             <div class="small">
-                                * Every album on the list, without any of your interactions.
+                              * All albums listed, regardless of your previous actions.
+                              <br><em>Note: Any actions you take on this list will override your previous actions.</em>                     
                             </div>
-                            <input type="text" id="musicInput" onkeyup="musicSearchBar()" placeholder="search for your favorite artist" title="Type in a artist">
                         </div>
                         <div class="col col-md-2">
                             {{!-- View button --}} {{> all/view-toggle}}
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <form>
+                                <div class="form-group">
+                                    <label for="musicInput"><strong>Search by artist</strong></label>
+                                    <input type="text" class="form-control" id="musicInput" onkeyup="musicSearchBar()" placeholder="Enter artist here" title="Type in a artist">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -43,4 +43,41 @@ $(document).ready(function () {
             })
         }
     });
+
+    $("#btn-movie").on("click", function (event) {
+        event.preventDefault();
+        var addedMovie = $("#movieTitle");
+        var addedYear = $("#movieYear");
+        var addedRating = $("#movieRating");
+        
+        var movieAdded = {
+            title: addedMovie.val().trim(),
+            year: addedYear.val().trim(),
+            rating: addedRating.val().trim(),
+        }
+
+        console.log(movieAdded)
+        if (!movieAdded.title) {
+            document.getElementById("notFilledOut").innerHTML = "Please fill out all forms"
+            return;
+        }
+
+        addMovie(movieAdded.title, movieAdded.year, movieAdded.rating);
+        addedMovie.val("");
+        addedYear.val("");
+        addedRating.val("");
+
+        $("#btn-movie").modal("hide");
+
+        function addMovie(title, year, rating) {
+            $.post("/movies/addedMovies", {
+                user_id: userID,
+                title: title,
+                year: year,
+                rating: rating
+            }).catch(function (err) {
+                console.log(err);
+            })
+        }
+    });
 });

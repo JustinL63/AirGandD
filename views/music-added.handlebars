@@ -1,0 +1,55 @@
+<body data-content="music">
+    <div class="container-fluid" id="big-container">
+        <div class="row align-items-start my-5">
+            <div class="col-md-9">
+                {{!-- View button --}}
+                <div class="dropdown mb-3">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Added</h5>
+                            <div class="small">
+                              * This view shows every album you've added on your own.
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            {{!-- View button --}}
+                            {{> all/view-toggle}}
+                        </div>
+                    </div>
+                </div>
+                {{!-- Database data flows in here--}}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive" id="database">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Album</th>
+                                        <th scope="col">Artist</th>
+                                        <th scope="col">Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each albums}}
+                                    <tr>
+                                        <th scope="row">{{this.album}}</th>
+                                        <td>{{this.artist}}</td>
+                                        <td>{{this.year}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    
+
+            {{!-- NextUp list -right sidebar --}}
+            {{> music/sidebar}}
+
+                <p class="pl-3 py-1">Go here to see your<a href="/music/nextup"><strong> full list of NextUp albums</strong></a>.</p>
+            </div>
+        </div>
+</body>

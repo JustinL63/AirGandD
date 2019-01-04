@@ -4,7 +4,7 @@ $(document).ready(function() {
     var emailInput = $("#emailInput");
     var passwordInput = $("#passwordInput");
   
-    // checks to see if theres an empty form and checks to see if theres matching values in the user table
+    // checks to see if there's matching values in the user table
     loginForm.on("submit", function(event) {
       event.preventDefault();
       var userData = {
@@ -12,18 +12,13 @@ $(document).ready(function() {
         password: passwordInput.val().trim()
       };
   
-      if (!userData.email || !userData.password) {
-        document.getElementById("notFilledOut").innerHTML = "Please fill out all forms"
-        return;
-      }
-  
       // clears form field after you log in 
       loginUser(userData.email, userData.password);
       emailInput.val("");
       passwordInput.val("");
     });
   
-    // post to login api, goes to main webpage
+    // post to login api
     function loginUser(email, password) {
       $.post("/api/login", {
         email: email,
@@ -32,7 +27,7 @@ $(document).ready(function() {
         window.location.replace(data);
         // throws error
       }).catch(function(err) {
-        document.getElementById("wrongInfo").innerHTML = "Incorrect login credentials. Please enter valid information"
+        $("#wrongInfo").text("Incorrect login credentials. Please enter valid information.");
         console.log(err);
         return
       });

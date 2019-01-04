@@ -8,8 +8,8 @@
                         <div class="col-12 col-md-10">
                             <h5>Full Database</h5>
                             <div class="small">
-                              * All albums listed, regardless of your previous actions.
-                              <br><em>Note: Any actions you take on this list will override your previous actions.</em>                     
+                                * All albums listed, regardless of your previous actions.
+                                <br><em>Note: Any actions you take on this list will override your previous actions.</em>
                             </div>
                         </div>
                         <div class="col col-md-2">
@@ -24,6 +24,9 @@
                                     <input type="text" class="form-control" id="musicInput" placeholder="Enter artist here">
                                 </div>
                             </form>
+                            Want to add an album not in the list?&nbsp
+                            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addAlbum">Add
+                                album</button>
                         </div>
                     </div>
                 </div>
@@ -38,27 +41,38 @@
             <strong> full list of NextUp albums</strong>
         </a>.</p>
     </div>
+
+    {{!-- Modal with form to add album --}}
+    <div class="modal fade" id="addAlbum" tabindex="-1" role="dialog" aria-labelledby="addAlbumLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addAlbumLabel">Add your album</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="albumTitle">Title*</label>
+                            <input type="text" class="form-control" id="albumTitle" aria-describedby="albumReq" required>
+                            <small id="albumReq" class="form-text text-muted">An album title is required.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="albumArtist">Artist</label>
+                            <input type="text" class="form-control" id="albumArtist">
+                        </div>
+                        <div class="form-group">
+                            <label for="albumYear">Year</label>
+                            <input type="text" class="form-control" id="albumYear">
+                        </div>                                               
+                        <button type="submit" class="btn btn-small" id="btn-album">Add album</button>
+                        <button type="button" class="btn btn-small" data-dismiss="modal">Discard</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    {{!-- <script>
-        function musicSearchBar() {
-                    var input = document.getElementById("musicInput");
-                    var filter = input.value.toLowerCase;
-                    var tbody = document.getElementsByTagName("tbody")
-                    var tr = document.getElementsByTagName("tr")
-                    var artist = document.getElementById("artist")
-                    console.log("this is the the searched item" + input)
-                    for (var i = 0; i < tr.length; i++) {
-                        var td = tr[i].getElementsByTagName("td")[0];
-                        if (td) {
-                            var txtValue = artist.textContent || artist.innerText;
-                            if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                            } else {
-                                tr[i].style.display = "none";
-                            }
-                        }
-                    }
-                }
-    </script> --}}
+
 </body>

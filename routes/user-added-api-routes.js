@@ -61,4 +61,19 @@ module.exports = function (app) {
             res.end();
         })
     });
+
+    app.post("/books/addedBooks",function(req, res){
+
+        console.log(req.body.user_id)
+        console.log(req.body.title);
+        console.log(req.body.author);
+        
+        db.BookAdded.create({
+            user_id: req.body.user_id,
+            title: req.body.title,
+            author: req.body.author
+        }).then(function () {
+            res.end();
+        })
+    });
 }

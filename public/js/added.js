@@ -80,4 +80,37 @@ $(document).ready(function () {
             })
         }
     });
+
+    $("#btn-book").on("click", function (event) {
+        event.preventDefault();
+        var addedTitle = $("#bookTitle");
+        var addedAuthor = $("#bookAuthor");
+        
+        var bookAdded = {
+            title: addedTitle.val().trim(),
+            author: addedAuthor.val().trim(),
+        }
+
+        console.log(bookAdded)
+        if (!bookAdded.title) {
+            document.getElementById("notFilledOut").innerHTML = "Please fill out all forms"
+            return;
+        }
+
+        addBook(bookAdded.title, bookAdded.author);
+        addedTitle.val("");
+        addedAuthor.val("");
+
+        $("#btn-book").modal("hide");
+
+        function addBook(title, author) {
+            $.post("/books/addedBooks", {
+                user_id: userID,
+                title: title,
+                author: author
+            }).catch(function (err) {
+                console.log(err);
+            })
+        }
+    });
 });

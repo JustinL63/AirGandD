@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var BookAdded = sequelize.define("UserAddedBooks", {
+    var BookAdded = sequelize.define("BookAdded", {
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        artist:{
+        author:{
             type: DataTypes.STRING,
             allowNull: true,
         },

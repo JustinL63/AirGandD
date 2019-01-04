@@ -300,7 +300,34 @@ $(document).ready(function () {
         console.log("Something is wrong.")
     }
   })
-  // =========================================================================
+  // ===========================================================================
+
+  // AMAZON BUTTON LINKS========================================================
+  // MUSIC LINKS
+  $(".btn-amazon-music").on("click", function(){
+    var amazon = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dpopular&field-keywords=";
+    var dataAlbum = $(this).attr("data-album");
+    var alter = dataAlbum.replace(/[^A-Z0-9]+/ig, "+");
+    var search = amazon+alter;
+    window.open(search, "_blank")
+  });
+
+  $(".btn-amazon-movies").on("click", function(){
+    var amazon = "https://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Dmovies-tv&field-keywords=";
+    var dataMovie = $(this).attr("data-movie");
+    var alter = dataMovie.replace(/[^A-Z0-9]+/ig, "+");
+    var search = amazon+alter;
+    window.open(search, "_blank")
+  });
+
+  $(".btn-amazon-books").on("click", function(){
+    var amazon = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks&field-keywords=";
+    var dataBooks = $(this).attr("data-books");
+    var alter = dataBooks.replace(/[^A-Z0-9]+/ig, "+");
+    var search = amazon+alter;
+    window.open(search, "_blank")
+  })
+  
 
   // SEARCH BAR FUNCTIONS ON FULL DB VIEW =======================================
   // MUSIC SEARCH

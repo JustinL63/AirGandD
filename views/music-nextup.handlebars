@@ -3,49 +3,50 @@
         <div class="row my-5">
             <div class="col-12">
                 {{!-- View button --}}
-                <div class="dropdown mb-3">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <h5>NextUp</h5>
-                            <div class="small">
-                                * This view shows every album you've marked for NextUp.
-                            </div>
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <h5>NextUp</h5>
+                        <div class="small">
+                            * This view shows every album you've marked for NextUp.
                         </div>
-                        <div class="col-md-2">
-                            {{!-- View button --}}
-                            {{> all/view-toggle}}
-                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        {{!-- View button --}}
+                        {{> all/view-toggle}}
                     </div>
                 </div>
                 {{!-- Database data flows in here--}}
                 <div class="row">
-    <div class="col-12">
-        <div class="table-responsive" id="database">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Album</th>
-                        <th scope="col">Artist</th>
-                        <th scope="col">Year</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each albums}}
-                    <tr>
-                        <th scope="row">{{Album.rank}}</th>
-                        <td>{{Album.album}}</td>
-                        <td>{{Album.artist}}</td>
-                        <td>{{Album.Year}}</td>
-                        <td id="btn-row"><button type="button" class="btn btn-sm btn-completed" data-page="music" id="{{this.item}}">Finished</button>
-                            <button type="button" class="btn btn-sm btn-remove" data-page="music" id="{{this.item}}">Remove</button></td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
+                    <div class="col-12">
+                        <div class="table-responsive" id="database">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Rank</th>
+                                        <th scope="col">Album</th>
+                                        <th scope="col">Artist</th>
+                                        <th scope="col">Year</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each albums}}
+                                    <tr>
+                                        <th scope="row">{{Album.rank}}</th>
+                                        <td>{{Album.album}}</td>
+                                        <td>{{Album.artist}}</td>
+                                        <td>{{Album.Year}}</td>
+                                        <td id="btn-row">
+                                            <button type="image" class="btn btn-sm btn-amazon-music mr-2" data-page="music"
+                                                id="{{this.item}}" data-album="{{Album.album}}"><i class="fab fa-amazon"></i></button>
+                                            <button type="button" class="btn btn-sm btn-completed" data-page="music" id="{{this.item}}">Finished</button>
+                                            <button type="button" class="btn btn-sm btn-remove" data-page="music" id="{{this.item}}">Remove</button></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 </body>

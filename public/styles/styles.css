@@ -129,13 +129,17 @@ table {
   font-size: 20px;
 }
 
+.btn-amazon-music, .btn-amazon-movies, .btn-amazon-books {
+  background-color: #F2BE54;
+}
+
 .btn-link:hover {
   color: white !important;
   text-decoration: none;
 }
 
 #btn-row {
-  width: 28%;
+  width: 32%;
 }
 
 #database {

@@ -312,6 +312,7 @@ $(document).ready(function () {
     window.open(search, "_blank")
   });
 
+  // MOVIE LINKS
   $(".btn-amazon-movies").on("click", function(){
     var amazon = "https://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Dmovies-tv&field-keywords=";
     var dataMovie = $(this).attr("data-movie");
@@ -320,6 +321,7 @@ $(document).ready(function () {
     window.open(search, "_blank")
   });
 
+  // BOOK LINKS
   $(".btn-amazon-books").on("click", function(){
     var amazon = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks&field-keywords=";
     var dataBooks = $(this).attr("data-books");

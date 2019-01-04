@@ -10,11 +10,19 @@
                             <div class="small">
                                 * Every movie on the list, without any of your interactions.
                             </div>
-                        <input type="text" id="movieInput" onkeyup="movieSearchBar()" placeholder="search for your favorite Movie">
                         </div>
                         <div class="col col-md-2">
-                            {{!-- View button --}}
-                            {{> all/view-toggle}}
+                            {{!-- View button --}} {{> all/view-toggle}}
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <form>
+                                <div class="form-group">
+                                    <label for="movieInput"><strong>Search by title</strong></label>
+                                    <input type="text" class="form-control" id="movieInput" placeholder="Enter title here">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -10,11 +10,19 @@
                             <div class="small">
                                 * Every book on the list, without any of your interactions.
                             </div>
-                            <input type="text" id="bookInput" onkeyup="bookSearchBar()" placeholder="search for your favorite writer">
                         </div>
                         <div class="col col-md-2">
-                            {{!-- View button --}}
-                            {{> all/view-toggle}}
+                            {{!-- View button --}} {{> all/view-toggle}}
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <form>
+                                <div class="form-group">
+                                    <label for="bookInput"><strong>Search by author</strong></label>
+                                    <input type="text" class="form-control" id="bookInput" placeholder="Enter author here">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -26,8 +34,8 @@
     {{!-- NextUp list - right sidebar --}}
     {{> books/sidebar}}
 
-        <p class="pl-3 py-1">Go here to see your<a href="/books/nextup"><strong> full list of
-                    NextUp books</strong></a>.</p>
+    <p class="pl-3 py-1">Go here to see your<a href="/books/nextup"><strong> full list of
+                NextUp books</strong></a>.</p>
     </div>
     </div>
     </div>

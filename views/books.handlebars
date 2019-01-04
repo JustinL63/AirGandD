@@ -36,7 +36,9 @@
                         <th scope="row">{{this.rank}}</th>
                         <td>{{this.title}}</td>
                         <td>{{this.author}}</td>
-                        <td id="btn-row"><button type="button" class="btn btn-sm btn-nextup" data-page="books" id="{{this.id}}">NextUp</button>
+                        <td id="btn-row">
+                            <button type="button" class="btn btn-sm btn-amazon-books" data-page="books" id="{{this.id}}" data-books="{{this.title}}">Amazon</button>
+                            <button type="button" class="btn btn-sm btn-nextup" data-page="books" id="{{this.id}}">NextUp</button>
                             <button type="button" class="btn btn-sm btn-completed" data-page="books" id="{{this.id}}">Finished</button>
                             <button type="button" class="btn btn-sm btn-remove" data-page="books" id="{{this.id}}">Remove</button></td>
                     </tr>

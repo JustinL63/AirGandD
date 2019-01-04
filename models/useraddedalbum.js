@@ -17,5 +17,8 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     });
+    // AlbumAdded.associate = function(models) {
+    //     AlbumAdded.belongTo(models.User);
+    //     };
     return AlbumAdded;
 };

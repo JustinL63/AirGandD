@@ -41,5 +41,15 @@ module.exports = function(sequelize, DataTypes) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
 
+  // User.associate = function(models){
+  //   User.hasMany(models.AlbumAdded)
+  // }
+  // User.associate = function(models){
+  //   User.hasMany(models.MovieAdded)
+  // }
+  // User.associate = function(models){
+  //   User.hasMany(models.BookAdded)
+  // }
+
   return User;
 };

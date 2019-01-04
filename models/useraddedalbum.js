@@ -1,5 +1,5 @@
-module.exports = function (sequelize, DataTypes) {
-    var AlbumAdded = sequelize.define("UserAddedAlbums", {
+module.exports = function(sequelize, DataTypes){
+    var AlbumAdded = sequelize.define("AlbumAdded", {
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,

@@ -30,16 +30,18 @@ module.exports = function (app) {
     // add an album to AddedAlbums
     app.post("/music/addedalbums",function(req, res){
 
+        console.log(req.body.user_id)
         console.log(req.body.album);
         console.log(req.body.artist);
         console.log(req.body.year);
         
         db.AlbumAdded.create({
+            user_id: req.body.user_id,
             album: req.body.album,
             artist: req.body.artist,
             year: req.body.year
         }).then(function () {
-            res.redirect(307, "/music/addedalbums/post")
+            res.end();
         })
     });
 }

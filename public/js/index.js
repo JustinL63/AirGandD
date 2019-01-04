@@ -144,10 +144,30 @@ $(document).ready(function () {
   // REFRESH - To update list on Remaining view  
   $("#refresh").on("click", function (event) {
     event.preventDefault();
-    // Goes directly to "/music". HTML route runs the db query on page load
-    window.location.href = "/music";
-  });
+    
+    // Retrieve page section info
+    var pageID = $("body").attr("data-content");
 
+    // Run switch statement to determine correct get request
+    switch (pageID) {
+      // Goes directly to page. HTML route runs the db query on page load
+      case "music":
+        window.location.href = "/music";
+        break;
+
+      case "movies":
+        window.location.href = "/movies";
+        break;
+
+      case "books":
+        window.location.href = "/books";
+        break;
+
+      default:
+        console.log("Something is wrong.")
+    }
+  })
+  
   // SIDEBAR - refresh
   $("#side-refresh").on("click", function (event) {
     event.preventDefault();

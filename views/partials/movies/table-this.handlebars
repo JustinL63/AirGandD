@@ -25,28 +25,4 @@
                     {{/each}}
                 </tbody>
             </table>
-            <script>
-                function movieSearchBar() {
-                    var input = document.getElementById("movieInput");
-                    var string = input.value;
-                    var filter = string.toLowerCase();
-                    var tbody = document.getElementsByTagName("tbody")
-                    var tr = document.getElementsByTagName("tr")
-                    console.log("this is var input " + input)
-                    console.log("this is what happens after you run var input through var filter " + filter)
-                    console.log("this is what happens when I do input.value " + string)
-                    for (var i = 0; i < tr.length; i++) {
-                        var td = tr[i].getElementsByTagName("td")[0];
-                        if (td) {
-                            var txtValue = td.textContent || td.innerText;
-                            console.log("this is the txtValue " + txtValue)
-                            if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                            } else {
-                                tr[i].style.display = "none";
-                            }
-                        }
-                    }
-                }
-            </script>
         </div>

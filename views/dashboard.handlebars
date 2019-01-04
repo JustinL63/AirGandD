@@ -68,7 +68,9 @@
         <div class="row mt-3">
             {{!-- Music column - data from database coming in --}}
             <div class="col-12 col-md-4" id="music-col">
-                <h4 class="py-2 border-bottom border-white">Music NextUp</h4>
+                <h4 class="d-inline-block mt-2">Music NextUp</h4>
+                <a href="/music/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                <hr class="my-1">
                 {{#each albums}}
                 <div class="item">
                     <h6 class="pt-1 item">{{Album.album}}</h6>
@@ -90,7 +92,9 @@
 
             {{!-- Movie column --}}
             <div class="col-12 col-md-4" id="movies-col">
-                <h4 class="py-2 border-bottom border-white">Movies NextUp</h4>
+                <h4 class="d-inline-block mt-2">Movies NextUp</h4>
+                <a href="/movies/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                <hr class="my-1">
                 {{#each movies}}
                 <div class="item">
                     <h6 class="pt-1 item">{{Movie.title}}</h6>
@@ -112,7 +116,9 @@
 
             {{!-- Books column --}}
             <div class="col-12 col-md-4" id="books-col">
-                <h4 class="py-2 border-bottom border-white">Books NextUp</h4>
+                <h4 class="d-inline-block mt-2">Books NextUp</h4>
+                <a href="/books/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                <hr class="my-1">
                 {{#each books}}
                 <div class="item">
                     <h6 class="pt-1 item">{{Book.title}}</h6>

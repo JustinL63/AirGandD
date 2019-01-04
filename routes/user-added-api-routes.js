@@ -44,4 +44,21 @@ module.exports = function (app) {
             res.end();
         })
     });
+
+    app.post("/movies/addedMovies",function(req, res){
+
+        console.log(req.body.user_id)
+        console.log(req.body.title);
+        console.log(req.body.rating);
+        console.log(req.body.year);
+        
+        db.MovieAdded.create({
+            user_id: req.body.user_id,
+            title: req.body.title,
+            rating: req.body.rating,
+            year: req.body.year
+        }).then(function () {
+            res.end();
+        })
+    });
 }

@@ -27,11 +27,13 @@ module.exports = function (app) {
     db.UserAlbum.findAll({
       where: {
         user_id: req.user.id,
-        completed: true
+        completed: true,        
       },
+      order: ['item'],
       include: [db.Album]
     })
       .then(function (data1) {
+        console.log(data1);
         // Query for NextUp sidebar
         db.UserAlbum.findAll({
           limit: 5,
@@ -39,7 +41,7 @@ module.exports = function (app) {
             user_id: req.user.id,
             nextup: true
           },
-          include: [db.Album]
+          include: [db.Album],
         }).then(function (data2) {
           var hbsObject = {
             albums: data1,
@@ -99,6 +101,7 @@ module.exports = function (app) {
         user_id: req.user.id,
         completed: true
       },
+      order: ['item'],
       include: [db.Movies]
     })
       .then(function (data1) {
@@ -169,6 +172,7 @@ module.exports = function (app) {
         user_id: req.user.id,
         completed: true
       },
+      order: ['item'],
       include: [db.Books]
     })
       .then(function (data1) {

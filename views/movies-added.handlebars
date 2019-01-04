@@ -1,0 +1,53 @@
+<body data-content="movies">
+    <div class="container-fluid" id="big-container">
+        <div class="row align-items-start my-5">
+            <div class="col-md-9">
+                {{!-- View button --}}
+                <div class="dropdown mb-3">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Finished</h5>
+                            <div class="small">
+                              * This view shows every movie you've watched from the list.
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            {{!-- View button --}}
+                            {{> all/view-toggle}}
+                        </div>
+                    </div>
+                </div>
+                {{!-- Database data flows in here--}}
+                <div class="row">
+    <div class="col-12">
+        <div class="table-responsive" id="database">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each movies}}
+                    <tr>
+                        <th scope="row">{{this.title}}</th>
+                        <td>{{this.year}}</td>
+                        <td>{{this.rating}}</td>        
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+            </div>
+        </div>
+    </div>
+
+            {{!-- NextUp list -right sidebar --}}
+            {{> movies/sidebar}}
+
+                <p class="pl-3 py-1">Go here to see your<a href="/movies/nextup"><strong> full list of NextUp movies</strong></a>.</p>
+            </div>
+        </div>
+</body>

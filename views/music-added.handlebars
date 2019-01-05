@@ -8,7 +8,7 @@
                         <div class="col-md-10">
                             <h5>Added</h5>
                             <div class="small">
-                              * This view shows every album you've added on your own.
+                                * This view shows every album you've added but haven't interacted with yet.
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -27,6 +27,7 @@
                                         <th scope="col">Album</th>
                                         <th scope="col">Artist</th>
                                         <th scope="col">Year</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,6 +36,12 @@
                                         <th scope="row">{{this.album}}</th>
                                         <td>{{this.artist}}</td>
                                         <td>{{this.year}}</td>
+                                        <td id="btn-row">
+                                            <button type="image" class="btn btn-sm btn-amazon-music mr-2" data-page="music"
+                                                id="{{this.id}}" data-album="{{this.album}}"><i class="fab fa-amazon"></i></button>
+                                            <button type="button" class="btn btn-sm btn-nextup-add" data-page="music" id="{{this.id}}">NextUp</button>
+                                            <button type="button" class="btn btn-sm btn-completed-add" data-page="music" id="{{this.id}}">Finished</button>
+                                            <button type="button" class="btn btn-sm btn-remove-add" data-page="music" id="{{this.id}}">Remove</button></td>
                                     </tr>
                                     {{/each}}
                                 </tbody>
@@ -43,13 +50,13 @@
                     </div>
                 </div>
             </div>
-        
-    
+
+
 
             {{!-- NextUp list -right sidebar --}}
             {{> music/sidebar}}
 
-                <p class="pl-3 py-1">Go here to see your<a href="/music/nextup"><strong> full list of NextUp albums</strong></a>.</p>
-            </div>
+            <p class="pl-3 py-1">Go here to see your<a href="/music/nextup"><strong> full list of NextUp albums</strong></a>.</p>
         </div>
+    </div>
 </body>

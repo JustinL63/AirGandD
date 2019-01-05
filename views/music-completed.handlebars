@@ -28,6 +28,7 @@
                                         <th scope="col">Album</th>
                                         <th scope="col">Artist</th>
                                         <th scope="col">Year</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,6 +38,8 @@
                                         <td>{{Album.album}}</td>
                                         <td>{{Album.artist}}</td>
                                         <td>{{Album.Year}}</td>
+                                        <td id="btn-row">
+                                            <button type="image" class="btn btn-sm btn-amazon-music mr-2" data-page="music" id="{{this.item}}" data-album="{{Album.album}}"><i class="fab fa-amazon"></i></button>
                                     </tr>
                                     {{/each}}
                                 </tbody>

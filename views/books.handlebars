@@ -18,34 +18,7 @@
                     </div>
                 </div>
                 {{!-- Database flows in here --}}
-                <div class="row">
-    <div class="col-12">
-        <div class="table-responsive mt-3" id="database">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Author</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each books}}
-                    <tr>
-                        <th scope="row">{{this.rank}}</th>
-                        <td>{{this.title}}</td>
-                        <td>{{this.author}}</td>
-                        <td id="btn-row">
-                            <button type="button" class="btn btn-sm btn-amazon-books" data-page="books" id="{{this.id}}" data-books="{{this.title}}">Amazon</button>
-                            <button type="button" class="btn btn-sm btn-nextup" data-page="books" id="{{this.id}}">NextUp</button>
-                            <button type="button" class="btn btn-sm btn-completed" data-page="books" id="{{this.id}}">Finished</button>
-                            <button type="button" class="btn btn-sm btn-remove" data-page="books" id="{{this.id}}">Remove</button></td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
+                {{> books/table-this}}
                 <button type="button" class="btn btn-sm" id="refresh">Refresh List</button>
             </div>
         </div>

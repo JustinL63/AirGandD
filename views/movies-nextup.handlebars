@@ -32,6 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {{!-- Movies selected from list --}}
                     {{#each movies}}
                     <tr>
                         <th scope="row">{{Movie.rank}}</th>
@@ -45,8 +46,25 @@
                             <button type="button" class="btn btn-sm btn-remove" data-page="movies" id="{{this.item}}">Remove</button></td>
                     </tr>
                     {{/each}}
+                    {{!-- Movies added by user --}}
+                    {{#each add}}
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{this.title}}</td>
+                        <td>{{this.year}}</td>
+                        <td>{{this.rating}}</td>
+                        <td id="btn-row">
+                            <button type="image" class="btn btn-sm btn-amazon-movies mr-2" data-page="movies" id="{{this.id}}"
+                                data-movie="{{this.title}}"><i class="fab fa-amazon"></i></button>                            
+                            <button type="button" class="btn btn-sm btn-completed-add" data-page="movies" id="{{this.id}}">Finished</button>
+                            <button type="button" class="btn btn-sm btn-remove-add" data-page="movies" id="{{this.id}}">Remove</button></td>
+                    </tr>
+                    {{/each}}
+                    
                 </tbody>
             </table>
+            <div class="small">Movies you added will not have a rank.
+            </div>
         </div>
             </div>
         </div>

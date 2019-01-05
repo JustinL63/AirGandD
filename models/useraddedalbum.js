@@ -15,7 +15,23 @@ module.exports = function(sequelize, DataTypes){
         year:{
             type: DataTypes.INTEGER,
             allowNull: false
-        }
+        },
+        nextup:{
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
+        },
+        completed:{
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
+        },
+        remove:{
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
+        },
+
     });
     // AlbumAdded.associate = function(models) {
     //     AlbumAdded.belongTo(models.User);

@@ -23,7 +23,6 @@ module.exports = function (app) {
   // Route to generic create page
   app.get("/create", function (req, res) {
     res.render("create", {
-
     })
   });
 
@@ -39,7 +38,7 @@ module.exports = function (app) {
       include: [db.Album]
     })
       .then(function (data1) {
-        
+
         // Query for NextUp movies - next 5 
         db.UserMovies.findAll({
           limit: 5,
@@ -49,7 +48,7 @@ module.exports = function (app) {
           },
           include: [db.Movies]
         }).then(function (data2) {
-          
+
           // Query for NextUp books - next 5 
           db.UserBooks.findAll({
             limit: 5,
@@ -59,15 +58,15 @@ module.exports = function (app) {
             },
             include: [db.Books]
           }).then(function (data3) {
-              
-              // Save object with data from all three queries
-              var hbsObject = {
+
+            // Save object with data from all three queries
+            var hbsObject = {
               albums: data1,
               movies: data2,
               books: data3,
-              };
-              console.log(JSON.stringify(hbsObject));
-              res.render("dashboard", hbsObject)
+            };
+            console.log(JSON.stringify(hbsObject));
+            res.render("dashboard", hbsObject)
           })
         });
       });
@@ -140,54 +139,6 @@ module.exports = function (app) {
         }
       });
   });
-
-  // route to user added albums
-  app.get("/music/addedAlbums", isAuthenticated, function(req, res){
-    // query database to find all the added albums by loged in user
-    db.AlbumAdded.findAll({
-        where:{
-            user_id: req.user.id
-        },
-        // takes me to wherever the album add list will be
-    }).then(function (data) {
-        var hbsObject = {
-          albums: data
-        };
-        res.render("music-added", hbsObject)
-    })
-});
-
-// route to user added albums
-app.get("/movies/addedMovies", isAuthenticated, function(req, res){
-  // query database to find all the added albums by loged in user
-  db.MovieAdded.findAll({
-      where:{
-          user_id: req.user.id
-      },
-      // takes me to wherever the album add list will be
-  }).then(function (data) {
-      var hbsObject = {
-        title: data
-      };
-      res.render("movies-added", hbsObject)
-  })
-});
-
-// route to user added albums
-app.get("/books/addedBooks", isAuthenticated, function(req, res){
-  // query database to find all the added albums by loged in user
-  db.BookAdded.findAll({
-      where:{
-          user_id: req.user.id
-      },
-      // takes me to wherever the album add list will be
-  }).then(function (data) {
-      var hbsObject = {
-        title: data
-      };
-      res.render("books-added", hbsObject)
-  })
-});
 
   // Route to generic movies page
   app.get("/movies", isAuthenticated, function (req, res) {
@@ -324,9 +275,4 @@ app.get("/books/addedBooks", isAuthenticated, function(req, res){
         }
       });
   });
-
-  // Render 404 page for any unmatched routes
-  // app.get("*", function (req, res) {
-  //   res.render("404");
-  // });
 };

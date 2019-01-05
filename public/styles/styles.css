@@ -20,6 +20,9 @@
 .navbar-dark .user-link {
   display: none;
 }
+.navbar-dark #logo {
+  width: 160px;
+}
 
 a {
   color: #153E5C;

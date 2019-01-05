@@ -1,9 +1,9 @@
 <div class="col-md-3 px-0 border" id="sidebar-books">
     <h3 class="p-3" id="bar">NextUp</h3>
-    <h6 class="px-3" id="side-refresh"><a href=".">Refresh this list</a></h6>
+    <div class="px-3 pb-2 small" id="side-refresh"><a href=".">Refresh this list</a></div>
     {{#each dashboard}}
     <div class="px-3 item">
-        <h6 class="pt-2">{{Book.title}}</h6>
+        <h6 class="pt-1">{{Book.title}}</h6>
         <p class="mb-2" id="subline">{{Book.author}}</p>
         <div class="border-bottom border-white pb-2 mb-2">
             <button type="button" class="btn btn-sm btn-completed" id="{{this.item}}" data-page="books" data-site="sidebar">Finished</button>

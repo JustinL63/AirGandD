@@ -30,6 +30,10 @@ $button-hover: #87AEB4;
         margin-left: 20px;
         color: $navbar-text;
     }
+
+    .user-link {
+        display:none;
+    }
 }
 
 // GLOBAL STYLES
@@ -108,11 +112,11 @@ p#subline {
 }
 
 .card-body {
-    background-color: $movie-color;
+    background-color: white;
 }
 
 .card-header {
-    background-color: $music-color;
+    background-color: white;
     padding: 0;
 }
 
@@ -145,8 +149,14 @@ table {
 }
 
 #btn-accordion {
-    background-color: $music-color;
+    background-color: white;
     font-size: 20px;
+}
+
+#btn-accordion:hover {
+    color: $music-color!important;
+    font-size: 20px;
+    text-decoration: none;
 }
 
 .btn-amazon-music, .btn-amazon-movies, .btn-amazon-books {

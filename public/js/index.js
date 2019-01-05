@@ -3,17 +3,21 @@ $(document).ready(function () {
   // Variable to save userID;
   var userID;
 
-  $("#signUp").on("click")
-
+  //Get status of user  
   $.get("/api/user_data").then(function (data) {
     if (data.id) {
       // Change navbar text to Log Out and point to logout page
       $("#login-status").text("Log Out");
       $("#login-status").attr("href", "/logout");
+      
+      // Show navbar buttons
+      $(".user-link").show();
+
+      // Save user id to variable
       userID = data.id;
 
     } else {
-      // If user logs out, change text to Log In and point to login page
+      // If user logs out, change text to Log In, point to login page, hide navbar options
       $("#login-status").text("Log In");
       $("#login-status").attr("href", "/login");
     }

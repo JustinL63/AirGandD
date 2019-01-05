@@ -141,6 +141,54 @@ module.exports = function (app) {
       });
   });
 
+  // route to user added albums
+  app.get("/music/addedAlbums", isAuthenticated, function(req, res){
+    // query database to find all the added albums by loged in user
+    db.AlbumAdded.findAll({
+        where:{
+            user_id: req.user.id
+        },
+        // takes me to wherever the album add list will be
+    }).then(function (data) {
+        var hbsObject = {
+          albums: data
+        };
+        res.render("music-added", hbsObject)
+    })
+});
+
+// route to user added albums
+app.get("/movies/addedMovies", isAuthenticated, function(req, res){
+  // query database to find all the added albums by loged in user
+  db.MovieAdded.findAll({
+      where:{
+          user_id: req.user.id
+      },
+      // takes me to wherever the album add list will be
+  }).then(function (data) {
+      var hbsObject = {
+        title: data
+      };
+      res.render("movies-added", hbsObject)
+  })
+});
+
+// route to user added albums
+app.get("/books/addedBooks", isAuthenticated, function(req, res){
+  // query database to find all the added albums by loged in user
+  db.BookAdded.findAll({
+      where:{
+          user_id: req.user.id
+      },
+      // takes me to wherever the album add list will be
+  }).then(function (data) {
+      var hbsObject = {
+        title: data
+      };
+      res.render("books-added", hbsObject)
+  })
+});
+
   // Route to generic movies page
   app.get("/movies", isAuthenticated, function (req, res) {
     // Set array variable to hold matches returned from useralbum query

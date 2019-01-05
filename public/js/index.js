@@ -145,6 +145,38 @@ $(document).ready(function () {
     }
   })
 
+  // User added
+  $("#added").on("click", function (event) {
+    event.preventDefault();
+
+    // Retrieve page section info 
+    var pageID = $("body").attr("data-content");
+
+    // Run switch statement to determine correct get request
+    switch (pageID) {
+      case "music":
+        $.get("/music/addedAlbums", function (data) {
+          window.location.href = "/music/addedAlbums";
+        })
+        break;
+
+      case "movies":
+        $.get("/movies/addedMovies", function (data) {
+          window.location.href = "/movies/addedMovies";
+        })
+        break;
+
+      case "books":
+        $.get("/books/addedBooks", function (data) {
+          window.location.href = "/books/addedBooks";
+        })
+        break;
+
+      default:
+        console.log("Something is wrong.")
+    }
+  })
+
   // REFRESH - To update list on Remaining view  
   // REFRESH - To update list on Remaining view  
   $("#refresh").on("click", function (event) {

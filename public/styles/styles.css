@@ -17,6 +17,9 @@
   margin-left: 20px;
   color: white;
 }
+.navbar-dark .user-link {
+  display: none;
+}
 
 a {
   color: #153E5C;
@@ -90,11 +93,11 @@ p#subline {
 }
 
 .card-body {
-  background-color: #CDD4CA;
+  background-color: white;
 }
 
 .card-header {
-  background-color: #F2BE54;
+  background-color: white;
   padding: 0;
 }
 
@@ -125,8 +128,14 @@ table {
 }
 
 #btn-accordion {
-  background-color: #F2BE54;
+  background-color: white;
   font-size: 20px;
+}
+
+#btn-accordion:hover {
+  color: #F2BE54 !important;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .btn-amazon-music, .btn-amazon-movies, .btn-amazon-books {

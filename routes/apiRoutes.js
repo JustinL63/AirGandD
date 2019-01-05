@@ -24,7 +24,7 @@ module.exports = function (app) {
   // MUSIC - LISTENED
   app.get("/music/completed", function (req, res) {
     // Query database for all albums that user has listened to
-    db.UserAlbum.findAll({
+    db.UserAlbum.findAndCountAll({
       where: {
         user_id: req.user.id,
         completed: true,        
@@ -33,7 +33,6 @@ module.exports = function (app) {
       include: [db.Album]
     })
       .then(function (data1) {
-        console.log(data1);
         // Query for NextUp sidebar
         db.UserAlbum.findAll({
           limit: 5,
@@ -44,7 +43,8 @@ module.exports = function (app) {
           include: [db.Album],
         }).then(function (data2) {
           var hbsObject = {
-            albums: data1,
+            albums: data1.rows,
+            albumCount: data1.count,
             dashboard: data2
           };
           res.render("music-completed", hbsObject);
@@ -96,7 +96,7 @@ module.exports = function (app) {
   // MOVIES - LISTENED
   app.get("/movies/completed", function (req, res) {
     // Query database for all movies that user has listened to
-    db.UserMovies.findAll({
+    db.UserMovies.findAndCountAll({
       where: {
         user_id: req.user.id,
         completed: true
@@ -115,7 +115,8 @@ module.exports = function (app) {
           include: [db.Movies]
         }).then(function (data2) {
           var hbsObject = {
-            movies: data1,
+            movies: data1.rows,
+            movieCount: data1.count,
             dashboard: data2
           };
           res.render("movies-completed", hbsObject)
@@ -167,7 +168,7 @@ module.exports = function (app) {
   // BOOKS - LISTENED
   app.get("/books/completed", function (req, res) {
     // Query database for all movies that user has listened to
-    db.UserBooks.findAll({
+    db.UserBooks.findAndCountAll({
       where: {
         user_id: req.user.id,
         completed: true
@@ -186,7 +187,8 @@ module.exports = function (app) {
           include: [db.Books]
         }).then(function (data2) {
           var hbsObject = {
-            books: data1,
+            books: data1.rows,
+            bookCount: data1.count,
             dashboard: data2
           };
           res.render("books-completed", hbsObject)

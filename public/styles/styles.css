@@ -151,6 +151,10 @@ table {
   width: 32%;
 }
 
+#btn-row-fn {
+  width: 15%;
+}
+
 #database {
   background-color: white;
 }

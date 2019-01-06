@@ -2,6 +2,7 @@
     <h3 class="p-3" id="bar">NextUp</h3>
     <div class="px-3 pb-2 small" id="side-refresh"><a href=".">Refresh this list</a></h6>
     </div>
+    {{!-- Entries from provided list --}}
     {{#each dashboard}}
     <div class="px-3 item">
         <h6 class="pt-1">{{Album.album}}</h6>
@@ -9,6 +10,17 @@
         <div class="border-bottom border-white pb-2 mb-2">
             <button type="button" class="btn btn-sm btn-completed" id="{{this.item}}" data-page="music" data-site="sidebar">Finished</button>
             <button type="button" class="btn btn-sm btn-remove" id="{{this.item}}" data-page="music" data-site="sidebar">Remove</button></td>
+        </div>
+    </div>
+    {{/each}}
+    {{!-- Entries from user-added --}}
+    {{#each dashAdd}}
+    <div class="px-3 item">
+        <h6 class="pt-1">{{this.album}}</h6>
+        <p class="mb-2" id="subline">{{this.artist}} — {{this.Year}}</p>
+        <div class="border-bottom border-white pb-2 mb-2">
+            <button type="button" class="btn btn-sm btn-completed-add" id="{{this.id}}" data-page="music" data-site="sidebar">Finished</button>
+            <button type="button" class="btn btn-sm btn-remove-add" id="{{this.id}}" data-page="music" data-site="sidebar">Remove</button></td>
         </div>
     </div>
     {{/each}}

@@ -5,7 +5,7 @@ module.exports = function (app) {
     // GET REQUESTS FOR USER-ADDED CONTENT
     // route to user added albums
     app.get("/music/addedalbums", function (req, res) {
-        // query database to find all the added albums by loged in user
+        // query database to find all the added albums by logged in user
         db.AlbumAdded.findAll({
             where: {
                 user_id: req.user.id,
@@ -13,13 +13,47 @@ module.exports = function (app) {
                 completed: false,
                 remove: false
             },
-            // takes me to wherever the album add list will be
-        }).then(function (data) {
-            var hbsObject = {
-                albums: data
-            };
-            res.render("music-added", hbsObject)
-        })
+        }).then(function (data1) {
+            // Query for NextUp sidebar
+            db.UserAlbum.findAll({
+                limit: 5,
+                where: {
+                    user_id: req.user.id,
+                    nextup: true
+                },
+                include: [db.Album]
+            }).then(function (data2) {
+                // Store number of records in a variable
+                var records = data2.length;
+
+                // Check to see if records returned is 5 or more
+                if (records >= 5) {
+                    // If 5 are returned, render page and send object
+                    var hbsObject = {
+                        albums: data1,
+                        dashboard: data2
+                    };
+                    res.render("music-added", hbsObject)
+
+                } else {
+                    // If less than 5, query db for items from user-added nextup, equaling up to 5
+                    db.AlbumAdded.findAll({
+                        limit: (5 - records),
+                        where: {
+                            user_id: req.user.id,
+                            nextup: true
+                        }
+                    }).then(function (data3) {
+                        var hbsObject = {
+                            albums: data1,
+                            dashboard: data2,
+                            dashAdd: data3
+                        };
+                        res.render("music-added", hbsObject)
+                    });
+                }
+            });
+        });
     });
 
     // route to user added albums
@@ -32,14 +66,48 @@ module.exports = function (app) {
                 completed: false,
                 remove: false
             },
-            // takes me to wherever the album add list will be
-        }).then(function (data) {
-            var hbsObject = {
-                title: data
-            };
-            res.render("movies-added", hbsObject)
-        })
-    });
+        }).then(function (data1) {
+            // Query for NextUp sidebar
+            db.UserMovies.findAll({
+                limit: 5,
+                where: {
+                    user_id: req.user.id,
+                    nextup: true
+                },
+                include: [db.Movies]
+            }).then(function (data2) {
+                // Store number of records in a variable
+                var records = data2.length;
+
+                // Check to see if records returned is 5 or more
+                if (records >= 5) {
+                    // If 5 are returned, render page and send object
+                    var hbsObject = {
+                        movies: data1,
+                        dashboard: data2
+                    };
+                    res.render("movies-added", hbsObject)
+
+                } else {
+                    // If less than 5, query db for items from user-added nextup, equaling up to 5
+                    db.MovieAdded.findAll({
+                        limit: (5 - records),
+                        where: {
+                            user_id: req.user.id,
+                            nextup: true
+                        }
+                    }).then(function (data3) {
+                        var hbsObject = {
+                            movies: data1,
+                            dashboard: data2,
+                            dashAdd: data3
+                        };
+                        res.render("movies-added", hbsObject)
+                    });
+                }
+            });
+        });
+    })
 
     // route to user added albums
     app.get("/books/addedbooks", function (req, res) {
@@ -51,23 +119,52 @@ module.exports = function (app) {
                 completed: false,
                 remove: false
             },
-            // takes me to wherever the album add list will be
-        }).then(function (data) {
-            var hbsObject = {
-                title: data
-            };
-            res.render("books-added", hbsObject)
-        })
-    });
+        }).then(function (data1) {
+            // Query for NextUp sidebar
+            db.UserBooks.findAll({
+                limit: 5,
+                where: {
+                    user_id: req.user.id,
+                    nextup: true
+                },
+                include: [db.Books]
+            }).then(function (data2) {
+                // Store number of records in a variable
+                var records = data2.length;
+
+                // Check to see if records returned is 5 or more
+                if (records >= 5) {
+                    // If 5 are returned, render page and send object
+                    var hbsObject = {
+                        books: data1,
+                        dashboard: data2
+                    };
+                    res.render("books-added", hbsObject)
+
+                } else {
+                    // If less than 5, query db for items from user-added nextup, equaling up to 5
+                    db.BookAdded.findAll({
+                        limit: (5 - records),
+                        where: {
+                            user_id: req.user.id,
+                            nextup: true
+                        }
+                    }).then(function (data3) {
+                        var hbsObject = {
+                            books: data1,
+                            dashboard: data2,
+                            dashAdd: data3
+                        };
+                        res.render("books-added", hbsObject)
+                    });
+                }
+            });
+        });
+    })
 
     // POST REQUSTS TO ADD USER ITEM===========================================
     // add an album to AlbumAdded
     app.post("/music/addedalbums", function (req, res) {
-
-        console.log(req.body.user_id)
-        console.log(req.body.album);
-        console.log(req.body.artist);
-        console.log(req.body.year);
 
         db.AlbumAdded.create({
             user_id: req.body.user_id,
@@ -81,12 +178,6 @@ module.exports = function (app) {
 
     // add a movie to MovieAdded
     app.post("/movies/addedmovies", function (req, res) {
-
-        console.log(req.body.user_id)
-        console.log(req.body.title);
-        console.log(req.body.rating);
-        console.log(req.body.year);
-
         db.MovieAdded.create({
             user_id: req.body.user_id,
             title: req.body.title,
@@ -99,11 +190,6 @@ module.exports = function (app) {
 
     // add a book to BookAdded
     app.post("/books/addedbooks", function (req, res) {
-
-        console.log(req.body.user_id)
-        console.log(req.body.title);
-        console.log(req.body.author);
-
         db.BookAdded.create({
             user_id: req.body.user_id,
             title: req.body.title,

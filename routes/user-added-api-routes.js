@@ -170,7 +170,9 @@ module.exports = function (app) {
             user_id: req.body.user_id,
             album: req.body.album,
             artist: req.body.artist,
-            year: req.body.year
+            year: req.body.year,
+            nextup: req.body.nextup,
+            completed: req.body.completed
         }).then(function () {
             res.end();
         })
@@ -182,7 +184,9 @@ module.exports = function (app) {
             user_id: req.body.user_id,
             title: req.body.title,
             rating: req.body.rating,
-            year: req.body.year
+            year: req.body.year,
+            nextup: req.body.nextup,
+            completed: req.body.completed
         }).then(function () {
             res.end();
         })
@@ -193,7 +197,9 @@ module.exports = function (app) {
         db.BookAdded.create({
             user_id: req.body.user_id,
             title: req.body.title,
-            author: req.body.author
+            author: req.body.author,
+            nextup: req.body.nextup,
+            completed: req.body.completed
         }).then(function () {
             res.end();
         })

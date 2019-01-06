@@ -14,10 +14,26 @@ $(document).ready(function () {
         var addedAlbum = $("#albumTitle");
         var addedArtist = $("#albumArtist");
         var addedYear = $("#albumYear");
+        var radioChecked = $("input:checked").val();
+        
+        // Set nextup, finished values based on radioChecked
+        if (radioChecked === "nextUp") {
+            nextUpVal = true;
+            finishedVal = false;
+        } else if (radioChecked === "finished") {
+            nextUpVal = false;
+            finishedVal = true;
+        } else {
+            nextUpVal = false;
+            finishedVal = false;
+        }
+
         var musicAdded = {
             album: addedAlbum.val().trim(),
             artist: addedArtist.val().trim(),
-            year: addedYear.val().trim()
+            year: addedYear.val().trim(),
+            nextup: nextUpVal,
+            completed: finishedVal
         }
         console.log(musicAdded)
         if (!musicAdded.album) {
@@ -25,19 +41,23 @@ $(document).ready(function () {
             return;
         }
 
-        addAlbum(musicAdded.album, musicAdded.artist, musicAdded.year);
+        addAlbum(musicAdded.album, musicAdded.artist, musicAdded.year, musicAdded.nextup, musicAdded.completed);
         addedAlbum.val("");
         addedArtist.val("");
         addedYear.val("");
+        $("input[name='addRadio']").prop("checked", false);
+        
 
         $("#btn-album").modal("hide");
 
-        function addAlbum(album, artist, year) {
+        function addAlbum(album, artist, year, nextup, completed) {
             $.post("/music/addedalbums", {
                 user_id: userID,
                 album: album,
                 artist: artist,
-                year: year
+                year: year,
+                nextup: nextup,
+                completed: completed
             }).catch(function (err) {
                 console.log(err);
             })
@@ -49,11 +69,26 @@ $(document).ready(function () {
         var addedMovie = $("#movieTitle");
         var addedYear = $("#movieYear");
         var addedRating = $("#movieRating");
+        var radioChecked = $("input:checked").val();
+        
+        // Set nextup, finished values based on radioChecked
+        if (radioChecked === "nextUp") {
+            nextUpVal = true;
+            finishedVal = false;
+        } else if (radioChecked === "finished") {
+            nextUpVal = false;
+            finishedVal = true;
+        } else {
+            nextUpVal = false;
+            finishedVal = false;
+        }
 
         var movieAdded = {
             title: addedMovie.val().trim(),
             year: addedYear.val().trim(),
             rating: addedRating.val().trim(),
+            nextup: nextUpVal,
+            completed: finishedVal
         }
 
         console.log(movieAdded)
@@ -62,19 +97,22 @@ $(document).ready(function () {
             return;
         }
 
-        addMovie(movieAdded.title, movieAdded.year, movieAdded.rating);
+        addMovie(movieAdded.title, movieAdded.year, movieAdded.rating, movieAdded.nextup, movieAdded.completed);
         addedMovie.val("");
         addedYear.val("");
         addedRating.val("");
+        $("input[name='addRadio']").prop("checked", false);
 
         $("#btn-movie").modal("hide");
 
-        function addMovie(title, year, rating) {
+        function addMovie(title, year, rating, nextup, completed) {
             $.post("/movies/addedmovies", {
                 user_id: userID,
                 title: title,
                 year: year,
-                rating: rating
+                rating: rating,
+                nextup: nextup,
+                completed: completed
             }).catch(function (err) {
                 console.log(err);
             })
@@ -85,10 +123,25 @@ $(document).ready(function () {
         event.preventDefault();
         var addedTitle = $("#bookTitle");
         var addedAuthor = $("#bookAuthor");
+        var radioChecked = $("input:checked").val();
+        
+        // Set nextup, finished values based on radioChecked
+        if (radioChecked === "nextUp") {
+            nextUpVal = true;
+            finishedVal = false;
+        } else if (radioChecked === "finished") {
+            nextUpVal = false;
+            finishedVal = true;
+        } else {
+            nextUpVal = false;
+            finishedVal = false;
+        }
 
         var bookAdded = {
             title: addedTitle.val().trim(),
             author: addedAuthor.val().trim(),
+            nextup: nextUpVal,
+            completed: finishedVal
         }
 
         console.log(bookAdded)
@@ -97,17 +150,21 @@ $(document).ready(function () {
             return;
         }
 
-        addBook(bookAdded.title, bookAdded.author);
+        addBook(bookAdded.title, bookAdded.author, bookAdded.nextup, bookAdded.completed);
         addedTitle.val("");
         addedAuthor.val("");
+        $("input[name='addRadio']").prop("checked", false);
+
 
         $("#btn-book").modal("hide");
 
-        function addBook(title, author) {
+        function addBook(title, author, nextup, completed) {
             $.post("/books/addedbooks", {
                 user_id: userID,
                 title: title,
-                author: author
+                author: author,
+                nextup: nextup,
+                completed: completed
             }).catch(function (err) {
                 console.log(err);
             })

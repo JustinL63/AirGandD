@@ -20,7 +20,8 @@
 .navbar-dark .user-link {
   display: none;
 }
-.navbar-dark #logo {
+
+#logo {
   width: 160px;
 }
 

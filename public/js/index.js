@@ -365,7 +365,9 @@ $(document).ready(function () {
     var amazon = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dpopular&field-keywords=";
     var dataAlbum = $(this).attr("data-album");
     var alter = dataAlbum.replace(/[^A-Z0-9]+/ig, "+");
-    var search = amazon+alter;
+    var dataArtist = $(this).attr("data-artist")
+    var alterArtist = dataArtist.replace(/[^A-Z0-9]+/ig, "+");
+    var search = amazon+alter+"+"+alterArtist;
     window.open(search, "_blank")
   });
 
@@ -432,9 +434,46 @@ $(document).ready(function () {
     }
   });
 
+  // SEARCH DROPDOWN CONTROLLERS
+  // $(".dropdown-item").on("click", function(){
+  //   var changeSearch = $(this).attr("#novelSearch")
+  //   if (changeSearch === "bookTitleSearch"){
+  //     $(".novelSearch").attr("id")
+  //     $(".novelSearch").attr("bookSearch")
+  //     console.log("title search")
+  //   }
+  // })
+
+  // filter down authors
+  $("#authorSearchButton").on("click", function(event){
+    event.preventDefault();
+
+    var changeSearch = $(".novelSearchBar").attr("id");
+    if (changeSearch === "bookTitleSearchFilter"){
+      $(".novelSearchBar").attr("id", "authorSearchFilter")
+      $(".novelSearchBar").attr("placeholder", "Enter author here")
+    }
+    $(".novelSearchBar").val("")
+    console.log("author search")
+  })
+
+  // filter down book titles
+  $("#bookTitleSearchButton").on("click", function(event){
+    event.preventDefault();
+    var changeSearch = $(".novelSearchBar").attr("id");
+    if (changeSearch === "authorSearchFilter"){
+      $(".novelSearchBar").attr("id", "bookTitleSearchFilter")
+      $(".novelSearchBar").attr("placeholder", "Enter your books title here")
+    }
+    $(".novelSearchBar").val("")
+    console.log("book title search")
+  })
+
+
   // BOOK SEARCH
-  $("#bookInput").keyup(function () {
-    var input = document.getElementById("bookInput");
+  // search by author
+  $("#authorSearchFilter").keyup(function () {
+    var input = document.getElementById("authorSearchFilter");
     var string = input.value;
     var filter = string.toLowerCase();
     var tr = document.getElementsByTagName("tr")
@@ -443,6 +482,29 @@ $(document).ready(function () {
     console.log("this is what happens when I do input.value " + string)
     for (var i = 0; i < tr.length; i++) {
       var td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        var txtValue = td.textContent || td.innerText;
+        console.log("this is the txtValue " + txtValue)
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  });
+
+  // Book title Search
+  $("#bookTitleSearchFilter").keyup(function () {
+    var input = document.getElementById("bookTitleSearchFilter");
+    var string = input.value;
+    var filter = string.toLowerCase();
+    var tr = document.getElementsByTagName("tr")
+    console.log("this is var input " + input)
+    console.log("this is what happens after you run var input through var filter " + filter)
+    console.log("this is what happens when I do input.value " + string)
+    for (var i = 0; i < tr.length; i++) {
+      var td = tr[i].getElementsByTagName("td")[0];
       if (td) {
         var txtValue = td.textContent || td.innerText;
         console.log("this is the txtValue " + txtValue)

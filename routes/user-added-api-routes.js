@@ -67,7 +67,6 @@ module.exports = function (app) {
                 remove: false
             },
         }).then(function (data1) {
-            console.log(data1)
             // Query for NextUp sidebar
             db.UserMovies.findAll({
                 limit: 5,

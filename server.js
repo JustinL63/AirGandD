@@ -32,6 +32,10 @@ require("./routes/apiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);
 require("./routes/user-api-routes.js")(app);
 require("./routes/user-added-api-routes.js")(app);
+// Render 404 page for any unmatched routes
+app.get("*", function(req, res) {
+  res.render("404");
+});
 
 var syncOptions = { force: false };
 

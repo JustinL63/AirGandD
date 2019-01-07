@@ -30,15 +30,15 @@ https://nextup2018.herokuapp.com
 ***
 ## Screenshots
 ### Dashboard View
-![Dashboard photo](https://github.com/JustinL63/NextUp/blob/master/public/images/dashboard.png "Dashboard")
+![Dashboard photo](https://github.com/JustinL63/NextUp/blob/master/public/images/dashboard.PNG "Dashboard")
 ### Albums Remaining View
-![Albums photo](https://github.com/JustinL63/NextUp/blob/master/public/images/albums.png "Albums Remaining")
+![Albums photo](https://github.com/JustinL63/NextUp/blob/master/public/images/albums.PNG "Albums Remaining")
 ### Add Movie
-![Add Movie photo](https://github.com/JustinL63/NextUp/blob/master/public/images/add.png "Add Movie")
+![Add Movie photo](https://github.com/JustinL63/NextUp/blob/master/public/images/add.PNG "Add Movie")
 ### Mobile Dashboard
-![Mobile Dashboard photo](https://github.com/JustinL63/NextUp/blob/master/public/images/mobile-dashboard.png "Mobile Dashboard")
+![Mobile Dashboard photo](https://github.com/JustinL63/NextUp/blob/master/public/images/mobile-dashboard.PNG "Mobile Dashboard")
 ### Mobile Books
-![Mobile Books photo](https://github.com/JustinL63/NextUp/blob/master/public/images/mobile-books.png "Mobile Books")
+![Mobile Books photo](https://github.com/JustinL63/NextUp/blob/master/public/images/mobile-books.PNG "Mobile Books")
 
 
 

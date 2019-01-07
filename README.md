@@ -32,14 +32,18 @@ https://nextup2018.herokuapp.com
 ### Dashboard View
 ![Dashboard photo](https://github.com/JustinL63/NextUp/blob/master/public/images/dashboard.PNG "Dashboard")
 
+
 ### Albums Remaining View
 ![Albums photo](https://github.com/JustinL63/NextUp/blob/master/public/images/albums.PNG "Albums Remaining")
+
 
 ### Add Movie
 ![Add Movie photo](https://github.com/JustinL63/NextUp/blob/master/public/images/add.PNG "Add Movie")
 
+
 ### Mobile Dashboard
 ![Mobile Dashboard photo](https://github.com/JustinL63/NextUp/blob/master/public/images/mobile-dashboard.PNG "Mobile Dashboard")
+
 
 ### Mobile Books
 ![Mobile Books photo](https://github.com/JustinL63/NextUp/blob/master/public/images/mobile-books.PNG "Mobile Books")

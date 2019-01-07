@@ -1,4 +1,4 @@
-<body data-content="movies">
+<body data-content="books">
     <div class="container-fluid" id="big-container">
         <div class="row align-items-start my-5">
             <div class="col-12 col-md-9">
@@ -8,7 +8,7 @@
                         <div class="col-12 col-md-10">
                             <h5>Full Database</h5>
                             <div class="small">
-                                * All movies in our database, regardless of your previous actions.
+                                * Alls book in our database, regardless of your previous actions.
                                 <br><em>Note: Any actions you take on this list will override your previous actions.</em>
                             </div>
                         </div>
@@ -20,33 +20,40 @@
                         <div class="col-md-6">
                             <form>
                                 <div class="form-group">
-                                    <label for="movieInput"><strong>Search by title</strong></label>
-                                    <input type="text" class="form-control" id="movieTitleSearchFilter" placeholder="Enter title here">
+                                    <label for="bookInput">
+                                        <strong>Search by: </strong>
+                                    <button class="btn btn-sm" id="authorSearchButton">Author</button>
+                                    <button class="btn btn-sm" id="bookTitleSearchButton">Title</button>
+                                    </label>            
+                                            
+                                    <input type="text" class="form-control novelSearchBar" id="authorSearchFilter" placeholder="Enter author here">
+                                    <input type="text" class="form-control novelSearchBar" id="bookTitleSearchFilter" placeholder="Enter book title here">
+
                                 </div>
                             </form>
-                            Want to add a movie not in the list?&nbsp
-                            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addMovie">Add
-                                Movie</button>
+                            Want to add a book not in the list?&nbsp
+                            <button type="button" class="btn btn-sm mt-2" data-toggle="modal" data-target="#addBook">Add book
+                            </button>
                         </div>
                     </div>
                 </div>
-                {{!-- Database flows in here --}}
-                {{> movies/table-this}}
+                {{!-- Database flows in here --}} {{> books/table-this}}
             </div>
         </div>
     </div>
-    {{!-- NextUp list - right sidebar --}}
-    {{> movies/sidebar}}
+    {{!-- NextUp list - right sidebar --}} {{> books/sidebar}}
 
-    <p class="pl-3 py-1">Go here to see your<a href="/movies/nextup"><strong> full list of
-                NextUp movies</strong></a>.</p>
+    <p class="pl-3 py-1">Go here to see your
+        <a href="/books/nextup">
+            <strong> full list of NextUp books</strong>
+        </a>.</p>
     </div>
-    {{!-- Modal with form to add movie --}}
-    <div class="modal fade" id="addMovie" tabindex="-1" role="dialog" aria-labelledby="addMovieLabel" aria-hidden="true">
+    {{!-- Modal with form to add book --}}
+    <div class="modal fade" id="addBook" tabindex="-1" role="dialog" aria-labelledby="addBookLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addMovieLabel">Add your movie</h5>
+                    <h5 class="modal-title" id="addBookLabel">Add your book</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -54,19 +61,15 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="movieTitle">Movie*</label>
-                            <input type="text" class="form-control" id="movieTitle" aria-describedby="movieReq" required>
-                            <small id="movieReq" class="form-text text-muted">An movie title is required.</small>
+                            <label for="bookTitle">Title*</label>
+                            <input type="text" class="form-control" id="bookTitle" aria-describedby="bookReq" required>
+                            <small id="bookReq" class="form-text text-muted">A book title is required.</small>
                         </div>
                         <div class="form-group">
-                            <label for="movieYear">Year</label>
-                            <input type="text" class="form-control" id="movieYear">
+                            <label for="bookAuthor">Author</label>
+                            <input type="text" class="form-control" id="bookAuthor">
                         </div>
-                        <div class="form-group">
-                            <label for="movieRating">Rating</label>
-                            <input type="text" class="form-control" id="movieRating">
-                        </div>
-                        <span class="small">You can move this movie straight to your NextUp or Finished list if you'd like.</span>
+                        <span class="small">You can move this book straight to your NextUp or Finished list if you'd like.</span>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="addRadio" id="nextup"
                                 value="nextUp">
@@ -82,12 +85,13 @@
                                 value="none">
                             <label class="form-check-label" for="none">No thanks</label>
                         </div>
-                        <br>                                               
-                        <button type="submit" class="btn btn-small mt-3" id="btn-movie" data-dismiss="modal">Add movie</button>
+                        <br>                                              
+                        <button type="submit" class="btn btn-small mt-3" id="btn-book" data-dismiss="modal">Add book</button>
                         <button type="button" class="btn btn-small mt-3" data-dismiss="modal">Discard</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 </body>

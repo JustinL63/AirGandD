@@ -11,7 +11,8 @@
                               * This view shows every album you've listened to from the list.
                             </div>
                             <div class="mt-3">
-                            You've listened to <strong>{{albumCount}}</strong> out of 3,000 albums on our original list! 
+                            You've listened to <strong>{{albumCount}}</strong> out of 3,000 albums on our original list!<br> 
+                            You've also listened to <strong>{{addCount}}</strong> albums that you've added. 
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -41,12 +42,24 @@
                                         <td>{{Album.album}}</td>
                                         <td>{{Album.artist}}</td>
                                         <td>{{Album.Year}}</td>
-                                        <td id="btn-row">
+                                        <td id="btn-row-fn">
                                             <button type="image" class="btn btn-sm btn-amazon-music mr-2" data-page="music" id="{{this.item}}" data-album="{{Album.album}}"><i class="fab fa-amazon"></i></button>
+                                    </tr>
+                                    {{/each}}
+                                    {{#each add}}
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>{{this.album}}</td>
+                                        <td>{{this.artist}}</td>
+                                        <td>{{this.year}}</td>
+                                        <td id="btn-row-fn">
+                                            <button type="image" class="btn btn-sm btn-amazon-music mr-2" data-page="music" id="{{this.id}}" data-album="{{this.album}}"><i class="fab fa-amazon"></i></button>
                                     </tr>
                                     {{/each}}
                                 </tbody>
                             </table>
+                            <div class="small">Albums you added will not have a rank.
+                            </div>
                         </div>
                     </div>
                 </div>

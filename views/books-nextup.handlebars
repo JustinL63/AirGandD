@@ -43,8 +43,22 @@
                             <button type="button" class="btn btn-sm btn-remove" data-page="books" id="{{this.item}}">Remove</button></td>
                     </tr>
                     {{/each}}
+                    {{#each add}}
+                    <tr>
+                        <th scope="row"></th>
+                        <td>{{this.title}}</td>
+                        <td>{{this.author}}</td>
+                        <td id="btn-row">
+                            <button type="image" class="btn btn-sm btn-amazon-books mr-2" data-page="books"
+                                                id="{{this.id}}" data-books="{{this.title}}"><i class="fab fa-amazon"></i></button>
+                            <button type="button" class="btn btn-sm btn-completed-add" data-page="books" id="{{this.id}}">Finished</button>
+                            <button type="button" class="btn btn-sm btn-remove-add" data-page="books" id="{{this.id}}">Remove</button></td>
+                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
+            <div class="small">Books you added will not have a rank.
+            </div>
         </div>
             </div>
         </div>

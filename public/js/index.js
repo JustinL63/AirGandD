@@ -178,7 +178,6 @@ $(document).ready(function () {
   })
 
   // REFRESH - To update list on Remaining view  
-  // REFRESH - To update list on Remaining view  
   $("#refresh").on("click", function (event) {
     event.preventDefault();
     

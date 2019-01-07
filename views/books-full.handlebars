@@ -8,7 +8,8 @@
                         <div class="col-12 col-md-10">
                             <h5>Full Database</h5>
                             <div class="small">
-                                * Every book on the list, without any of your interactions.
+                                * Alls book in our database, regardless of your previous actions.
+                                <br><em>Note: Any actions you take on this list will override your previous actions.</em>
                             </div>
                         </div>
                         <div class="col col-md-2">
@@ -66,8 +67,20 @@
                             <label for="bookAuthor">Author</label>
                             <input type="text" class="form-control" id="bookAuthor">
                         </div>
-                        <button type="submit" class="btn btn-small" id="btn-book">Add book</button>
-                        <button type="button" class="btn btn-small" data-dismiss="modal">Discard</button>
+                        <span class="small">You can move this book straight to your NextUp or Finished list if you'd like.</span>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="addRadio" id="nextup"
+                                value="nextUp">
+                            <label class="form-check-label" for="nextup">NextUp</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="addRadio" id="finished"
+                                value="finished">
+                            <label class="form-check-label" for="finished">Finished</label>
+                        </div>
+                        <br>                                              
+                        <button type="submit" class="btn btn-small mt-3" id="btn-book" data-dismiss="modal">Add book</button>
+                        <button type="button" class="btn btn-small mt-3" data-dismiss="modal">Discard</button>
                     </form>
                 </div>
             </div>

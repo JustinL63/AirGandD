@@ -21,6 +21,10 @@
   display: none;
 }
 
+#logo {
+  width: 160px;
+}
+
 a {
   color: #153E5C;
 }
@@ -149,6 +153,10 @@ table {
 
 #btn-row {
   width: 32%;
+}
+
+#btn-row-fn {
+  width: 15%;
 }
 
 #database {

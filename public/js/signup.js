@@ -30,7 +30,7 @@ $(document).ready(function () {
           window.location.href = "/dashboard"
 
         } else {
-          $("#alreadyTaken").text("Email or username already taken. Please try different information.")
+          $("#alreadyTaken").html("<i class='fas fa-exclamation-triangle'></i>&nbsp&nbspEmail or username already taken. Please try different information.")
         }
       })
     }

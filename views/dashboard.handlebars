@@ -69,9 +69,16 @@
         <div class="row mt-3">
             {{!-- Music column - data from database coming in --}}
             <div class="col-12 col-md-4" id="music-col">
-                <h4 class="d-inline-block mt-2">Music NextUp</h4>
-                <a href="/music/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                <div class="row mt-2">
+                    <div class="col-auto">
+                        <h4 class="">Music NextUp</h4>
+                    </div>
+                    <div class="col-auto pl-1">
+                    <a href="/music/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                    </div>
+                </div>
                 <hr class="my-1">
+                {{!-- Data from provided list --}}
                 {{#each albums}}
                 <div class="item">
                     <h6 class="pt-1 item">{{Album.album}}</h6>
@@ -86,6 +93,21 @@
                     </div>
                 </div>
                 {{/each}}
+                {{!-- Data from user-added --}}
+                {{#each albumsAdd}}
+                <div class="item">
+                    <h6 class="pt-1 item">{{this.album}}</h6>
+                    <p class="mb-1" id="subline">{{this.artist}} — {{this.Year}}</p>
+                    <div class="border-bottom border-white pb-1 mb-1">
+                        {{!-- Button to mark as finished --}}
+                        <button type="button" class="btn btn-sm btn-completed-add" id="{{this.id}}" data-page="music"
+                            data-site="sidebar">Finished</button>
+                        {{!-- Button to remove --}}
+                        <button type="button" class="btn btn-sm ml-2 btn-remove-add" id="{{this.id}}" data-page="music"
+                            data-site="sidebar">Remove</button>
+                    </div>
+                </div>
+                {{/each}}
 
                 {{!-- Link to music page - helpful especially if there is no data yet --}}
                 <p><strong><a href="/music">Find more albums</strong></a> to add to your NextUp</p>
@@ -93,9 +115,16 @@
 
             {{!-- Movie column --}}
             <div class="col-12 col-md-4" id="movies-col">
-                <h4 class="d-inline-block mt-2">Movies NextUp</h4>
-                <a href="/movies/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                <div class="row mt-2">
+                    <div class="col-auto">
+                        <h4 class="">Movies NextUp</h4>
+                    </div>
+                    <div class="col-auto pl-1">
+                    <a href="/movies/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                    </div>
+                </div>
                 <hr class="my-1">
+                {{!-- Data from provided list --}}
                 {{#each movies}}
                 <div class="item">
                     <h6 class="pt-1 item">{{Movie.title}}</h6>
@@ -110,6 +139,21 @@
                     </div>
                 </div>
                 {{/each}}
+                {{!-- Data from user-added --}}
+                {{#each moviesAdd}}
+                <div class="item">
+                    <h6 class="pt-1 item">{{this.title}}</h6>
+                    <p class="mb-1" id="subline">{{this.year}} — {{this.rating}}</p>
+                    <div class="border-bottom border-white pb-1 mb-1">
+                        {{!-- Button to mark as finished --}}
+                        <button type="button" class="btn btn-sm btn-completed-add" id="{{this.id}}" data-page="movies"
+                            data-site="sidebar">Finished</button>
+                        {{!-- Button to remove --}}
+                        <button type="button" class="btn btn-sm ml-2 btn-remove-add" id="{{this.id}}" data-page="movies"
+                            data-site="sidebar">Remove</button>
+                    </div>
+                </div>
+                {{/each}}
 
                 {{!-- Link to movies page - helpful especially if there is no data yet --}}
                 <p><strong><a href="/movies">Find more movies</strong></a> to add to your NextUp</p>
@@ -117,9 +161,16 @@
 
             {{!-- Books column --}}
             <div class="col-12 col-md-4" id="books-col">
-                <h4 class="d-inline-block mt-2">Books NextUp</h4>
-                <a href="/books/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                <div class="row mt-2">
+                    <div class="col-auto">
+                        <h4 class="">Books NextUp</h4>
+                    </div>
+                    <div class="col-auto pl-1">
+                    <a href="/books/nextup" class="small">&nbsp&nbsp&nbspYour full NextUp list</a>
+                    </div>
+                </div>
                 <hr class="my-1">
+                {{!-- Data from provided list --}}
                 {{#each books}}
                 <div class="item">
                     <h6 class="pt-1 item">{{Book.title}}</h6>
@@ -130,6 +181,20 @@
                             data-site="sidebar">Finished</button>
                         {{!-- Button to remove --}}
                         <button type="button" class="btn btn-sm ml-2 btn-remove" id="{{this.item}}" data-page="books"
+                            data-site="sidebar">Remove</button>
+                    </div>
+                </div>
+                {{/each}}
+                {{#each booksAdd}}
+                <div class="item">
+                    <h6 class="pt-1 item">{{this.title}}</h6>
+                    <p class="mb-1" id="subline">{{this.author}}</p>
+                    <div class="border-bottom border-white pb-1 mb-1">
+                        {{!-- Button to mark as finished --}}
+                        <button type="button" class="btn btn-sm btn-completed-add" id="{{this.id}}" data-page="books"
+                            data-site="sidebar">Finished</button>
+                        {{!-- Button to remove --}}
+                        <button type="button" class="btn btn-sm ml-2 btn-remove-add" id="{{this.id}}" data-page="books"
                             data-site="sidebar">Remove</button>
                     </div>
                 </div>

@@ -27,10 +27,9 @@ $(document).ready(function() {
         window.location.replace(data);
         // throws error
       }).catch(function(err) {
-        $("#wrongInfo").text("Incorrect login credentials. Please enter valid information.");
+        $("#wrongInfo").html("<i class='fas fa-exclamation-triangle'></i>&nbsp&nbspIncorrect login credentials. Please enter valid information.");
         console.log(err);
         return
       });
-    }
-  
+    }  
   });

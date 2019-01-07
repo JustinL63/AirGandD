@@ -6,9 +6,9 @@
                 <div class="dropdown mb-3">
                     <div class="row">
                         <div class="col-md-10">
-                            <h5>Finished</h5>
+                            <h5>Added</h5>
                             <div class="small">
-                              * This view shows every movie you've watched from the list.
+                                * This view shows every movie you've added but haven't interacted with yet.
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -19,35 +19,45 @@
                 </div>
                 {{!-- Database data flows in here--}}
                 <div class="row">
-    <div class="col-12">
-        <div class="table-responsive" id="database">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Year</th>
-                        <th scope="col">Rating</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each title}}
-                    <tr>
-                        <th scope="row">{{this.title}}</th>
-                        <td>{{this.year}}</td>
-                        <td>{{this.rating}}</td>        
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
+                    <div class="col-12">
+                        <div class="table-responsive" id="database">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Year</th>
+                                        <th scope="col">Rating</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each title}}
+                                    <tr>
+                                        <th scope="row">{{this.title}}</th>
+                                        <td>{{this.year}}</td>
+                                        <td>{{this.rating}}</td>
+                                        <td id="btn-row">
+                                            <button type="image" class="btn btn-sm btn-amazon-movies mr-2" data-page="movies"
+                                                id="{{this.id}}" data-movie="{{this.title}}"><i class="fab fa-amazon"></i></button>
+                                            <button type="button" class="btn btn-sm btn-nextup-add" data-page="movies"
+                                                id="{{this.id}}">NextUp</button>
+                                            <button type="button" class="btn btn-sm btn-completed-add" data-page="movies"
+                                                id="{{this.id}}">Finished</button>
+                                            <button type="button" class="btn btn-sm btn-remove-add" data-page="movies"
+                                                id="{{this.id}}">Remove</button></td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
             {{!-- NextUp list -right sidebar --}}
             {{> movies/sidebar}}
 
-                <p class="pl-3 py-1">Go here to see your<a href="/movies/nextup"><strong> full list of NextUp movies</strong></a>.</p>
-            </div>
+            <p class="pl-3 py-1">Go here to see your<a href="/movies/nextup"><strong> full list of NextUp movies</strong></a>.</p>
         </div>
+    </div>
 </body>

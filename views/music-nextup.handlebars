@@ -30,6 +30,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {{!-- Albums selected from list --}}
                                     {{#each albums}}
                                     <tr>
                                         <th scope="row">{{Album.rank}}</th>
@@ -43,8 +44,24 @@
                                             <button type="button" class="btn btn-sm btn-remove" data-page="music" id="{{this.item}}">Remove</button></td>
                                     </tr>
                                     {{/each}}
+                                    {{!-- Albums added by user --}}
+                                    {{#each add}}
+                                    <tr>
+                                        <th scope="row"></th>
+                                        <td>{{this.album}}</td>
+                                        <td>{{this.artist}}</td>
+                                        <td>{{this.year}}</td>
+                                        <td id="btn-row">
+                                            <button type="image" class="btn btn-sm btn-amazon-music mr-2" data-page="music"
+                                                id="{{this.id}}" data-album="{{this.album}}"><i class="fab fa-amazon"></i></button>
+                                            <button type="button" class="btn btn-sm btn-completed-add" data-page="music" id="{{this.id}}">Finished</button>
+                                            <button type="button" class="btn btn-sm btn-remove-add" data-page="music" id="{{this.id}}">Remove</button></td>
+                                    </tr>
+                                    {{/each}}
                                 </tbody>
                             </table>
+                            <div class="small">Albums you added will not have a rank.
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -12,6 +12,21 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true,
         },
+        nextup:{
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
+        },
+        completed:{
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
+        },
+        remove:{
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false
+        },
     });
     return BookAdded;
 };

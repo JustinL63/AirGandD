@@ -58,7 +58,7 @@ module.exports = function (app) {
 
     // route to user added albums
     app.get("/movies/addedmovies", function (req, res) {
-        // query database to find all the added albums by loged in user
+        // query database to find all the added albums by logged in user
         db.MovieAdded.findAll({
             where: {
                 user_id: req.user.id,
@@ -67,6 +67,7 @@ module.exports = function (app) {
                 remove: false
             },
         }).then(function (data1) {
+            console.log(data1)
             // Query for NextUp sidebar
             db.UserMovies.findAll({
                 limit: 5,

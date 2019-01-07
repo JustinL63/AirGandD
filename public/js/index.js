@@ -45,7 +45,7 @@ $(document).ready(function () {
         break;
 
       default:
-        window.location.href = "/dashboard"
+        window.location.href = "/404"
     }
   })
 
@@ -76,7 +76,7 @@ $(document).ready(function () {
         break;
 
       default:
-      window.location.href = "/dashboard"
+      window.location.href = "/404"
     }
   })
 
@@ -108,7 +108,7 @@ $(document).ready(function () {
         break;
 
       default:
-      window.location.href = "/dashboard"
+      window.location.href = "/404"
     }
   })
 
@@ -140,7 +140,7 @@ $(document).ready(function () {
         break;
 
       default:
-        window.location.href = "/dashboard" 
+        window.location.href = "/404" 
     }
   })
 
@@ -172,7 +172,7 @@ $(document).ready(function () {
         break;
 
       default:
-        window.location.href = "/dashboard"
+        window.location.href = "/404"
     }
   })
 
@@ -199,7 +199,7 @@ $(document).ready(function () {
         break;
 
       default:
-        window.location.href = "/dashboard"
+        window.location.href = "/404"
     }
   })
 
@@ -226,7 +226,6 @@ $(document).ready(function () {
     // Send post request with new object to update user-album/music/movies DB
     $.post(query, Obj
     ).then(function (data) {
-      console.log(data);
       // If there's an error, log the error
     }).catch(function (err) {
       console.log(err);
@@ -270,7 +269,7 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+        window.location.href = "/404"
     }
   })
 
@@ -311,7 +310,7 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+        window.location.href = "/404"
     }
   })
 
@@ -352,12 +351,12 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+        window.location.href = "/404"
     }
   })
   // ===========================================================================
 
-  // AMAZON BUTTON LINKS========================================================
+  // AMAZON BUTTON LINKS=TAKES USER TO AMAZON LINK OF ITEM======================
   // MUSIC LINKS
   $(".btn-amazon-music").on("click", function () {
     var amazon = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dpopular&field-keywords=";
@@ -389,7 +388,6 @@ $(document).ready(function () {
     window.open(search, "_blank")
   })
 
-
   // SEARCH BAR FUNCTIONS ON FULL DB VIEW =======================================
   // MUSIC SEARCH
   $("#artistNameSearchFilter").keyup(function () {
@@ -401,7 +399,6 @@ $(document).ready(function () {
       var td = tr[i].getElementsByTagName("td")[1];
       if (td) {
         var txtValue = td.textContent || td.innerText;
-        console.log("this is the txtValue " + txtValue)
         if (txtValue.toLowerCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {
@@ -431,7 +428,6 @@ $(document).ready(function () {
       var td = tr[i].getElementsByTagName("td")[0];
       if (td) {
         var txtValue = td.textContent || td.innerText;
-        console.log("this is the txtValue " + txtValue)
         if (txtValue.toLowerCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {
@@ -461,7 +457,6 @@ $(document).ready(function () {
       var td = tr[i].getElementsByTagName("td")[2];
       if (td) {
         var txtValue = td.textContent || td.innerText;
-        console.log("this is the txtValue " + txtValue)
         if (txtValue.toLowerCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {
@@ -486,14 +481,10 @@ $(document).ready(function () {
     var string = input.value;
     var filter = string.toLowerCase();
     var tr = document.getElementsByTagName("tr")
-    console.log("this is var input " + input)
-    console.log("this is what happens after you run var input through var filter " + filter)
-    console.log("this is what happens when I do input.value " + string)
     for (var i = 0; i < tr.length; i++) {
       var td = tr[i].getElementsByTagName("td")[0];
       if (td) {
         var txtValue = td.textContent || td.innerText;
-        console.log("this is the txtValue " + txtValue)
         if (txtValue.toLowerCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {
@@ -508,7 +499,6 @@ $(document).ready(function () {
     event.preventDefault();
     $("#authorSearchFilter").show();
     $("#bookTitleSearchFilter").hide();
-    console.log("author search")
   })
 
   // on click that switches to book title search bar
@@ -516,7 +506,6 @@ $(document).ready(function () {
     event.preventDefault();
     $("#bookTitleSearchFilter").show();
     $("#authorSearchFilter").hide();
-    console.log("book title search")
   })
 
 
@@ -527,14 +516,10 @@ $(document).ready(function () {
     var string = input.value;
     var filter = string.toLowerCase();
     var tr = document.getElementsByTagName("tr")
-    console.log("this is var input " + input)
-    console.log("this is what happens after you run var input through var filter " + filter)
-    console.log("this is what happens when I do input.value " + string)
     for (var i = 0; i < tr.length; i++) {
       var td = tr[i].getElementsByTagName("td")[1];
       if (td) {
         var txtValue = td.textContent || td.innerText;
-        console.log("this is the txtValue " + txtValue)
         if (txtValue.toLowerCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {
@@ -551,14 +536,10 @@ $(document).ready(function () {
     var string = input.value;
     var filter = string.toLowerCase();
     var tr = document.getElementsByTagName("tr")
-    console.log("this is var input " + input)
-    console.log("this is what happens after you run var input through var filter " + filter)
-    console.log("this is what happens when I do input.value " + string)
     for (var i = 0; i < tr.length; i++) {
       var td = tr[i].getElementsByTagName("td")[0];
       if (td) {
         var txtValue = td.textContent || td.innerText;
-        console.log("this is the txtValue " + txtValue)
         if (txtValue.toLowerCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {

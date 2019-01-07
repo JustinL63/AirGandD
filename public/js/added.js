@@ -35,7 +35,6 @@ $(document).ready(function () {
             nextup: nextUpVal,
             completed: finishedVal
         }
-        console.log(musicAdded)
         if (!musicAdded.album) {
             document.getElementById("notFilledOut").innerHTML = "Please fill out all forms"
             return;
@@ -91,7 +90,6 @@ $(document).ready(function () {
             completed: finishedVal
         }
 
-        console.log(movieAdded)
         if (!movieAdded.title) {
             document.getElementById("notFilledOut").innerHTML = "Please fill out all forms"
             return;
@@ -144,7 +142,6 @@ $(document).ready(function () {
             completed: finishedVal
         }
 
-        console.log(bookAdded)
         if (!bookAdded.title) {
             document.getElementById("notFilledOut").innerHTML = "Please fill out all forms"
             return;
@@ -188,7 +185,6 @@ $(document).ready(function () {
         // Send post request to update user-added album/music/movies DB
         $.post(query, Obj
         ).then(function (data) {
-            console.log(data);
             // If there's an error, log the error
         }).catch(function (err) {
             console.log(err);
@@ -232,7 +228,7 @@ $(document).ready(function () {
                 break;
 
             default:
-                console.log("Something is wrong.")
+                window.location.href = "/404"        
         }
     })
 
@@ -273,7 +269,7 @@ $(document).ready(function () {
                 break;
 
             default:
-                console.log("Something is wrong.")
+                window.location.href = "/404"
         }
     })
 
@@ -314,8 +310,7 @@ $(document).ready(function () {
                 break;
 
             default:
-                console.log("Something is wrong.")
+                window.location.href = "/404"
         }
     })
-    // ===========================================================================
 });

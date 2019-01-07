@@ -154,7 +154,6 @@ module.exports = function (app) {
                     nextup: true
                   }
                 }).then(function (data4) {
-                  console.log(data4);
                   var hbsObject = {
                     albums: data2,
                     dashboard: data3,
@@ -237,7 +236,6 @@ module.exports = function (app) {
                     nextup: true
                   }
                 }).then(function (data4) {
-                  console.log(data4);
                   var hbsObject = {
                     movies: data2,
                     dashboard: data3,
@@ -320,7 +318,6 @@ module.exports = function (app) {
                     nextup: true
                   }
                 }).then(function (data4) {
-                  console.log(data4);
                   var hbsObject = {
                     books: data2,
                     dashboard: data3,

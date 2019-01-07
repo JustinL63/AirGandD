@@ -10,7 +10,6 @@ module.exports = function(app) {
 
   // route for signins
   app.post("/api/signup", function(req, res) {
-    console.log(req.body);
     db.User.create({
       email: req.body.email,
       password: req.body.password,

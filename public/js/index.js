@@ -9,10 +9,9 @@ $(document).ready(function () {
       // Change navbar text to Log Out and point to logout page
       $("#login-status").text("Log Out");
       $("#login-status").attr("href", "/logout");
-      
+
       // Show navbar buttons
       $(".user-link").show();
-
       // Save user id to variable
       userID = data.id;
 
@@ -46,7 +45,7 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+        window.location.href = "/dashboard"
     }
   })
 
@@ -77,7 +76,7 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+      window.location.href = "/dashboard"
     }
   })
 
@@ -109,7 +108,7 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+      window.location.href = "/dashboard"
     }
   })
 
@@ -141,7 +140,7 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+        window.location.href = "/dashboard" 
     }
   })
 
@@ -173,14 +172,14 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+        window.location.href = "/dashboard"
     }
   })
 
   // REFRESH - To update list on Remaining view  
   $("#refresh").on("click", function (event) {
     event.preventDefault();
-    
+
     // Retrieve page section info
     var pageID = $("body").attr("data-content");
 
@@ -200,10 +199,9 @@ $(document).ready(function () {
         break;
 
       default:
-        console.log("Something is wrong.")
+        window.location.href = "/dashboard"
     }
   })
-
 
   // SIDEBAR - refresh
   $("#side-refresh").on("click", function (event) {
@@ -361,36 +359,36 @@ $(document).ready(function () {
 
   // AMAZON BUTTON LINKS========================================================
   // MUSIC LINKS
-  $(".btn-amazon-music").on("click", function(){
+  $(".btn-amazon-music").on("click", function () {
     var amazon = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dpopular&field-keywords=";
     var dataAlbum = $(this).attr("data-album");
     var alter = dataAlbum.replace(/[^A-Z0-9]+/ig, "+");
     var dataArtist = $(this).attr("data-artist")
     var alterArtist = dataArtist.replace(/[^A-Z0-9]+/ig, "+");
-    var search = amazon+alter+"+"+alterArtist;
+    var search = amazon + alter + "+" + alterArtist;
     window.open(search, "_blank")
   });
 
   // MOVIE LINKS
-  $(".btn-amazon-movies").on("click", function(){
+  $(".btn-amazon-movies").on("click", function () {
     var amazon = "https://www.amazon.com/s/ref=nb_sb_noss_1?url=search-alias%3Dmovies-tv&field-keywords=";
     var dataMovie = $(this).attr("data-movie");
     var alter = dataMovie.replace(/[^A-Z0-9]+/ig, "+");
-    var search = amazon+alter;
+    var search = amazon + alter;
     window.open(search, "_blank")
   });
 
   // BOOK LINKS
-  $(".btn-amazon-books").on("click", function(){
+  $(".btn-amazon-books").on("click", function () {
     var amazon = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks&field-keywords=";
     var dataBooks = $(this).attr("data-books");
     var alter = dataBooks.replace(/[^A-Z0-9]+/ig, "+");
     var dataAuthor = $(this).attr("data-author");
     var authorAlter = dataAuthor.replace(/[^A-Z0-9]+/ig, "+");
-    var search = amazon+alter+"+"+authorAlter;
+    var search = amazon + alter + "+" + authorAlter;
     window.open(search, "_blank")
   })
-  
+
 
   // SEARCH BAR FUNCTIONS ON FULL DB VIEW =======================================
   // MUSIC SEARCH
@@ -414,7 +412,7 @@ $(document).ready(function () {
   })
 
   // on click that switches over to the artist search bar
-  $("#artistNameButton").on("click", function(event){
+  $("#artistNameButton").on("click", function (event) {
     event.preventDefault();
     $("#artistNameSearchFilter").show();
     $("#albumNameSearchFilter").hide();
@@ -444,7 +442,7 @@ $(document).ready(function () {
   })
 
   // on click that switchs over to album search bar
-  $("#albumNameButton").on("click", function(event){
+  $("#albumNameButton").on("click", function (event) {
     event.preventDefault();
     $("#albumNameSearchFilter").show();
     $("#artistNameSearchFilter").hide();
@@ -474,7 +472,7 @@ $(document).ready(function () {
   })
 
   // on click that switched over to the year search bar
-  $("#yearButton").on("click", function(event){
+  $("#yearButton").on("click", function (event) {
     event.preventDefault();
     $("#yearSearchFilter").show();
     $("#albumNameSearchFilter").hide();
@@ -506,7 +504,7 @@ $(document).ready(function () {
   });
 
   // on click that switches to author search bar
-  $("#authorSearchButton").on("click", function(event){
+  $("#authorSearchButton").on("click", function (event) {
     event.preventDefault();
     $("#authorSearchFilter").show();
     $("#bookTitleSearchFilter").hide();
@@ -514,7 +512,7 @@ $(document).ready(function () {
   })
 
   // on click that switches to book title search bar
-  $("#bookTitleSearchButton").on("click", function(event){
+  $("#bookTitleSearchButton").on("click", function (event) {
     event.preventDefault();
     $("#bookTitleSearchFilter").show();
     $("#authorSearchFilter").hide();

@@ -191,6 +191,11 @@ table {
     float: right;
 }
 
+// SEARCH BARS
+#albumNameSearchFilter, #yearSearchFilter, #bookTitleSearchFilter {
+    display: none;
+}
+
 // MEDIA QUERIES
 
 @media screen and (max-width: 767.98px) {

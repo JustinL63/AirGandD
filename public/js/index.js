@@ -385,15 +385,17 @@ $(document).ready(function () {
     var amazon = "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Dstripbooks&field-keywords=";
     var dataBooks = $(this).attr("data-books");
     var alter = dataBooks.replace(/[^A-Z0-9]+/ig, "+");
-    var search = amazon+alter;
+    var dataAuthor = $(this).attr("data-author");
+    var authorAlter = dataAuthor.replace(/[^A-Z0-9]+/ig, "+");
+    var search = amazon+alter+"+"+authorAlter;
     window.open(search, "_blank")
   })
   
 
   // SEARCH BAR FUNCTIONS ON FULL DB VIEW =======================================
   // MUSIC SEARCH
-  $("#musicInput").keyup(function () {
-    var input = document.getElementById("musicInput");
+  $("#artistNameSearchFilter").keyup(function () {
+    var input = document.getElementById("artistNameSearchFilter");
     var string = input.value;
     var filter = string.toLowerCase();
     var tr = document.getElementsByTagName("tr")
@@ -411,9 +413,78 @@ $(document).ready(function () {
     }
   })
 
+  // on click that switches over to the artist search bar
+  $("#artistNameButton").on("click", function(event){
+    event.preventDefault();
+    $("#artistNameSearchFilter").show();
+    $("#albumNameSearchFilter").hide();
+    $("#yearSearchFilter").hide();
+    $(".musicSearchBar").val("")
+  })
+
+  // album search bar
+  $("#albumNameSearchFilter").hide();
+  $("#albumNameSearchFilter").keyup(function () {
+    var input = document.getElementById("albumNameSearchFilter");
+    var string = input.value;
+    var filter = string.toLowerCase();
+    var tr = document.getElementsByTagName("tr")
+    for (var i = 0; i < tr.length; i++) {
+      var td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        var txtValue = td.textContent || td.innerText;
+        console.log("this is the txtValue " + txtValue)
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  })
+
+  // on click that switchs over to album search bar
+  $("#albumNameButton").on("click", function(event){
+    event.preventDefault();
+    $("#albumNameSearchFilter").show();
+    $("#artistNameSearchFilter").hide();
+    $("#yearSearchFilter").hide();
+    $(".musicSearchBar").val("")
+  })
+
+  // year search bar
+  $("#yearSearchFilter").hide();
+  $("#yearSearchFilter").keyup(function () {
+    var input = document.getElementById("yearSearchFilter");
+    var string = input.value;
+    var filter = string.toLowerCase();
+    var tr = document.getElementsByTagName("tr")
+    for (var i = 0; i < tr.length; i++) {
+      var td = tr[i].getElementsByTagName("td")[2];
+      if (td) {
+        var txtValue = td.textContent || td.innerText;
+        console.log("this is the txtValue " + txtValue)
+        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  })
+
+  // on click that switched over to the year search bar
+  $("#yearButton").on("click", function(event){
+    event.preventDefault();
+    $("#yearSearchFilter").show();
+    $("#albumNameSearchFilter").hide();
+    $("#artistNameSearchFilter").hide();
+    $(".musicSearchBar").val("")
+  })
+
   // MOVIE SEARCH
-  $("#movieInput").keyup(function () {
-    var input = document.getElementById("movieInput");
+  $("#movieTitleSearchFilter").keyup(function () {
+    var input = document.getElementById("movieTitleSearchFilter");
     var string = input.value;
     var filter = string.toLowerCase();
     var tr = document.getElementsByTagName("tr")
@@ -434,38 +505,19 @@ $(document).ready(function () {
     }
   });
 
-  // SEARCH DROPDOWN CONTROLLERS
-  // $(".dropdown-item").on("click", function(){
-  //   var changeSearch = $(this).attr("#novelSearch")
-  //   if (changeSearch === "bookTitleSearch"){
-  //     $(".novelSearch").attr("id")
-  //     $(".novelSearch").attr("bookSearch")
-  //     console.log("title search")
-  //   }
-  // })
-
-  // filter down authors
+  // on click that switches to author search bar
   $("#authorSearchButton").on("click", function(event){
     event.preventDefault();
-
-    var changeSearch = $(".novelSearchBar").attr("id");
-    if (changeSearch === "bookTitleSearchFilter"){
-      $(".novelSearchBar").attr("id", "authorSearchFilter")
-      $(".novelSearchBar").attr("placeholder", "Enter author here")
-    }
-    $(".novelSearchBar").val("")
+    $("#authorSearchFilter").show();
+    $("#bookTitleSearchFilter").hide();
     console.log("author search")
   })
 
-  // filter down book titles
+  // on click that switches to book title search bar
   $("#bookTitleSearchButton").on("click", function(event){
     event.preventDefault();
-    var changeSearch = $(".novelSearchBar").attr("id");
-    if (changeSearch === "authorSearchFilter"){
-      $(".novelSearchBar").attr("id", "bookTitleSearchFilter")
-      $(".novelSearchBar").attr("placeholder", "Enter your books title here")
-    }
-    $(".novelSearchBar").val("")
+    $("#bookTitleSearchFilter").show();
+    $("#authorSearchFilter").hide();
     console.log("book title search")
   })
 
@@ -495,6 +547,7 @@ $(document).ready(function () {
   });
 
   // Book title Search
+  $("#bookTitleSearchFilter").hide();
   $("#bookTitleSearchFilter").keyup(function () {
     var input = document.getElementById("bookTitleSearchFilter");
     var string = input.value;

@@ -19,8 +19,13 @@
                     <div class="col-md-6">
                         <form>
                             <div class="form-group">
-                                <label for="musicInput"><strong>Search by artist</strong></label>
-                                <input type="text" class="form-control" id="musicInput" placeholder="Enter artist here">
+                                <label for="musicInput"><strong>Search by </strong></label>
+                                <button id="artistNameButton">Artist</button>
+                                <button id="albumNameButton">Album</button>
+                                <button id="yearButton">Year</button>
+                                <input type="text" class="form-control musicSearchBar" id="artistNameSearchFilter" placeholder="Enter artist here">
+                                <input type="text" class="form-control musicSearchBar" id="albumNameSearchFilter" placeholder="Enter album here">
+                                <input type="text" class="form-control musicSearchBar" id="yearSearchFilter" placeholder="Enter year here">
                                 {{!-- add model that lets you create your own albums --}}
                             </div>
                         </form>

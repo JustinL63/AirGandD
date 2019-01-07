@@ -33,7 +33,7 @@ module.exports = function (app) {
                         albums: data1,
                         dashboard: data2
                     };
-                    res.render("music-added", hbsObject)
+                    res.render("music/music-added", hbsObject)
 
                 } else {
                     // If less than 5, query db for items from user-added nextup, equaling up to 5
@@ -49,7 +49,7 @@ module.exports = function (app) {
                             dashboard: data2,
                             dashAdd: data3
                         };
-                        res.render("music-added", hbsObject)
+                        res.render("music/music-added", hbsObject)
                     });
                 }
             });
@@ -87,7 +87,7 @@ module.exports = function (app) {
                         movies: data1,
                         dashboard: data2
                     };
-                    res.render("movies-added", hbsObject)
+                    res.render("movies/movies-added", hbsObject)
 
                 } else {
                     // If less than 5, query db for items from user-added nextup, equaling up to 5
@@ -103,7 +103,7 @@ module.exports = function (app) {
                             dashboard: data2,
                             dashAdd: data3
                         };
-                        res.render("movies-added", hbsObject)
+                        res.render("movies/movies-added", hbsObject)
                     });
                 }
             });
@@ -140,7 +140,7 @@ module.exports = function (app) {
                         books: data1,
                         dashboard: data2
                     };
-                    res.render("books-added", hbsObject)
+                    res.render("books/books-added", hbsObject)
 
                 } else {
                     // If less than 5, query db for items from user-added nextup, equaling up to 5
@@ -156,7 +156,7 @@ module.exports = function (app) {
                             dashboard: data2,
                             dashAdd: data3
                         };
-                        res.render("books-added", hbsObject)
+                        res.render("books/books-added", hbsObject)
                     });
                 }
             });

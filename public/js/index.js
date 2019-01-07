@@ -34,7 +34,7 @@ $(document).ready(function () {
     // Run switch statement to determine which page to go to. HTML route runs the db query on page load
     switch (pageID) {
       case "music":
-        window.location.href = "/music";
+        window.location.href = "/music/";
         break;
 
       case "movies":

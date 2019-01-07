@@ -143,7 +143,7 @@ module.exports = function (app) {
                   albums: data2,
                   dashboard: data3
                 };
-                res.render("music", hbsObject)
+                res.render("music/music", hbsObject)
 
               } else {
                 // If less than 5, query db for items from user-added nextup, equaling up to 5
@@ -160,7 +160,7 @@ module.exports = function (app) {
                     dashboard: data3,
                     dashAdd: data4
                   };
-                  res.render("music", hbsObject)
+                  res.render("music/music", hbsObject)
                 });
               }
             });
@@ -176,7 +176,7 @@ module.exports = function (app) {
             var hbsObject = {
               albums: data2
             };
-            res.render("music", hbsObject)
+            res.render("music/music", hbsObject)
           });
         }
       });
@@ -226,7 +226,7 @@ module.exports = function (app) {
                   movies: data2,
                   dashboard: data3
                 };
-                res.render("movies", hbsObject)
+                res.render("movies/movies", hbsObject)
 
               } else {
                 // If less than 5, query db for items from user-added nextup, equaling up to 5
@@ -243,7 +243,7 @@ module.exports = function (app) {
                     dashboard: data3,
                     dashAdd: data4
                   };
-                  res.render("movies", hbsObject)
+                  res.render("movies/movies", hbsObject)
                 });
               }
             });
@@ -259,7 +259,7 @@ module.exports = function (app) {
             var hbsObject = {
               movies: data2,
             };
-            res.render("movies", hbsObject)
+            res.render("movies/movies", hbsObject)
           });
         }
       });
@@ -309,7 +309,7 @@ module.exports = function (app) {
                   books: data2,
                   dashboard: data3
                 };
-                res.render("books", hbsObject)
+                res.render("books/books", hbsObject)
 
               } else {
                 // If less than 5, query db for items from user-added nextup, equaling up to 5
@@ -326,7 +326,7 @@ module.exports = function (app) {
                     dashboard: data3,
                     dashAdd: data4
                   };
-                  res.render("books", hbsObject)
+                  res.render("books/books", hbsObject)
                 });
               }
             });
@@ -342,7 +342,7 @@ module.exports = function (app) {
             var hbsObject = {
               books: data2,
             };
-            res.render("books", hbsObject)
+            res.render("books/books", hbsObject)
           });
         }
       });

@@ -19,26 +19,31 @@
                         <div class="col-md-6">
                             <form>
                                 <div class="form-group">
-                                    <label for="bookInput"><strong>Search by author</strong></label>
-                                    <input type="text" class="form-control" id="bookInput" placeholder="Enter author here">
+                                    <label for="bookInput">
+                                        <strong>Search by: </strong>
+                                    <button id="authorSearchButton">Author</button>
+                                    <button id="bookTitleSearchButton">Title</button>
+                                    </label>            
+                                            
+                                    <input type="text" class="form-control novelSearchBar" id="authorSearchFilter" placeholder="Enter author here">
                                 </div>
                             </form>
                             Want to add a book not in the list?&nbsp
-                            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addBook">Add
-                                book</button>
+                            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#addBook">Add book
+                            </button>
                         </div>
                     </div>
                 </div>
-                {{!-- Database flows in here --}}
-                {{> books/table-this}}
+                {{!-- Database flows in here --}} {{> books/table-this}}
             </div>
         </div>
     </div>
-    {{!-- NextUp list - right sidebar --}}
-    {{> books/sidebar}}
+    {{!-- NextUp list - right sidebar --}} {{> books/sidebar}}
 
-    <p class="pl-3 py-1">Go here to see your<a href="/books/nextup"><strong> full list of
-                NextUp books</strong></a>.</p>
+    <p class="pl-3 py-1">Go here to see your
+        <a href="/books/nextup">
+            <strong> full list of NextUp books</strong>
+        </a>.</p>
     </div>
     {{!-- Modal with form to add book --}}
     <div class="modal fade" id="addBook" tabindex="-1" role="dialog" aria-labelledby="addBookLabel" aria-hidden="true">
@@ -60,7 +65,7 @@
                         <div class="form-group">
                             <label for="bookAuthor">Author</label>
                             <input type="text" class="form-control" id="bookAuthor">
-                        </div>                                              
+                        </div>
                         <button type="submit" class="btn btn-small" id="btn-book">Add book</button>
                         <button type="button" class="btn btn-small" data-dismiss="modal">Discard</button>
                     </form>

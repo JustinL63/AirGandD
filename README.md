@@ -2,6 +2,8 @@
 NextUp is a web application that provides lists of top albums, movies and books and allows you to keep track of all you want to listen to, watch and read. 
 
 https://nextup2018.herokuapp.com
+Guest email login: guest@gmail.com
+Guest password: password
 
 ## User Features
   * NextUp provides lists of 3,000 albums, 1,200 movies and 500 books that critics have recognized for their excellence.
